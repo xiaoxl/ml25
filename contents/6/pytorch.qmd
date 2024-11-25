@@ -1,0 +1,170 @@
+## Pytorch crash course
+
+
+
+### Tensor
+
+This is the basic data structure. It is very similar to `numpy.ndarray`, but with many more features. There are a few things that we need to mention at the beginning.
+
+1. A tensor with only one item is mathematically equal to a number. In Pytorch, you may use `.item()` to extract the number from a tensor with only one item.
+
+
+```{python}
+import torch
+
+a = torch.tensor([1])
+a
+```
+
+```{python}
+a.item()
+```
+
+
+2. It is type sensitive. Pytorch expect you to assign the exact data type to each tensor, and it won't automatically guess it in most cases. You may specify data type when you create a tensor.
+
+```{python}
+b = torch.tensor([1], dtype=torch.float64)
+b
+```
+
+If you want to convert data type, you could use `.to()`.
+
+```{python}
+b = torch.tensor([1], dtype=torch.float64)
+b = b.to(torch.int)
+b
+```
+
+Tensor data structure has many other features that will be introduced later.
+
+
+### Gradient descent
+
+To implement the gradient descent algorithm for the neural network, there would be a series of computations:
+
+1. From the input, feedforward the network to get the output `y_pred`.
+2. Based on the real output `y_true`, compute the loss function `loss = loss_fn(y_true, y_pred)`.
+3. Compute the gradient based on the information provided. For this step many data are needed. You may look up the gradient descent formula (backprop).
+4. Based on the gradient computed in Step 3, weights are updated, according to the optimizer we choose.
+
+In Pytorch, the above steps are implemented as follows.
+
+1. You have to define a `model` function to indicate how to feedforward the network to get an output. Here for a lot of reasons, the typical way is to define a `model` class, which contains a `forward` method that can compute the output of the model. Let us consider the following example: the dataset is as follows:
+ 
+```{python}
+x = torch.tensor([[1, 2], [3, 4], [0, 1]], dtype=torch.float)
+y = torch.tensor([[3], [7], [1]], dtype=torch.float)
+```
+
+The model is defined as follows.
+
+
+```{python}
+import torch.nn as nn
+
+class MyModel(nn.Module):
+    def __init__(self):
+        super(MyModel, self).__init__()
+
+        self.fc = nn.Linear(in_features=2, out_features=1)
+    
+    def forward(self, x):
+        x = self.fc(x)
+        return x
+
+```
+
+In this example, we define a 2-input linear regression model. Pytorch doesn't need the class to work. Actually the minimal working example of the above code is as follows. To put things into a class can make it easier in larger models. 
+
+
+```{python}
+def model(x):
+    return nn.Linear(in_features=2, out_features=1)(x)
+```
+
+
+The reason the model can be written in a very simple way is because the information about computing gradients is recorded in the parameter tensors, on the level of tensors, instead of on the level of the model class. Therefore it is important to get access to the parameters of the model. 
+
+
+```{python}
+model = MyModel()
+list(model.parameters())
+```
+
+Note that the parameters we get here is a iterator. So to look at it we need to convert it inot a list. In this example, there are two sets of tensors: the first is the coefficients, and the second is the bias term. This bias term can be turned on/off by setting the argument `bias=True` or `False` when using `nn.Linear()` to create fully connected layers. The default is `True`.
+
+To evaluate the model, we just directly apply the model to the input tensor.
+
+
+```{python}
+y_pred = model(x)
+y_pred
+```
+
+You may use the coefficients provided above to validate the resutl.
+
+Note that, although we define the `.forward()` method, we don't use it explicitly. The reason is that `model(x)` will not only excute `.forward(x)` method, but many other operations, like recording many intermediate results that can be used for debugging, visualization and modifying gradients.
+
+
+2. We may define the loss function. We mannually define the MSE loss function.
+
+```{python}
+def loss_fn(y_true, y_pred):
+    return ((y_true-y_pred)**2).mean()
+
+loss = loss_fn(y, y_pred)
+loss
+```
+
+3. Now we need to do gradient descent. The manual way to `loss.backward()`. What it does is to 
+
+
+```{python}
+print(list(model.parameters()))
+print(list(model.parameters())[0].grad)
+print(list(model.parameters())[1].grad)
+```
+
+
+
+```{python}
+import torch.optim as optim
+optimizer = optim.SGD(model.parameters(), lr=1e-2)
+```
+
+
+```{python}
+loss.backward()
+optimizer.step()
+
+
+```
+
+
+
+```{python}
+
+for i in range(100):
+    optimizer.zero_grad()
+    # print(optimizer.param_groups)
+
+    y_pred = model(x)
+    loss = loss_fn(y_pred, y)
+
+    # print(optimizer.param_groups)
+
+    loss.backward()
+    optimizer.step()
+
+    # print(optimizer.param_groups)
+
+    # print(list(model.parameters()))
+    # print(list(model.parameters())[0].grad)
+    # print(list(model.parameters())[1].grad)
+```
+
+4. Update the parameters by `optim` or manually done.
+
+### Mini-batch
+

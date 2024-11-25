@@ -1,0 +1,33 @@
+# Ensemble methods
+
+After we get some relatively simple classifiers (sometimes also called *weak classifiers*), we might put them together to form a more complicated classifier. This type of methods is called an *ensemble method*. The basic way to ``ensemble'' classifiers together to through the voting machine.
+
+There are mainly two ways to generate many classifiers.
+
+- `bagging`: This is also called *bootstrap aggregating*. The idea is 
+  - First we randomly pick samples from the original dataset to form a bunch of new trainning datasets;
+  - Then we apply the same learning methods to those trainning datasets to get a bunch of classifiers;
+  - Finally apply all these classifiers to the data we are interested in and use the most frequent class as the result.
+- `boosting`: There are a bunch of classifiers. We assign weights to each of the classifiers and change the weights adaptively according to the results of the current combination.
+
+
+
+
+
+
+{{< include randomforest.qmd >}}
+
+
+
+{{< include morevoting.qmd >}}
+
+
+
+{{< include adaboost.qmd >}}
+
+
+
+{{< include project.qmd >}}
+
+
+

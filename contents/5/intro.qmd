@@ -1,0 +1,30 @@
+# Intro to Pytorch
+
+
+Most materials are based on @Godoy2022.
+
+
+{{< include lr_math.qmd >}}
+
+
+
+{{< include lr_numpy.qmd >}}
+
+
+
+{{< include lr_pytorch.qmd >}}
+
+
+{{< include dataloader.qmd >}}
+
+
+
+<!-- {{< include output.qmd >}} -->
+
+
+
+{{< include project.qmd >}}
+
+
+
+

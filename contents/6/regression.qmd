@@ -1,0 +1,188 @@
+
+
+
+## Basic idea
+
+Assume that we have a binary classfification problem with $N$ features. Our model starts from the *logit* instead of the label $y$ itself.
+
+$$
+logit(y)=\theta_0+\sum_{j=1}^N\theta_jx_j.
+$$
+
+The logit function is used to describe the logorithm of the binary odds. The odd ratio is the ratio between the probability of success and the probability of failure. Assume the probability of success is $p$. Then 
+
+$$
+oddratio(p)=\frac{p}{1-p},\quad logit(p)=z = \log\left(\frac{p}{1-p}\right).
+$$
+We could solve the logit function, and get its inverse: the function is the *Sigmoid* function. Once we have the logit value, we could use it to get the probability. 
+$$
+p=\sigma(z)=\frac{1}{1+\mathrm{e}^{-z}}.
+$$
+<!-- 
+The Logsitic regression is used to predict the probability of a data point belonging to a specific class. It is based on linear regression. The major difference is that logistic regreesion will have an activation function $\sigma$ at the final stage to change the predicted values of the linear regression to the values that indicate classes. In the case of binary classification, the outcome of $\sigma$ will be between $0$ and $1$, which is related to the two classes respectively. In this case, the number is interepted as the probability of the data to be in one of the specific class. -->
+
+
+
+Therefore the model for Logistic regression is as follows:
+
+$$
+p=\sigma(L(x))=\sigma\left(\theta_0+\sum_{j=1}^n\theta_jx_j\right)=\sigma\left(\Theta \hat{x}^T\right).
+$$
+
+<!-- In most cases, this activation function is chosen to be the Sigmoid funciton. -->
+
+### Sigmoid function
+
+The *Sigmoid* function is defined as follows:
+
+$$
+\sigma(z)=\frac{1}{1+\mathrm{e}^{-z}}.
+$$
+The graph of the function is shown below.
+
+
+
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-6, 6, 1001)
+y = 1/(1+np.exp(-x))
+_ = plt.plot(x, y)
+```
+
+
+The main properties of $\sigma$ are listed below as a Lemma.
+
+
+::: {#lem-sig}
+
+The Sigmoid function $\sigma(z)$ satisfies the following properties.
+
+1. $\sigma(z)\rightarrow \infty$ when $z\mapsto \infty$.
+2. $\sigma(z)\rightarrow -\infty$ when $z\mapsto -\infty$.
+3. $\sigma(0)=0.5$.
+4. $\sigma(z)$ is always increasing.
+5. $\sigma'(z)=\sigma(z)(1-\sigma(z))$.
+
+:::
+
+
+
+::: {.solution}
+We will only look at the last one.
+
+$$
+\begin{split}
+\sigma'(z)&=-\frac{(1+\mathrm e^{-z})'}{(1+\mathrm e^{-z})^2}=\frac{\mathrm e^{-z}}{(1+\mathrm e^{-z})^2}=\frac{1}{1+\mathrm e^{-z}}\frac{\mathrm e^{-z}}{1+\mathrm e^{-z}}\\
+&=\sigma(z)\left(\frac{1+\mathrm e^{-z}}{1+\mathrm e^{-z}}-\frac{1}{1+\mathrm e^{-z}}\right)=\sigma(z)(1-\sigma(z)).
+\end{split}
+$$
+:::
+
+
+
+### Gradient descent
+<!-- Assume that we would like to minimize a function $J(\Theta)$, where this $\Theta$ is an $N$-dim vector. Geometricly, we could treat $J$ as a height function, and it tells us the height of the mountain. Then to minimize $J$ is the same thing as to find the lowest point. One idea is to move towards the lowest point step by step. During each step we only need to lower our current height. After several steps we will be around the lowest point.
+
+The geometric meaning of $\nabla J$ is the direction that $J$ increase the most. Therefore the opposite direction is the one we want to move in. The formula to update $x$ is 
+
+$$
+\Theta_{\text{new}} = \Theta_{\text{old}}-\alpha \nabla J(\Theta_{\text{old}}),
+$$
+where $\alpha$ is called the *learning rate* which controls how fast you want to learn. Usually if $\alpha$ is small, the learning tends to be slow and stble, and when $\alpha$ is big, the learning tends to be fast and unstable. -->
+
+<!-- In machine learning, in most cases we would like to formulate the problem in terms of finding the lowest point of a *cost function* $J(\Theta)$.  -->
+
+We would like to use Gradient descent to sovle Logistic regression problems. For binary classification problem, the cost function is defined to be
+
+$$
+J(\Theta)=-\frac1m\sum_{i=1}^m\left[y^{(i)}\log(p^{(i)})+(1-y^{(i)})\log(1-p^{(i)})\right].
+$$
+Here $m$ is the number of data points, $y^{(i)}$ is the labelled result (which is either $0$ or $1$), $p^{(i)}$ is the predicted value (which is between $0$ and $1$). 
+
+::: {.callout-note}
+The algorithm gets its name since we are using the gradient to find a direction to lower our height. 
+:::
+
+
+### The Formulas
+
+
+::: {#thm-reggrad}
+The gradient of $J$ is computed by
+
+$$
+\nabla J =\frac1m(\textbf{p}-\textbf{y})^T\hat{\textbf{X}}.
+$$ {#eq-nablaJ}
+:::
+
+
+<details>
+<summary>Click for details.</summary>
+
+::: {.proof}
+
+
+The formula is an application of the chain rule for the multivariable functions.
+
+$$
+\begin{split}
+\dfrac{\partial p}{\partial \theta_k}&=\dfrac{\partial}{\partial \theta_k}\sigma\left(\theta_0+\sum_{j=1}^n\theta_jx_j\right)=\dfrac{\partial}{\partial \theta_k}\sigma(L(\Theta))\\
+&=\sigma(L)(1-\sigma(L))\dfrac{\partial}{\partial \theta_k}\left(\theta_0+\sum_{j=1}^n\theta_jx_j\right)\\
+&=\begin{cases}
+p(1-p)&\text{ if }k=0,\\
+p(1-p)x_k&\text{ otherwise}.
+\end{cases}
+\end{split}
+$$
+Then 
+
+$$
+\nabla p = \left(\frac{\partial p}{\partial\theta_0},\ldots,\frac{\partial p}{\partial\theta_n}\right) = p(1-p)\hat{x}.
+$$
+
+Then 
+
+$$
+\nabla \log(p) = \frac{\nabla p}p =\frac{p(1-p)\hat{x}}{p}=(1-p)\hat{x}.
+$$
+
+$$
+\nabla \log(1-p) = \frac{-\nabla p}{1-p} =-\frac{p(1-p)\hat{x}}{1-p}=-p\hat{x}.
+$$
+
+Then 
+
+$$
+\begin{split}
+\nabla J& = -\frac1m\sum_{i=1}^m\left[y^{(i)}\nabla \log(p^{(i)})+(1-y^{(i)})\nabla \log(1-p^{(i)})\right]\\
+&=-\frac1m\sum_{i=1}^m\left[y^{(i)}(1-p^{(i)})\hat{x}^{(i)}+(1-y^{(i)})(-p^{(i)}\hat{x}^{(i)})\right]\\
+&=-\frac1m\sum_{i=1}^m\left[(y^{(i)}-p^{(i)})\hat{x}^{(i)}\right].
+\end{split}
+$$
+
+We write $\hat{x}^{(i)}$ as row vectors, and stack all these row vectors vertically. What we get is a matrix $\hat{\textbf X}$ of the size $m\times (1+n)$. We stack all $y^{(i)}$ (resp. $p^{(i)}$) vectically to get the $m$-dim column vector $\textbf y$ (resp. $\textbf p$). 
+
+Using this notation, the previous formula becomes
+
+
+$$
+\nabla J =\frac1m(\textbf{p}-\textbf{y})^T\hat{\textbf{X}}.
+$$
+
+After the gradient can be computed, we can start to use the gradient descent method. Note that, although $\Theta$ are not explicitly presented in the formula of $\nabla J$, this is used to modify $\Theta$:
+
+$$
+\Theta_{s+1} = \Theta_s - \alpha\nabla J.
+$$
+
+:::
+</details>
+
+
+::: {.callout-note}
+If you directly use library, like `sklearn` or `PyTorch`, they will handle the concrete computation of these gradients.
+:::
+

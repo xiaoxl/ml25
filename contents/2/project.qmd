@@ -1,0 +1,32 @@
+## Exercises and Projects
+
+
+::: {#exr-ex2handwritten}
+
+Handwritten example
+:label: ex2handwritten
+Consider the 1-dimensional data set shown below.
+
+```{python}
+#| echo: false
+
+import pandas as pd
+name = ['x', '1.5', '2.5', '3.5', '4.5', '5.0', '5.5', '5.75', '6.5', '7.5', '10.5']
+data = [['y', '+', '+', '-', '-', '-', '+', '+', '-', '+', '+']]
+df = pd.DataFrame(data, columns=name)
+df.style.hide(axis='index')
+```
+Please use the data to compute the class of $x=5.5$ according to $k=1$, $3$, $6$ and $9$. Please compute everything by hand.
+
+:::
+
+
+::: {#exr-ex2titanic}
+# Titanic 
+Please download the titanic dataset from [here](./assests/datasets/titanic.csv). This is the same dataset from what you dealt with in Chapter 1 Exercises. Therefore you may use the same way to prepare the data. 
+
+Please analyze the dataset and build a k-NN model to predict whether someone is survived or not. Note that you have to pick `k` at the end.
+:::
+
+
+

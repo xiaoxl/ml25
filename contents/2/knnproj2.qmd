@@ -1,0 +1,129 @@
+## k-NN Project 2: Dating Classification
+
+The data can be downloaded from [here](./assests/datasets/datingTestSet2.txt).
+
+
+### Background
+Helen dated several people and rated them using a three-point scale: 3 is best and 1 is worst. She also collected data from all her dates and recorded them in the file attached. These data contains 3 features:
+
+- Number of frequent flyer miles earned per year
+- Percentage of time spent playing video games
+- Liters of ice cream consumed per week
+
+We would like to predict her ratings of new dates when we are given the three features. 
+
+The data contains four columns, while the first column refers to `Mileage`, the second `Gamingtime`, the third `Icecream` and the fourth `Rating`. 
+
+### Look at Data
+
+We first load the data and store it into a DataFrame.
+
+
+```{python}
+#| echo: false
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('./assests/datasets/datingTestSet2.txt', sep='\t', header=None)
+df.head()
+```
+
+```{python}
+#| eval: false
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('datingTestSet2.txt', sep='\t', header=None)
+df.head()
+```
+
+To make it easier to read, we would like to change the name of the columns.
+
+
+```{python}
+df = df.rename(columns={0: "Mileage", 1: "Gamingtime", 2: 'Icecream', 3: 'Rating'})
+df.head()
+```
+
+
+Since now we have more than 2 features, it is not suitable to directly draw scatter plots. We use `seaborn.pairplot` to look at the pairplot. From the below plots, before we apply any tricks, it seems that `Milegae` and `Gamingtime` are better than `Icecream` to classify the data points. 
+
+
+
+```{python}
+import seaborn as sns
+sns.pairplot(data=df, hue='Rating')
+```
+
+### Applying kNN
+
+Similar to the previous example, we will apply both methods for comparisons. 
+
+
+
+```{python}
+from sklearn.model_selection import train_test_split
+X = np.array(df[['Mileage', 'Gamingtime', 'Icecream']])
+y = np.array(df['Rating'])
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=40, stratify=y)
+```
+
+
+
+```{python}
+# Using sklearn.
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+steps = [('scaler', MinMaxScaler()),
+         ('knn', KNeighborsClassifier(n_neighbors, weights="uniform",
+                                      metric="euclidean", algorithm='brute'))]
+pipe = Pipeline(steps=steps)
+pipe.fit(X_train, y_train)
+y_pipe = pipe.predict(X_test)
+accuracy_score(y_pipe, y_test)
+```
+
+
+### Choosing `k` Value
+Similar to the previous section, we can run tests on `k` value to choose one to be used in our model using `GridSearchCV`.
+
+
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+n_list = list(range(1, 101))
+parameters = dict(knn__n_neighbors=n_list)
+clf = GridSearchCV(pipe, parameters, cv=5)
+clf.fit(X_train, y_train)
+clf.best_estimator_.get_params()["knn__n_neighbors"]
+```
+
+
+```{python}
+from sklearn.model_selection import cross_val_score
+from sklearn.base import clone
+import matplotlib.pyplot as plt
+
+n_list = list(range(1, 101))
+cv_scores = []
+for k in n_list:
+    pipe_tmp = clone(pipe)
+    pipe_tmp.set_params(knn__n_neighbors=k)
+    cv_scores.append(cross_val_score(pipe_tmp, X_train, y_train, cv=5).mean())
+plt.plot(cv_scores)
+```
+
+
+
+From this result, in this case the best `k` is `12`. The corresponding test score is 
+
+```{python}
+clf.score(X_test, y_test)
+```
+
