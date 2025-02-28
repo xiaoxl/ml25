@@ -1,0 +1,117 @@
+## Data visualization
+
+We need to visualize the data during toying with models. We will introduce two ways for the visualization. 
+
+### Naive way
+
+The idea is to record the data we want to visualize, and then direct display the data with a certain visualization library. The most popular and default choice is `matplotlib`. Although there are many customizations, the basic usage is very simple.
+
+
+```{python}
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [1, 0, 4, -1, 3]
+z = [-1, 0, 3, -2, 3]
+
+plt.plot(x, y, label='y')
+plt.plot(x, z, label='z')
+plt.legend()
+```
+
+Since in most cases in this course we would like to see line plot, this piece of code shows the main usage. 
+
+- We need to specify two series of data as `x` and `y` respectively.
+- We could show two lines in the same plot.
+- If we add labels, and show legend, legends and labels in the plot will be automatically generated.
+
+### `Tensorboard`
+
+Instead of manually recording data and show plots, we could use logging tools for visualization. Similar to libraries, there are many tools of choice. `tensorboard` is one of simpler tools. `tensorboard` originally is a tool for `tensorflow`. It later joins `PyTorch` and becomes a (relatively independent) tool. Here we will use it with `PyTorch` since in the second half of the semester we will talk about `PyTorch`. To install `tensorboard` after you install `PyTorch` you could use the following command. More details can be found [here](https://pytorch.org/tutorials/beginner/introyt/tensorboardyt_tutorial.html). Note that `tensorboard` depends on `matplotlib` therefore they have to be installed simutanously.
+
+```{.bash}
+pip install matplotlib tensorboard
+```
+
+
+The basic idea of tensorboard is that it is logger that record the information you send to it. It can then retrieve the information and show some plots later. Whether the plots are good or not depends on how you structure the data sent to it. There are many customizations. Here we will only discuss one way to use it.
+
+The mindset of using `tensorboard` is as follows.
+1. A logger should be initialized to accept your data. 
+2. For organization, we put the logs in a foler structure.
+3. During runs, we send data to the logger.
+4. After the run, the logger is closed.
+5. We could later run `tensorboard` to load these logs to see the data we generated during runs.
+
+
+```{python}
+#| eval: false
+from torch.utils.tensorboard import SummaryWriter
+
+writer = SummaryWriter('runs/ex1')
+x = [1, 2, 3, 4, 5]
+y = [1, 0, 4, -1, 3]
+z = [-1, 0, 3, -2, 3]
+
+for i in range(5):
+    writer.add_scalar('y', y[i], x[i])
+    writer.add_scalar('z', z[i], x[i])
+
+writer.close()
+```
+
+This piece of code shows the basic usage of `tensorboard`. 
+
+1. We first initialize the logger and put it in the folder `runs/ex1`. Note that if this folder is not assigned, a folder with random name will be generated. But if the name is assigned like what we do here, the logs will be recorded in this folder everytime we run the code. This is NOT recommended. 
+2. Then we use `.add_scalar` to send the data we need to the logger one by one. Note that for these scalar data the three arguments are `label`, `value` and `independent variable`. 
+3. At the end, the logger will be closed and saved to disk.
+
+To visualize the result, you may type the command in comma line, and `tensorboard` will then let you know where you can visualize the data.
+
+```{.bash}
+tensorboard --logdir=runs/ex1 
+```
+```
+TensorBoard 2.18.0 at http://localhost:6006/ (Press CTRL+C to quit)
+```
+
+Click the link, you will see tensorboard as follows.
+
+![](assests/img/20250228164959.png)
+
+
+
+How `tensorboard` show the data depends on how you structure your data. Here I suggest a way to organize the data you send to `tensorboard`.
+
+1. Use date/time and other indicators as the name of each run.
+2. Group similar metrics together and record them in a dictionary.
+3. When using a dictionary to send many scalars, use `add_scalars` instead of `add_scalar`.
+
+```{python}
+#| eval: false
+from torch.utils.tensorboard import SummaryWriter
+from datetime import datetime
+
+runfolder = datetime.now().strftime('%Y%d%m-%H%M%S')
+writer = SummaryWriter(f'runs/{runfolder}')
+x = [1, 2, 3, 4, 5]
+y = [1, 0, 4, -1, 3]
+z = [-1, 0, 3, -2, 3]
+
+for i in range(5):
+    scalars = {
+        'y': y[i],
+        'z': z[i]
+    }
+    writer.add_scalars('scalars', scalars, x[i])
+
+writer.close()
+```
+
+![](assests/img/20250228170146.png)
+
+
+
+::: {.callout-note}
+Note that the plots from `tensorboard` and `matplotlib` are a little different. The reason is that `tensorboard` automatically smooth the curve. You can use the cmoothing factor to control the effect. When you change it to be 0, you will get exactly the same plot.
+:::

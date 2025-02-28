@@ -1,0 +1,109 @@
+## Gini impurity
+
+To split a dataset, we need a metric to tell whether the split is good or not. The two most popular metrics that are used are Gini impurity and Entropy. The two metrics don't have essential differences, that the results obtained by applying each metric are very similar to each other. Therefore we will only focus on Gini impurity since it is slightly easier to compute and slightly easier to explain.
+
+### Motivation and Definition
+Assume that we have a dataset of totally $n$ objects, and these objects are divided into $k$ classes. The $i$-th class has $n_i$ objects. Then if we randomly pick an object, the probability to get an object belonging to the $i$-th class is
+
+$$
+p_i=\frac{n_i}{n}
+$$
+
+If we then guess the class of the object purely based on the distribution of each class, the probability that our guess is incorrect is 
+
+$$
+1-p_i = 1-\frac{n_i}{n}.
+$$
+
+Therefore, if we randomly pick an object that belongs to the $i$-th class and randomly guess its class purely based on the distribution but our guess is wrong, the probability that such a thing happens is 
+
+$$
+p_i(1-p_i).
+$$
+
+Consider all classes. The probability at which any object of the dataset will be mislabelled when it is randomly labeled is the sum of the probability described above:
+
+$$
+\sum_{i=1}^kp_i(1-p_i)=\sum_{i=1}^kp_i-\sum_{i=1}^kp_i^2=1-\sum_{i=1}^kp_i^2.
+$$
+
+This is the definition formula for the *Gini impurity*. 
+
+
+
+::: {#def-gini}
+The **Gini impurity** is calculated using the following formula
+
+$$
+Gini = \sum_{i=1}^kp_i(1-p_i)=\sum_{i=1}^kp_i-\sum_{i=1}^kp_i^2=1-\sum_{i=1}^kp_i^2,
+$$
+where $p_i$ is the probability of class $i$.
+:::
+
+The way to understand Gini impurity is to consider some extreme examples. 
+
+
+::: {#exm-}
+
+Assume that we only have one class. Therefore $k=1$, and $p_1=1$. Then the Gini impurity is
+
+$$
+Gini = 1-1^2=0.
+$$
+This is the minimum possible Gini impurity. It means that the dataset is **pure**: all the objects contained are of one unique class. In this case, we won't make any mistakes if we randomly guess the label.
+
+:::
+
+
+
+
+::: {#exm-}
+Assume that we have two classes. Therefore $k=2$. Consider the distribution $p_1$ and $p_2$. We know that $p_1+p_2=1$. Therefore $p_2=1-p_1$. Then the Gini impurity is
+
+$$
+Gini(p_1) = 1-p_1^2-p_2^2=1-p_1^2-(1-p_1)^2=2p_1-2p_1^2.
+$$
+When $0\leq p_1\leq 1$, this function $Gini(p_1)$ is between $0$ and $0.5$. 
+- It gets $0$ when $p_1=0$ or $1$. In these two cases, the dataset is still a one-class set since the size of one class is $0$. 
+- It gets $0.5$ when $p_1=0.5$. This means that the Gini impurity is maximized when the size of different classes are balanced.
+:::
+
+### Algorithm
+
+
+::: {.callout-note}
+# Algorithm: Gini impurity
+
+**Inputs** A dataset $S=\{data=[features, label]\}$ with labels. 
+
+**Outputs** The Gini impurity of the dataset.
+
+1. Get the size $n$ of the dataset.
+2. Go through the label list, and find all unique labels: $uniqueLabelList$.
+3. Go through each label $l$ in $uniqueLabelList$ and count how many elements belonging to the label, and record them as $n_l$.
+4. Use the formula to compute the Gini impurity:
+
+   $$
+    Gini = 1-\sum_{l\in uniqueLabelList}\left(\frac{n_l}{n}\right)^2.
+   $$
+:::
+
+
+
+
+
+<details>
+<summary>The sample manual codes are optional. </summary>
+
+```{python}
+import pandas as pd
+def gini(S):
+    N = len(S)
+    y = S[:, -1].reshape(N)
+    gini = 1 - ((pd.Series(y).value_counts()/N)**2).sum()
+    return gini
+```
+
+</details>
+
+

@@ -1,0 +1,82 @@
+## k-NN Project 3: Handwritten recognition
+
+We would like to let the machine recognize handwritten digits. The dataset is MNIST comeing from the [MNIST database](https://yann.lecun.com/exdb/mnist/). Now we apply kNN algrotithm to it. 
+
+### Dataset description
+Every digit is stored as a $28\times28$ picture. This is a $28\times28$ matrix. Every entry represents a gray value of the corresponding pixel, whose value is from 0 to 255. The label of each matrix is the digit it represents. Note that the dataset provided is already splitted into a training set and a test set.
+
+The dataset can be loaded following the [instruction](https://xiaoxl.github.io/Datasets/contents/mnist.html).
+
+
+```{python}
+from datasets import load_dataset
+import numpy as np
+import itertools
+
+def pil_to_array(data):
+    data['image'] = np.array(data['image'])
+    return data
+
+mnist_train = load_dataset("ylecun/mnist", split='train').take(600)
+mnist_test = load_dataset("ylecun/mnist", split='test').take(100)
+
+mnist_train_processed = mnist_train.map(pil_to_array)
+mnist_test_processed = mnist_test.map(pil_to_array)
+
+X_train = np.array(mnist_train_processed['image']).reshape(-1, 784)
+y_train = np.array(mnist_train_processed['label']).reshape(-1)
+X_test = np.array(mnist_test_processed['image']).reshape(-1, 784)
+y_test = np.array(mnist_test_processed['label']).reshape(-1)
+```
+
+Note that one of the purpose to load the data in streaming mode is that the dataset is big and it is not wise to load everything all together. However this is the only way to train a KNN model since all it does is to memorize everything. In the future with other models we may want to load the image one by one with the streaming mode.
+
+Also due to the issue of large dataset, I only choose the first 600/100 images from the original dataset. This is implemented by the `.take` method when loading the dataset.
+
+```{python}
+np.unique(y_train, return_counts=True)
+```
+Although not optimal, all digits are presented, and the distributions are relatively equal. So we will use this slice of the original dataset. In reality, if possible it is always better to use all data provided to you.
+
+
+
+
+### Apply k-NN
+Like the previous two examples, we now try to apply the k-NN algorithm to classify these handwritten digits. Note that the original dataset is huge and the processing time is very slow. However since we only choose 600/100 images, we could still run all our tricks. 
+
+```{python}
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import cross_val_score
+from sklearn.base import clone
+import matplotlib.pyplot as plt
+
+steps = [('scaler', MinMaxScaler()),
+         ('knn', KNeighborsClassifier(n_neighbors=5))]
+pipe = Pipeline(steps=steps)
+n_list = list(range(1, 11))
+
+cv_score = []
+for k in n_list:
+    pipe_tmp = clone(pipe)
+    pipe_tmp.set_params(knn__n_neighbors=k)
+    cv_score.append(cross_val_score(pipe_tmp, X_train, y_train, cv=5).mean())
+plt.plot(n_list, cv_score)
+```
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+
+gs = GridSearchCV(pipe, param_grid=dict(knn__n_neighbors=n_list), cv=5)
+gs.fit(X_train, y_train)
+gs.best_params_
+```
+The best `k` is 3 for this degenerated dataset. The corresponding test score is 
+
+```{python}
+gs.score(X_test, y_test)
+```
+
+
+

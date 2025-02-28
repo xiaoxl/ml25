@@ -1,0 +1,51 @@
+
+# Logistic regression 
+
+Logistic regression is very similar to linear regression, but applied to classification problems. In this chpater our idea is to treat it as the simplest example of a neural network instead of using other methods. The code we developped in the last chapter will be used extensively.
+
+<!-- 
+Consider a set of training data $(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \ldots$, where $x^{(i)}=(x^{(i)}_1, x^{(i)}_2, \ldots, x^{(i)}_n)$ is a $n$-dim vector, and $y^{(i)}$ is a real number. We would like to use Linear regression to find the relation between $x$ and $y$. 
+
+In this case, we assume that $y$ is a linear function of $x$:
+
+$$
+y=\theta_0 + \sum_{j=1}^n\theta_jx_j.
+$$
+The purpose of Linear regression is to used the given training data to find out the best $\Theta=(\theta_0, \theta_1, \theta_2,\ldots,\theta_n)$. 
+
+If we set $\hat{x}=(1, x_1, \ldots,x_n)$, then the above formula can be reformulated by matrix multiplication.
+
+$$
+y=\Theta \hat{x}^T.
+$$
+
+When we want to deal with classification problem, we may still use this regression idea, but we have to do some modification.
+ -->
+
+
+
+{{< include regression.qmd >}}
+
+
+{{< include regularization.qmd >}}
+
+
+
+{{< include nn.qmd >}}
+
+
+
+<!-- {{< include pytorch.qmd >}} -->
+
+
+
+<!-- {{< include multi.qmd >}} -->
+
+
+<!-- {{< include sklearn.qmd >}} -->
+
+
+
+
+{{< include project.qmd >}}
+

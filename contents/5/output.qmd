@@ -1,0 +1,387 @@
+## Wrap up in a class
+
+
+We use a class to wrap up our model and the training process. One of the benefits is that we could record a lot of information in the class. 
+
+
+### Organize the outputs
+
+We add a dict `stats` in the class as an attribute. After we train the model, we will evalute some metrics and add it to the `stats` dict. The default stats we choose is the training loss, validation loss and the time to train an epoch. We could inherite the class to add more stats. the following code is not complete, so I fold it. Complete code can be found later.
+
+
+```{python}
+#| eval: false
+#| code-fold: true
+class ModelTemplete():
+    def __init__(self, model, loss_fn, optimizer):
+        # ignore some other stuffs
+        self.stats = {'losses': [],
+                        'val_losses': [],
+                        'delta_time': [],
+                        'n_epochs': 0}
+
+    def log_update(self, delta_time, loss, val_loss):
+        self.stats['delta_time'].append(delta_time)
+        self.stats['losses'].append(loss)
+        self.stats['val_losses'].append(val_loss)
+        self.stats['n_epochs'] += 1
+
+    def log_output(self, verbose=0, formatstr=''):
+        s = [f'epoch {self.stats['n_epochs']}',
+             f'train_time: {{{formatstr}}}'.format(self.stats['train_time'][-1]),
+             f'loss: {{{formatstr}}}'.format(self.stats['losses'][-1])]
+        if self.stats['val_losses'][-1] is not None:
+            s.append(f'val_time: {{{formatstr}}}'.format(self.stats['val_time'][-1]))
+            s.append(f'val_loss: {{{formatstr}}}'.format(self.stats['val_losses'][-1]))
+        if verbose == 1:
+            print(' '.join(s))
+        return s
+    
+
+    def train(self, train_loader, val_loader=None, epoch_num=10, verbose=0):
+        for _ in range(epoch_num):
+           # ignore some other stuffs
+            self.log_update(delta_time, loss, val_loss)
+            self.log_output(verbose=verbose)
+```
+
+When we derive the base class, we could add more stats to it. Note that the output is stored as a list, so it is easy to add more display to it as well as changing display order if necessary. 
+
+In this example, the base class is extended, and the bias and the weight are shown in the output.
+
+
+```{python}
+#| eval: false
+#| code-fold: true
+
+class MyModel(ModelTemplete):
+    def __init__(self, model, loss_fn, optimizer):
+        super().__init__(model, loss_fn, optimizer)
+        self.states['p'] = []
+
+    def log_update(self, delta_time, loss, val_loss):
+        super().log_update(delta_time, loss, val_loss)
+        p = self.model.state_dict()
+        self.states['p'].append([p['linear.bias'].item(), p['linear.weight'].item()])
+
+
+    def log_output(self, verbose=0):
+        s = super().log_output(verbose=0, formatstr=':.6f')
+        s.append(f'p: [{self.states['p'][-1][0]}, {self.states['p'][-1][1]}]')
+        if verbose==1:
+            print(' '.join(s))
+        return s
+```
+
+
+
+### Setting random seeds
+
+Following [the guideline](https://pytorch.org/docs/stable/notes/randomness.html#reproducibility), we add a method to our class to manually set random seed in order to reproduce our results. 
+
+```{python}
+#| eval: false
+#| code-fold: true
+import numpy as np
+import random
+
+def set_seed(self, seed=42):
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+```
+
+
+
+### Save the model
+
+Sometimes we would like to save and load the model state. To be specific, we would like to record:
+
+- model parameters: which is `model.state_dict()`;
+- the state of the optimizer: `optimizer.state_dict()`;
+- the stats of the model: `stats` dict.
+
+We use `torch.save` and `torch.load` to write and read files. We use a `dict` to store all the above information.
+
+
+```{python}
+#| eval: false
+#| code-fold: true
+import torch
+def save(self, filename='model.pth'):
+    model_state = {
+        'model': self.model.state_dict()
+        'optimizer': self.optimizer.state_dict()
+        'stats': self.stats
+    }
+    torch.save(model_state, filename)
+
+def load(self, filename='model.pth'):
+    model_state = torch.load(filename, weights_only=False)
+    self.model.load_state_dict(model_state['model'])
+    self.optimizer.load_state_dict(model_state['optimizer'])
+    self.stats = model_state['stats']
+
+    self.model.train()
+```
+
+### Predict values
+For this part, we assume that our data comes from `numpy.array` and we will produce results in terms of `numpy.array`. Note that to turn a `torch.tensor` to a `numpy.array`, we need to detach it first, send it back to `cpu` and then transform it to numpy array.
+
+
+```{python}
+#| eval: false
+#| code-fold: true
+def predict(self, X):
+    self.model.eval()
+    X_tensor = torch.as_tensor(X, dtype=float)
+    y_tensor = self.model(X_tensor.to(self.device))
+    self.model.train()
+    y = y_tensor.detach().cpu().numpy()
+
+    return y
+
+```
+
+
+### Put things together
+
+Now we can start to wrap up our previous code into classes. The idea is:
+
+- a `Dataset` class and corresponding dataloaders;
+- a `Model` class which load data from `Dataset` for training.
+
+The `ModelTemplate` class is defined as follows.
+
+```{python}
+import torch
+import numpy as np
+import random
+import time
+
+
+class ModelTemplate():
+    def __init__(self, model, loss_fn, optimizer):
+        self.model = model
+        self.loss_fn = loss_fn
+        self.optimizer = optimizer
+
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.model.to(self.device)
+
+        self.stats = {'losses': [],
+                       'val_losses': [],
+                       'train_time': [],
+                       'val_time': [],
+                       'n_epochs': 0}
+    
+    def set_seed(self, seed=42):
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+        torch.manual_seed(seed)
+        np.random.seed(seed)
+        random.seed(seed)
+
+    def save(self, filename='model.pth'):
+        model_state = {
+            'model': self.model.state_dict(),
+            'optimizer': self.optimizer.state_dict(),
+            'stats': self.stats
+        }
+        torch.save(model_state, filename)
+
+    def load(self, filename='model.pth'):
+        model_state = torch.load(filename, weights_only=False)
+        self.model.load_state_dict(model_state['model'])
+        self.optimizer.load_state_dict(model_state['optimizer'])
+        self.stats = model_state['stats']
+
+        self.model.train()
+
+    def log_update(self, train_time, loss, val_time, val_loss):
+        self.stats['train_time'].append(train_time)
+        self.stats['losses'].append(loss)
+        self.stats['val_time'].append(val_time)
+        self.stats['val_losses'].append(val_loss)
+        self.stats['n_epochs'] += 1
+
+    def log_output(self, verbose=1, formatstr=''):
+        s = [f'epoch {self.stats['n_epochs']}',
+             f'train_time: {{{formatstr}}}'.format(self.stats['train_time'][-1]),
+             f'loss: {{{formatstr}}}'.format(self.stats['losses'][-1])]
+        if self.stats['val_losses'][-1] is not None:
+            s.append(f'val_time: {{{formatstr}}}'.format(self.stats['val_time'][-1]))
+            s.append(f'val_loss: {{{formatstr}}}'.format(self.stats['val_losses'][-1]))
+        if verbose == 1:
+            print(' '.join(s))
+        return s
+    
+    def _train_one_epoch(self, dataloader):
+        self.model.train()
+
+        losses = []
+        for X_batch, y_batch in dataloader:
+            X_batch = X_batch.to(self.device)
+            y_batch = y_batch.to(self.device)
+            yhat = self.model(X_batch)
+            loss = self.loss_fn(yhat, y_batch)
+
+            loss.backward()
+            self.optimizer.step()
+            self.optimizer.zero_grad()
+
+            losses.append(loss.item())
+        return np.mean(losses)
+
+    def _eval_one_epoch(self, dataloader):
+        self.model.eval()
+        losses = []
+        for X_batch, y_batch in dataloader:
+            X_batch = X_batch.to(self.device)
+            y_batch = y_batch.to(self.device)
+            yhat = self.model(X_batch)
+            loss = self.loss_fn(yhat, y_batch)
+            losses.append(loss.item())
+        return np.mean(losses)
+    
+    def train(self, train_loader, val_loader=None, epoch_num=10, verbose=0, SEED=42):
+        self.set_seed(SEED)
+        for _ in range(epoch_num):
+            start_time = time.time()
+            loss = self._train_one_epoch(train_loader)
+            end_time = time.time()
+            train_time = end_time - start_time
+
+            val_loss = None
+            val_time = None
+            if val_loader is not None:
+                start_time = time.time()
+                val_loss = self._eval_one_epoch(val_loader)
+                end_time = time.time()
+                val_time = end_time - start_time
+
+            self.log_update(train_time, loss, val_time, val_loss)
+            self.log_output(verbose=verbose)
+
+    def predict(self, X):
+        self.model.eval()
+        X_tensor = torch.as_tensor(X, dtype=float)
+        y_tensor = self.model(X_tensor.to(self.device))
+        self.model.train()
+        y = y_tensor.detach().cpu().numpy()
+
+        return y
+```
+
+
+
+```{python}
+
+```
+
+
+Here is a quick example to use it.
+
+1. We use our initial dataset. We wrap it into a `Dataset` class and then create `Dataloader`. 
+
+```{python}
+from torch.utils.data import Dataset, DataLoader, random_split
+
+
+class MyData(Dataset):
+    def __init__(self, x, y):
+        self.x = torch.tensor(x, dtype=float).reshape(-1, 1)
+        self.y = torch.tensor(y, dtype=float).reshape(-1, 1)
+
+    def __getitem__(self, index):
+        return (self.x[index], self.y[index])
+
+    def __len__(self):
+        return len(self.y)
+
+
+SEED = 42
+np.random.seed(SEED)
+X = np.random.rand(100)
+y = 2.3 + 1.2 * X + np.random.randn(100) * 0.1
+
+dataset = MyData(X, y)
+train_data, val_data = random_split(dataset, [.85, .15],
+                                    generator=torch.Generator().manual_seed(SEED))
+
+train_loader = DataLoader(train_data, batch_size=32, shuffle=True)
+val_loader = DataLoader(val_data, batch_size=32)
+```
+
+The code to go from `train_test_split` is kept for comparison.
+```{python}
+#| eval: false
+#| code-fold: true
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.15,
+                                                    random_state=SEED)
+train_data = MyData(X_train, y_train)
+val_data = MyData(X_test, y_test)
+
+train_loader = DataLoader(train_data, batch_size=32, shuffle=False)
+val_loader = DataLoader(val_data, batch_size=32)
+```
+
+2. The `ModelTemplate` class is derived, since we would like to add some stats to the output.
+
+```{python}
+class MyModel(ModelTemplate):
+    def __init__(self, model, loss_fn, optimizer):
+        super().__init__(model, loss_fn, optimizer)
+        self.stats['p'] = []
+
+    def log_update(self, train_time, loss, val_time, val_loss):
+        super().log_update(train_time, loss, val_time, val_loss)
+        p = self.model.state_dict()
+        self.stats['p'].append([p['linear.bias'].item(), p['linear.weight'].item()])
+
+
+    def log_output(self, verbose=0):
+        s = super().log_output(verbose=0, formatstr=':.6f')
+        s.append(f'p: [{self.stats['p'][-1][0]:.6f}, {self.stats['p'][-1][1]:.6f}]')
+        if verbose==1:
+            print(' '.join(s))
+        return s
+```
+
+3. Define the model. Note that for comparison we still keep the fixed inital point. 
+
+```{python}
+import torch.nn as nn
+from torch.nn.modules import Linear
+
+class BetterLR(nn.Module):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+
+        self.linear = Linear(in_features=1, out_features=1)
+        self.linear.bias = torch.nn.Parameter(torch.tensor([1.0], dtype=float))
+        self.linear.weight = torch.nn.Parameter(torch.tensor([[1.5]], dtype=float))
+
+    def forward(self, x):
+        return self.linear(x)
+```
+
+4. Finally we create instances for all our classes and train the model.
+```{python}
+from torch.nn import MSELoss
+from torch.optim import SGD
+
+lr = 0.2
+
+original_model = BetterLR()
+optimizer = SGD(original_model.parameters(), lr=lr)
+
+model = MyModel(original_model, MSELoss(reduction='mean'), optimizer)
+
+model.train(train_loader, val_loader, epoch_num=10, verbose=1)   
+```
