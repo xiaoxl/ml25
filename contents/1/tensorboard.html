@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="naive-way" class="level3">
 <h3 class="anchored" data-anchor-id="naive-way">Naive way</h3>
 <p>The idea is to record the data we want to visualize, and then direct display the data with a certain visualization library. The most popular and default choice is <code>matplotlib</code>. Although there are many customizations, the basic usage is very simple.</p>
-<div id="a67b7378" class="cell" data-execution_count="1">
+<div id="f908c7e1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -119,7 +119,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Since</p>
+<p>Since in most cases in this course we would like to see line plot, this piece of code shows the main usage.</p>
+<ul>
+<li>We need to specify two series of data as <code>x</code> and <code>y</code> respectively.</li>
+<li>We could show two lines in the same plot.</li>
+<li>If we add labels, and show legend, legends and labels in the plot will be automatically generated.</li>
+</ul>
+</section>
+<section id="tensorboard" class="level3">
+<h3 class="anchored" data-anchor-id="tensorboard"><code>Tensorboard</code></h3>
+<p>Instead of manually recording data and show plots, we could use logging tools for visualization. Similar to libraries, there are many tools of choice. <code>tensorboard</code> is one of simpler tools. <code>tensorboard</code> originally is a tool for <code>tensorflow</code>. It later joins <code>PyTorch</code> and becomes a (relatively independent) tool. Here we will use it with <code>PyTorch</code> since in the second half of the semester we will talk about <code>PyTorch</code>. To install <code>tensorboard</code> after you install <code>PyTorch</code> you could use the following command. More details can be found <a href="https://pytorch.org/tutorials/beginner/introyt/tensorboardyt_tutorial.html">here</a>. Note that <code>tensorboard</code> depends on <code>matplotlib</code> therefore they have to be installed simutanously.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install matplotlib tensorboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The basic idea of tensorboard is that it is logger that record the information you send to it. It can then retrieve the information and show some plots later. Whether the plots are good or not depends on how you structure the data sent to it. There are many customizations. Here we will only discuss one way to use it.</p>
+<p>The mindset of using <code>tensorboard</code> is as follows. 1. A logger should be initialized to accept your data. 2. For organization, we put the logs in a foler structure. 3. During runs, we send data to the logger. 4. After the run, the logger is closed. 5. We could later run <code>tensorboard</code> to load these logs to see the data we generated during runs.</p>
+<div id="c5e90fde" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.tensorboard <span class="im">import</span> SummaryWriter</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>writer <span class="op">=</span> SummaryWriter(<span class="st">'runs/ex1'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    writer.add_scalar(<span class="st">'y'</span>, y[i], x[i])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    writer.add_scalar(<span class="st">'z'</span>, z[i], x[i])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>writer.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This piece of code shows the basic usage of <code>tensorboard</code>.</p>
+<ol type="1">
+<li>We first initialize the logger and put it in the folder <code>runs/ex1</code>. Note that if this folder is not assigned, a folder with random name will be generated. But if the name is assigned like what we do here, the logs will be recorded in this folder everytime we run the code. This is NOT recommended.</li>
+<li>Then we use <code>.add_scalar</code> to send the data we need to the logger one by one. Note that for these scalar data the three arguments are <code>label</code>, <code>value</code> and <code>independent variable</code>.</li>
+<li>At the end, the logger will be closed and saved to disk.</li>
+</ol>
+<p>To visualize the result, you may type the command in comma line, and <code>tensorboard</code> will then let you know where you can visualize the data.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tensorboard</span> <span class="at">--logdir</span><span class="op">=</span>runs/ex1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>TensorBoard 2.18.0 at http://localhost:6006/ (Press CTRL+C to quit)</code></pre>
+<p>Click the link, you will see tensorboard as follows.</p>
+<p><img src="assests/img/20250228164959.png" class="img-fluid"></p>
 </section>
 
 </main>
