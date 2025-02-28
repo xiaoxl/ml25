@@ -1,0 +1,8 @@
+## Datasets
+
+You should have a dataset to build a machine learning model. The datasets usually come in different formats.
+
+- You are provided with the dataset files.
+- You load the dataset from public repository.
+
+After you get the dataset, there should be some preprocessing steps to change the dataset into the format we need.
