@@ -1,0 +1,44 @@
+## Data visualization
+
+We need to visualize the data during toying with models. We will introduce two ways for the visualization. 
+
+### Naive way
+
+The idea is to record the data we want to visualize, and then direct display the data with a certain visualization library. The most popular and default choice is `matplotlib`. Although there are many customizations, the basic usage is very simple.
+
+
+```{python}
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [1, 0, 4, -1, 3]
+z = [-1, 0, 3, -2, 3]
+
+plt.plot(x, y, label='y')
+plt.plot(x, z, label='z')
+plt.legend()
+```
+
+Since in most cases in this course we would like to see line plot, this piece of code shows the main usage. 
+
+- We need to specify two series of data as `x` and `y` respectively.
+- We could show two lines in the same plot.
+- If we add labels, and show legend, legends and labels in the plot will be automatically generated.
+
+### `Tensorboard`
+
+Instead of manually recording data and show plots, we could use logging tools for visualization. Similar to libraries, there are many tools of choice. `tensorboard` is one of simpler tools.
+
+`tensorboard` originally is a tool for `tensorflow`. It later joins `pyTorch` and becomes a relative independent tool. The basic idea of tensorboard is that it is logger that record the information you send to it. It can then retrieve the information and show some plots later. Whether the plots are good or not depends on how you structure the data sent to it. There are many customizations. Here we will only discuss one way to use it.
+
+The mindset of using `tensorboard` is as follows.
+1. A logger should be initialized to accept your data. 
+2. For organization, we put the logs in a foler structure.
+3. During runs, we send data to the logger.
+4. After the run, the logger is closed.
+5. We could later run `tensorboard` to load these logs to see the data we generated during runs.
+
+
+```{python}
+
+```

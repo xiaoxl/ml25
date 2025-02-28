@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.10">
+<meta name="generator" content="quarto-1.7.3">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -89,10 +89,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2d9718c933debafcce942f9b212640bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9ab57199eb0b54a750982341300f5140.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c2be7f5231965d65f9256c776f13bc01.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a690798582648e0d1beb5891af9d8de2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -122,7 +122,10 @@ div.csl-indent {
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -484,7 +487,7 @@ This part is optional.
 <li><code>unique</code></li>
 <li><code>argmax</code></li>
 </ul>
-<div id="17a49363" class="cell" data-execution_count="1">
+<div id="ae237f99" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> classify_kNN(inX, X, y, k<span class="op">=</span><span class="dv">5</span>):</span>
@@ -506,7 +509,7 @@ This part is optional.
 <h3 data-number="2.1.5" class="anchored" data-anchor-id="sklearn-packages"><span class="header-section-number">2.1.5</span> <code>sklearn</code> packages</h3>
 <p>You may also directly use the kNN function <code>KNeighborsClassifier</code> packaged in <code>sklearn.neighbors</code>. You may check the description of the function online from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">here</a>.</p>
 <p>There are many ways to modify the kNN algorithm. What we just mentioned is the simplest idea. It is correspondent to the argument <code>weights='uniform'</code>, <code>algorithm='brute</code> and <code>metric='euclidean'</code>. However due to the implementation details, the results we got from <code>sklearn</code> are still a little bit different from the results produced by our naive codes.</p>
-<div id="cb800baf" class="cell" data-execution_count="2">
+<div id="8c775047" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb2-2"><a href="#cb2-2"></a>clf <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">10</span>, weights<span class="op">=</span><span class="st">'uniform'</span>,</span>
 <span id="cb2-3"><a href="#cb2-3"></a>                           algorithm<span class="op">=</span><span class="st">'brute'</span>, metric<span class="op">=</span><span class="st">'euclidean'</span>)</span>
@@ -528,7 +531,7 @@ X_{original} = X_{norm} \times ranges + minVal.
 <summary>
 The sample codes are listed below. This part is optional.
 </summary>
-<div id="0b9ed275" class="cell" data-execution_count="3">
+<div id="ea28c4d9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="kw">def</span> encodeNorm(X, parameters<span class="op">=</span><span class="va">None</span>):</span>
@@ -556,7 +559,7 @@ The sample codes are listed below. This part is optional.
 </div>
 </details>
 <p>You could use <code>MinMaxScaler</code> from <code>sklearn.preprocessing</code> to achive the goal. The API is very similar to an estimator.</p>
-<div id="c93fec03" class="cell" data-execution_count="4">
+<div id="f7345f88" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>mm <span class="op">=</span> MinMaxScaler()</span>
@@ -564,7 +567,7 @@ The sample codes are listed below. This part is optional.
 <span id="cb4-5"><a href="#cb4-5"></a>X_norm <span class="op">=</span> mm.transform(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The last two lines can be combined into</p>
-<div id="6f412cd1" class="cell" data-execution_count="5">
+<div id="61274905" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>X_norm <span class="op">=</span> mm.fit_transform(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -575,7 +578,7 @@ The sample codes are listed below. This part is optional.
 <section id="explore-the-dataset" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="explore-the-dataset"><span class="header-section-number">2.2.1</span> Explore the dataset</h3>
 <p>We first load the dataset.</p>
-<div id="aff247c0" class="cell" data-execution_count="6">
+<div id="cce7cfaa" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
 <span id="cb6-2"><a href="#cb6-2"></a>iris <span class="op">=</span> datasets.load_iris()</span>
 <span id="cb6-3"><a href="#cb6-3"></a>X <span class="op">=</span> iris.data[:, :<span class="dv">2</span>]</span>
@@ -585,7 +588,7 @@ The sample codes are listed below. This part is optional.
 <p>The split will be randomly. You may set the argument <code>random_state</code> to be a certain number to control the random process. If you set a <code>random_state</code>, the result of the random process will stay the same. This is for reproducible output across multiple function calls.</p>
 <p>After we get the training set, we should also normalize it. All our normalization should be based on the training set. When we want to use our model on some new data points, we will use the same normalization parameters to normalize the data points in interests right before we apply the model. Here since we mainly care about the test set, we could normalize the test set at this stage.</p>
 <p>Note that in the following code, we mainly use the implementation from <code>sklearn</code>. <!-- the function `encodeNorm` defined in the previous section is used.  --> <!-- I import it from `assests.codes.knn`. You need to modify this part based on your file structure. See @sec-applyourknn for more details. --></p>
-<div id="77dde0b6" class="cell" data-execution_count="7">
+<div id="9c48e10f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
@@ -596,7 +599,7 @@ The sample codes are listed below. This part is optional.
 <span id="cb7-8"><a href="#cb7-8"></a>X_test_norm <span class="op">=</span> mm.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Before we start to play with k-NN, let us look at the data first. Since we only choose two features, it is able to plot these data points on a 2D plane, with different colors representing different classes.</p>
-<div id="539b5532" class="cell" data-execution_count="8">
+<div id="510f7853" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-3"><a href="#cb8-3"></a></span>
@@ -621,7 +624,7 @@ The sample codes are listed below. This part is optional.
 <section id="sec-applyourknn" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="sec-applyourknn"><span class="header-section-number">2.2.2</span> Apply our k-NN model</h3>
 <p>Now let us apply k-NN to this dataset. Since our data is prepared, what we need to do is directly call the functions.</p>
-<div id="9481391b" class="cell" data-execution_count="9">
+<div id="ac64639c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb9-2"><a href="#cb9-2"></a>n_neighbors <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>clf <span class="op">=</span> KNeighborsClassifier(n_neighbors, weights<span class="op">=</span><span class="st">"uniform"</span>, metric<span class="op">=</span><span class="st">"euclidean"</span>,</span>
@@ -632,7 +635,7 @@ The sample codes are listed below. This part is optional.
 <span id="cb9-8"><a href="#cb9-8"></a>acc <span class="op">=</span> np.mean(y_pred_sk <span class="op">==</span> y_test)</span>
 <span id="cb9-9"><a href="#cb9-9"></a>acc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>0.7333333333333333</code></pre>
+<pre><code>np.float64(0.7333333333333333)</code></pre>
 </div>
 </div>
 </section>
@@ -642,7 +645,7 @@ The sample codes are listed below. This part is optional.
 <p><code>sklearn</code> provides a standard way to write these codes, which is called <code>pipeline</code>. We may chain the transforms and estimators in a sequence and let the data go through the pipeline. In this example, the pipeline contains two steps: 1. The normalization transform <code>sklearn.preprocessing.MinMaxScaler</code>. 2. The k-NN classifier <code>sklearn.neighbors.KNeighborsClassifier</code>. This is the same one as we use previously.</p>
 <p>The code is as follows. It is a straightforward code. Note that the <code>()</code> after the class in each step of <code>steps</code> is very important. The codes cannot run if you miss it.</p>
 <p>After we setup the pipeline, we may use it as other estimators since it is an estimator. Here we may also use the accuracy function provided by <code>sklearn</code> to perform the computation. It is essentially the same as our <code>acc</code> computation.</p>
-<div id="ec2b3948" class="cell" data-execution_count="10">
+<div id="35fe6ebd" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
@@ -661,13 +664,13 @@ The sample codes are listed below. This part is optional.
 </div>
 </div>
 <p>Once a pipeline is set, you may use <code>step name</code> with TWO underscores <code>__</code> with <code>parameter name</code> to get access to a specific parameter. Please check the following code.</p>
-<div id="efdb1766" class="cell" data-execution_count="11">
+<div id="21c3ff73" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>pipe.get_params()[<span class="st">'knn__n_neighbors'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>10</code></pre>
 </div>
 </div>
-<div id="e9e31443" class="cell" data-execution_count="12">
+<div id="41ca7408" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>pipe.set_params(knn__n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>pipe.get_params()[<span class="st">'knn__n_neighbors'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -684,7 +687,7 @@ This section is optional.
 <p>Using the classifier we get above, we are able to classify every points on the plane. This enables us to draw the following plot, which is called the Decision boundary. It helps us to visualize the relations between features and the classes.</p>
 <p>We use <code>DecisionBoundaryDisplay</code> from <code>sklearn.inspection</code> to plot the decision boundary. The function requires us to have a fitted classifier. We may use the classifier <code>pipe</code> we got above. Note that this classifier should have some build-in structures that our <code>classify_kNN</code> function doesn’t have. We may rewrite our codes to make it work, but this goes out of the scope of this section. This is supposed to be Python programming exercise. We will talk about it in the future if we have enough time.</p>
 <p>We first plot the dicision boundary using <code>DecisionBoundaryDisplay.from_estimator</code>. Then we plot the points from <code>X_test</code>. From the plot it is very clear which points are misclassified.</p>
-<div id="efd71b20" class="cell" data-execution_count="13">
+<div id="08edd169" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> DecisionBoundaryDisplay</span>
 <span id="cb17-2"><a href="#cb17-2"></a></span>
 <span id="cb17-3"><a href="#cb17-3"></a>disp <span class="op">=</span> DecisionBoundaryDisplay.from_estimator(</span>
@@ -724,7 +727,7 @@ This section is optional.
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><code>KFold</code> from <code>sklearn.model.selection</code> is used to split the dataset into <code>k</code> groups and in each iteration to chooose one as the validation set.</p>
-<div id="efffa228" class="cell" data-execution_count="14">
+<div id="e2d2f6f9" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
 <span id="cb18-3"><a href="#cb18-3"></a>kf <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">5</span>)</span>
@@ -744,7 +747,7 @@ This section is optional.
 <li>If you want to randomize the selection, when set up <code>KFold</code> we could add an argument <code>shuffle=True</code>. In this case, we may use <code>random_state</code> to control the outcome provide reproducing ability.</li>
 </ul>
 <p>Let us see an example for our data.</p>
-<div id="ae363707" class="cell" data-execution_count="15">
+<div id="f5d3ceb3" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="im">from</span> sklearn.base <span class="im">import</span> clone</span>
 <span id="cb20-3"><a href="#cb20-3"></a></span>
@@ -764,10 +767,10 @@ This section is optional.
  0.7666666666666667]</code></pre>
 </div>
 </div>
-<div id="31ad96c7" class="cell" data-execution_count="16">
+<div id="ae606cd3" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>np.mean(cv_scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>0.7533333333333333</code></pre>
+<pre><code>np.float64(0.7533333333333333)</code></pre>
 </div>
 </div>
 <p>Note that here <code>sklearn.base.clone</code> is used to initialize an unfitted model which has the same hyperpamaters as <code>pipe</code>.</p>
@@ -787,19 +790,19 @@ This section is optional.
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><code>KFold</code> is too “manual”. We may use <code>cross_validate</code> to autmate the above process. Note that depending on the arguments given <code>cross_validate</code> may be implemented by <code>KFold</code>.</p>
-<div id="fde32c20" class="cell" data-execution_count="17">
+<div id="868ed984" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate</span>
 <span id="cb24-2"><a href="#cb24-2"></a></span>
 <span id="cb24-3"><a href="#cb24-3"></a>cv_result <span class="op">=</span> cross_validate(pipe, X, y, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">'accuracy'</span>)</span>
 <span id="cb24-4"><a href="#cb24-4"></a>cv_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.00200057, 0.00199628, 0.00200629, 0.00299883, 0.00299478]),
- 'score_time': array([0.0095365 , 0.01127362, 0.008605  , 0.00742793, 0.00955677]),
+<pre><code>{'fit_time': array([0.0030055 , 0.00227547, 0.00099826, 0.00199318, 0.00199986]),
+ 'score_time': array([0.00800037, 0.0065515 , 0.0082345 , 0.00600076, 0.0079999 ]),
  'test_score': array([0.73333333, 0.8       , 0.76666667, 0.9       , 0.73333333])}</code></pre>
 </div>
 </div>
 <p>And you may only see the scores if this is the only thing that interests you.</p>
-<div id="b627c427" class="cell" data-execution_count="18">
+<div id="57db2516" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>cv_result[<span class="st">'test_score'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>array([0.73333333, 0.8       , 0.76666667, 0.9       , 0.73333333])</code></pre>
@@ -809,7 +812,7 @@ This section is optional.
 <li>You may choose different scoring methods. More info can be found in <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter">the document</a>.</li>
 <li>If <code>cv=5</code>, <code>KFold(5, shuffle=False)</code> is applied here. If you prefer random split, you may directly use <code>KFold</code> here.</li>
 </ul>
-<div id="88d3bce7" class="cell" data-execution_count="19">
+<div id="3d86da5e" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>cv_result <span class="op">=</span> cross_validate(pipe, X, y, scoring<span class="op">=</span><span class="st">'accuracy'</span>,</span>
 <span id="cb28-2"><a href="#cb28-2"></a>                           cv<span class="op">=</span>KFold(<span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">1</span>))</span>
 <span id="cb28-3"><a href="#cb28-3"></a>cv_result[<span class="st">'test_score'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -818,10 +821,10 @@ This section is optional.
 </div>
 </div>
 <p>You may compare this result with the previous one and the one in <code>KFold</code> section. Of course, the cv score is usually the mean of all the scores.</p>
-<div id="7dd90871" class="cell" data-execution_count="20">
+<div id="2d305f96" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>cv_result[<span class="st">'test_score'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>0.7533333333333333</code></pre>
+<pre><code>np.float64(0.7533333333333333)</code></pre>
 </div>
 </div>
 </div>
@@ -840,7 +843,7 @@ This section is optional.
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This is a faster way to directly get <code>cv_result['test_score']</code> in <code>cross_validate</code> section. The argument about <code>cv</code> and <code>scoring</code> are the same as <code>cross_validate</code>.</p>
-<div id="86bc34da" class="cell" data-execution_count="21">
+<div id="840355fa" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
 <span id="cb32-2"><a href="#cb32-2"></a>cv_scores <span class="op">=</span> cross_val_score(pipe, X, y, cv<span class="op">=</span>KFold(<span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">1</span>))</span>
 <span id="cb32-3"><a href="#cb32-3"></a>cv_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -848,10 +851,10 @@ This section is optional.
 <pre><code>array([0.83333333, 0.73333333, 0.73333333, 0.7       , 0.76666667])</code></pre>
 </div>
 </div>
-<div id="43271015" class="cell" data-execution_count="22">
+<div id="e3effc90" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>cv_scores.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>0.7533333333333333</code></pre>
+<pre><code>np.float64(0.7533333333333333)</code></pre>
 </div>
 </div>
 </div>
@@ -876,7 +879,7 @@ Grid search
 <p><code>sklearn.model_selection.GridSearchCV</code> provides a way to do this directly. We only need to setup the esitimator, the metric (which is the cross-validation score in this case), and the hyperparameters to be searched through, and <code>GridSearchCV</code> will run the search automatically.</p>
 <p>We let <code>k</code> go from <code>1</code> to <code>100</code>. The code is as follows.</p>
 <p>Note that <code>parameters</code> is where we set the search space. It is a dictionary. The key is the name of the estimator plus double <code>_</code> and then plus the name of the parameter.</p>
-<div id="bfdca796" class="cell" data-execution_count="23">
+<div id="01efabc0" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
 <span id="cb36-2"><a href="#cb36-2"></a>n_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>))</span>
 <span id="cb36-3"><a href="#cb36-3"></a>parameters <span class="op">=</span> <span class="bu">dict</span>(knn__n_neighbors<span class="op">=</span>n_list)</span>
@@ -884,15 +887,15 @@ Grid search
 <span id="cb36-5"><a href="#cb36-5"></a>clf.fit(X, y)</span>
 <span id="cb36-6"><a href="#cb36-6"></a>clf.best_estimator_.get_params()[<span class="st">"knn__n_neighbors"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>31</code></pre>
+<pre><code>35</code></pre>
 </div>
 </div>
 <p>After we fit the data, the <code>best_estimator_.get_params()</code> can be printed. It tells us that it is best to use <code>31</code> neibhours for our model. We can directly use the best estimator by calling <code>clf.best_estimator_</code>.</p>
-<div id="14c163ac" class="cell" data-execution_count="24">
+<div id="cc2afece" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>cv_scores <span class="op">=</span> cross_val_score(clf.best_estimator_, X, y, cv<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb38-2"><a href="#cb38-2"></a>np.mean(cv_scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>0.8200000000000001</code></pre>
+<pre><code>np.float64(0.82)</code></pre>
 </div>
 </div>
 <p>The cross-validation score using <code>k=31</code> is calculated. This serves as a benchmark score and we may come back to dataset using other methods and compare the scores.</p>
@@ -912,7 +915,7 @@ Plot the curve
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Grid search can only give us a single number that has the best cross validation score. However there are many cases that the number might not be really the best. So usually we also want to see the result for all <code>k</code>. The best way to display all results simutanously is to plot the curve.</p>
-<div id="95bf7f8b" class="cell" data-execution_count="25">
+<div id="ee31141a" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb40-2"><a href="#cb40-2"></a></span>
 <span id="cb40-3"><a href="#cb40-3"></a>n_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>))</span>
@@ -954,7 +957,7 @@ Plot the curve
 <section id="look-at-data" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="look-at-data"><span class="header-section-number">2.3.2</span> Look at Data</h3>
 <p>We first load the data and store it into a DataFrame.</p>
-<div id="2093c9a2" class="cell" data-execution_count="26">
+<div id="ff5c0231" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
@@ -1011,7 +1014,7 @@ Plot the curve
 </div>
 </div>
 </div>
-<div id="795f87ba" class="cell" data-execution_count="27">
+<div id="23d0ed0a" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb41-2"><a href="#cb41-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb41-3"><a href="#cb41-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1020,7 +1023,7 @@ Plot the curve
 <span id="cb41-6"><a href="#cb41-6"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To make it easier to read, we would like to change the name of the columns.</p>
-<div id="6d29e831" class="cell" data-execution_count="28">
+<div id="fd4f5ad6" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="dv">0</span>: <span class="st">"Mileage"</span>, <span class="dv">1</span>: <span class="st">"Gamingtime"</span>, <span class="dv">2</span>: <span class="st">'Icecream'</span>, <span class="dv">3</span>: <span class="st">'Rating'</span>})</span>
 <span id="cb42-2"><a href="#cb42-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -1080,7 +1083,7 @@ Plot the curve
 </div>
 </div>
 <p>Since now we have more than 2 features, it is not suitable to directly draw scatter plots. We use <code>seaborn.pairplot</code> to look at the pairplot. From the below plots, before we apply any tricks, it seems that <code>Milegae</code> and <code>Gamingtime</code> are better than <code>Icecream</code> to classify the data points.</p>
-<div id="4b159a45" class="cell" data-execution_count="29">
+<div id="fb799020" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb43-2"><a href="#cb43-2"></a>sns.pairplot(data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'Rating'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1095,14 +1098,14 @@ Plot the curve
 <section id="applying-knn" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="applying-knn"><span class="header-section-number">2.3.3</span> Applying kNN</h3>
 <p>Similar to the previous example, we will apply both methods for comparisons.</p>
-<div id="f76b39c2" class="cell" data-execution_count="30">
+<div id="552acca9" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb44-2"><a href="#cb44-2"></a>X <span class="op">=</span> np.array(df[[<span class="st">'Mileage'</span>, <span class="st">'Gamingtime'</span>, <span class="st">'Icecream'</span>]])</span>
 <span id="cb44-3"><a href="#cb44-3"></a>y <span class="op">=</span> np.array(df[<span class="st">'Rating'</span>])</span>
 <span id="cb44-4"><a href="#cb44-4"></a></span>
 <span id="cb44-5"><a href="#cb44-5"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.1</span>, random_state<span class="op">=</span><span class="dv">40</span>, stratify<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="eeb31ac2" class="cell" data-execution_count="31">
+<div id="3ba7d282" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Using sklearn.</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb45-3"><a href="#cb45-3"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
@@ -1124,7 +1127,7 @@ Plot the curve
 <section id="choosing-k-value" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="choosing-k-value"><span class="header-section-number">2.3.4</span> Choosing <code>k</code> Value</h3>
 <p>Similar to the previous section, we can run tests on <code>k</code> value to choose one to be used in our model using <code>GridSearchCV</code>.</p>
-<div id="03b5c7d6" class="cell" data-execution_count="32">
+<div id="1c924cb1" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
 <span id="cb47-2"><a href="#cb47-2"></a>n_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>))</span>
 <span id="cb47-3"><a href="#cb47-3"></a>parameters <span class="op">=</span> <span class="bu">dict</span>(knn__n_neighbors<span class="op">=</span>n_list)</span>
@@ -1135,7 +1138,7 @@ Plot the curve
 <pre><code>12</code></pre>
 </div>
 </div>
-<div id="7762f6da" class="cell" data-execution_count="33">
+<div id="7922be1f" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
 <span id="cb49-2"><a href="#cb49-2"></a><span class="im">from</span> sklearn.base <span class="im">import</span> clone</span>
 <span id="cb49-3"><a href="#cb49-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1156,7 +1159,7 @@ Plot the curve
 </div>
 </div>
 <p>From this result, in this case the best <code>k</code> is <code>12</code>. The corresponding test score is</p>
-<div id="9a0054d0" class="cell" data-execution_count="34">
+<div id="faa266ea" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>clf.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>0.93</code></pre>
@@ -1171,7 +1174,7 @@ Plot the curve
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="dataset-description"><span class="header-section-number">2.4.1</span> Dataset description</h3>
 <p>Every digit is stored as a <span class="math inline">\(28\times28\)</span> picture. This is a <span class="math inline">\(28\times28\)</span> matrix. Every entry represents a gray value of the corresponding pixel, whose value is from 0 to 255. The label of each matrix is the digit it represents. Note that the dataset provided is already splitted into a training set and a test set.</p>
 <p>The dataset can be loaded following the <a href="https://xiaoxl.github.io/Datasets/contents/mnist.html">instruction</a>.</p>
-<div id="516e1cb8" class="cell" data-execution_count="35">
+<div id="90e20cd4" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb52-2"><a href="#cb52-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb52-3"><a href="#cb52-3"></a><span class="im">import</span> itertools</span>
@@ -1193,11 +1196,11 @@ Plot the curve
 </div>
 <p>Note that one of the purpose to load the data in streaming mode is that the dataset is big and it is not wise to load everything all together. However this is the only way to train a KNN model since all it does is to memorize everything. In the future with other models we may want to load the image one by one with the streaming mode.</p>
 <p>Also due to the issue of large dataset, I only choose the first 600/100 images from the original dataset. This is implemented by the <code>.take</code> method when loading the dataset.</p>
-<div id="a4f0fe6c" class="cell" data-execution_count="36">
+<div id="c82dab94" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>np.unique(y_train, return_counts<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
- array([58, 79, 64, 59, 59, 51, 54, 62, 49, 65], dtype=int64))</code></pre>
+ array([58, 79, 64, 59, 59, 51, 54, 62, 49, 65]))</code></pre>
 </div>
 </div>
 <p>Although not optimal, all digits are presented, and the distributions are relatively equal. So we will use this slice of the original dataset. In reality, if possible it is always better to use all data provided to you.</p>
@@ -1205,7 +1208,7 @@ Plot the curve
 <section id="apply-k-nn" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="apply-k-nn"><span class="header-section-number">2.4.2</span> Apply k-NN</h3>
 <p>Like the previous two examples, we now try to apply the k-NN algorithm to classify these handwritten digits. Note that the original dataset is huge and the processing time is very slow. However since we only choose 600/100 images, we could still run all our tricks.</p>
-<div id="c8bb741b" class="cell" data-execution_count="37">
+<div id="da7afc36" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb55-2"><a href="#cb55-2"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb55-3"><a href="#cb55-3"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
@@ -1232,7 +1235,7 @@ Plot the curve
 </div>
 </div>
 </div>
-<div id="9772ea94" class="cell" data-execution_count="38">
+<div id="5950fc10" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
 <span id="cb56-2"><a href="#cb56-2"></a></span>
 <span id="cb56-3"><a href="#cb56-3"></a>gs <span class="op">=</span> GridSearchCV(pipe, param_grid<span class="op">=</span><span class="bu">dict</span>(knn__n_neighbors<span class="op">=</span>n_list), cv<span class="op">=</span><span class="dv">5</span>)</span>
@@ -1243,7 +1246,7 @@ Plot the curve
 </div>
 </div>
 <p>The best <code>k</code> is 3 for this degenerated dataset. The corresponding test score is</p>
-<div id="a1072755" class="cell" data-execution_count="39">
+<div id="ec3bb385" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>gs.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>0.82</code></pre>
@@ -1255,40 +1258,40 @@ Plot the curve
 <h2 data-number="2.5" class="anchored" data-anchor-id="exercises-and-projects"><span class="header-section-number">2.5</span> Exercises and Projects</h2>
 <div id="exr-ex2handwritten" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1</strong></span> Handwritten example :label: ex2handwritten Consider the 1-dimensional data set shown below.</p>
-<div id="5d5421c1" class="cell" data-execution_count="40">
+<div id="3de26d95" class="cell" data-execution_count="40">
 <div class="cell-output cell-output-display" data-execution_count="36">
 <style type="text/css">
 </style>
 
-<table id="T_d00c8" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_23bc7" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_d00c8_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">x</th>
-<th id="T_d00c8_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">1.5</th>
-<th id="T_d00c8_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">2.5</th>
-<th id="T_d00c8_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">3.5</th>
-<th id="T_d00c8_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">4.5</th>
-<th id="T_d00c8_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">5.0</th>
-<th id="T_d00c8_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">5.5</th>
-<th id="T_d00c8_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">5.75</th>
-<th id="T_d00c8_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">6.5</th>
-<th id="T_d00c8_level0_col9" class="col_heading level0 col9" data-quarto-table-cell-role="th">7.5</th>
-<th id="T_d00c8_level0_col10" class="col_heading level0 col10" data-quarto-table-cell-role="th">10.5</th>
+<th id="T_23bc7_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">x</th>
+<th id="T_23bc7_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">1.5</th>
+<th id="T_23bc7_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">2.5</th>
+<th id="T_23bc7_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">3.5</th>
+<th id="T_23bc7_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">4.5</th>
+<th id="T_23bc7_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">5.0</th>
+<th id="T_23bc7_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">5.5</th>
+<th id="T_23bc7_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">5.75</th>
+<th id="T_23bc7_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">6.5</th>
+<th id="T_23bc7_level0_col9" class="col_heading level0 col9" data-quarto-table-cell-role="th">7.5</th>
+<th id="T_23bc7_level0_col10" class="col_heading level0 col10" data-quarto-table-cell-role="th">10.5</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_d00c8_row0_col0" class="data row0 col0">y</td>
-<td id="T_d00c8_row0_col1" class="data row0 col1">+</td>
-<td id="T_d00c8_row0_col2" class="data row0 col2">+</td>
-<td id="T_d00c8_row0_col3" class="data row0 col3">-</td>
-<td id="T_d00c8_row0_col4" class="data row0 col4">-</td>
-<td id="T_d00c8_row0_col5" class="data row0 col5">-</td>
-<td id="T_d00c8_row0_col6" class="data row0 col6">+</td>
-<td id="T_d00c8_row0_col7" class="data row0 col7">+</td>
-<td id="T_d00c8_row0_col8" class="data row0 col8">-</td>
-<td id="T_d00c8_row0_col9" class="data row0 col9">+</td>
-<td id="T_d00c8_row0_col10" class="data row0 col10">+</td>
+<td id="T_23bc7_row0_col0" class="data row0 col0">y</td>
+<td id="T_23bc7_row0_col1" class="data row0 col1">+</td>
+<td id="T_23bc7_row0_col2" class="data row0 col2">+</td>
+<td id="T_23bc7_row0_col3" class="data row0 col3">-</td>
+<td id="T_23bc7_row0_col4" class="data row0 col4">-</td>
+<td id="T_23bc7_row0_col5" class="data row0 col5">-</td>
+<td id="T_23bc7_row0_col6" class="data row0 col6">+</td>
+<td id="T_23bc7_row0_col7" class="data row0 col7">+</td>
+<td id="T_23bc7_row0_col8" class="data row0 col8">-</td>
+<td id="T_23bc7_row0_col9" class="data row0 col9">+</td>
+<td id="T_23bc7_row0_col10" class="data row0 col10">+</td>
 </tr>
 </tbody>
 </table>
@@ -1392,8 +1395,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1504,7 +1505,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

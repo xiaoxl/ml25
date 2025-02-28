@@ -19,6 +19,10 @@ In this Chapter we will discuss
 {{< include data.qmd >}}
 
 
+{{< include tensorboard.qmd >}}
+
+
+
 {{< include pynotebook.qmd >}}
 
 
