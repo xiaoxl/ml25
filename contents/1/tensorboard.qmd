@@ -109,3 +109,9 @@ writer.close()
 ```
 
 ![](assests/img/20250228170146.png)
+
+
+
+::: {.callout-note}
+Note that the plots from `tensorboard` and `matplotlib` are a little different. The reason is that `tensorboard` automatically smooth the curve. You can use the cmoothing factor to control the effect. When you change it to be 0, you will get exactly the same plot.
+:::

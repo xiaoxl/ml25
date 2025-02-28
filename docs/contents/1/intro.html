@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.10">
+<meta name="generator" content="quarto-1.7.13">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Machine Learning Fall 2024</title>
+<title>1&nbsp; Introduction – Machine Learning Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,15 +84,16 @@ div.csl-indent {
 <meta name="quarto:offset" content="../../">
 <link href="../../contents/2/intro.html" rel="next">
 <link href="../../index.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2d9718c933debafcce942f9b212640bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-615660eb60d47078aa9677353a5e1ff2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c2be7f5231965d65f9256c776f13bc01.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a690798582648e0d1beb5891af9d8de2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -167,7 +168,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Machine Learning Fall 2024</span>
+    <span class="navbar-title">Machine Learning Fall 2025</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -271,16 +272,21 @@ window.Quarto = {
   <li><a href="#evaluate-a-machine-learning-model" id="toc-evaluate-a-machine-learning-model" class="nav-link" data-scroll-target="#evaluate-a-machine-learning-model"><span class="header-section-number">1.3.3</span> Evaluate a Machine Learning model</a></li>
   <li><a href="#workflow-in-developing-a-machine-learning-application" id="toc-workflow-in-developing-a-machine-learning-application" class="nav-link" data-scroll-target="#workflow-in-developing-a-machine-learning-application"><span class="header-section-number">1.3.4</span> Workflow in developing a machine learning application</a></li>
   </ul></li>
-  <li><a href="#python-quick-guide" id="toc-python-quick-guide" class="nav-link" data-scroll-target="#python-quick-guide"><span class="header-section-number">1.4</span> Python quick guide</a>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">1.4</span> Data visualization</a>
   <ul class="collapse">
-  <li><a href="#python-notebook" id="toc-python-notebook" class="nav-link" data-scroll-target="#python-notebook"><span class="header-section-number">1.4.1</span> Python Notebook</a></li>
-  <li><a href="#python-fundamentals" id="toc-python-fundamentals" class="nav-link" data-scroll-target="#python-fundamentals"><span class="header-section-number">1.4.2</span> Python fundamentals</a></li>
-  <li><a href="#some-additional-topics" id="toc-some-additional-topics" class="nav-link" data-scroll-target="#some-additional-topics"><span class="header-section-number">1.4.3</span> Some additional topics</a></li>
+  <li><a href="#naive-way" id="toc-naive-way" class="nav-link" data-scroll-target="#naive-way"><span class="header-section-number">1.4.1</span> Naive way</a></li>
+  <li><a href="#tensorboard" id="toc-tensorboard" class="nav-link" data-scroll-target="#tensorboard"><span class="header-section-number">1.4.2</span> <code>Tensorboard</code></a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.5</span> Exercises</a>
+  <li><a href="#python-quick-guide" id="toc-python-quick-guide" class="nav-link" data-scroll-target="#python-quick-guide"><span class="header-section-number">1.5</span> Python quick guide</a>
   <ul class="collapse">
-  <li><a href="#python-notebook-1" id="toc-python-notebook-1" class="nav-link" data-scroll-target="#python-notebook-1"><span class="header-section-number">1.5.1</span> Python Notebook</a></li>
-  <li><a href="#basic-python" id="toc-basic-python" class="nav-link" data-scroll-target="#basic-python"><span class="header-section-number">1.5.2</span> Basic Python</a></li>
+  <li><a href="#python-notebook" id="toc-python-notebook" class="nav-link" data-scroll-target="#python-notebook"><span class="header-section-number">1.5.1</span> Python Notebook</a></li>
+  <li><a href="#python-fundamentals" id="toc-python-fundamentals" class="nav-link" data-scroll-target="#python-fundamentals"><span class="header-section-number">1.5.2</span> Python fundamentals</a></li>
+  <li><a href="#some-additional-topics" id="toc-some-additional-topics" class="nav-link" data-scroll-target="#some-additional-topics"><span class="header-section-number">1.5.3</span> Some additional topics</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.6</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#python-notebook-1" id="toc-python-notebook-1" class="nav-link" data-scroll-target="#python-notebook-1"><span class="header-section-number">1.6.1</span> Python Notebook</a></li>
+  <li><a href="#basic-python" id="toc-basic-python" class="nav-link" data-scroll-target="#basic-python"><span class="header-section-number">1.6.2</span> Basic Python</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -387,66 +393,66 @@ Table&nbsp;1.1: Bird species classification based on four features
 <div aria-describedby="tbl-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <style type="text/css">
-#T_1b869 th {
+#T_dbd14 th {
   text-align: right;
 }
-#T_1b869_row0_col0, #T_1b869_row0_col1, #T_1b869_row0_col2, #T_1b869_row0_col3, #T_1b869_row0_col4, #T_1b869_row1_col0, #T_1b869_row1_col1, #T_1b869_row1_col2, #T_1b869_row1_col3, #T_1b869_row1_col4, #T_1b869_row2_col0, #T_1b869_row2_col1, #T_1b869_row2_col2, #T_1b869_row2_col3, #T_1b869_row2_col4, #T_1b869_row3_col0, #T_1b869_row3_col1, #T_1b869_row3_col2, #T_1b869_row3_col3, #T_1b869_row3_col4, #T_1b869_row4_col0, #T_1b869_row4_col1, #T_1b869_row4_col2, #T_1b869_row4_col3, #T_1b869_row4_col4, #T_1b869_row5_col0, #T_1b869_row5_col1, #T_1b869_row5_col2, #T_1b869_row5_col3, #T_1b869_row5_col4 {
+#T_dbd14_row0_col0, #T_dbd14_row0_col1, #T_dbd14_row0_col2, #T_dbd14_row0_col3, #T_dbd14_row0_col4, #T_dbd14_row1_col0, #T_dbd14_row1_col1, #T_dbd14_row1_col2, #T_dbd14_row1_col3, #T_dbd14_row1_col4, #T_dbd14_row2_col0, #T_dbd14_row2_col1, #T_dbd14_row2_col2, #T_dbd14_row2_col3, #T_dbd14_row2_col4, #T_dbd14_row3_col0, #T_dbd14_row3_col1, #T_dbd14_row3_col2, #T_dbd14_row3_col3, #T_dbd14_row3_col4, #T_dbd14_row4_col0, #T_dbd14_row4_col1, #T_dbd14_row4_col2, #T_dbd14_row4_col3, #T_dbd14_row4_col4, #T_dbd14_row5_col0, #T_dbd14_row5_col1, #T_dbd14_row5_col2, #T_dbd14_row5_col3, #T_dbd14_row5_col4 {
   text-align: right;
 }
 </style>
 
-<table id="T_1b869" class="do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_dbd14" class="do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_1b869_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Weight (g)</th>
-<th id="T_1b869_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Wingspan (cm)</th>
-<th id="T_1b869_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Webbed feet?</th>
-<th id="T_1b869_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Back color</th>
-<th id="T_1b869_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">Species</th>
+<th id="T_dbd14_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Weight (g)</th>
+<th id="T_dbd14_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Wingspan (cm)</th>
+<th id="T_dbd14_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Webbed feet?</th>
+<th id="T_dbd14_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Back color</th>
+<th id="T_dbd14_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">Species</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_1b869_row0_col0" class="data row0 col0">1000.100000</td>
-<td id="T_1b869_row0_col1" class="data row0 col1">125.000000</td>
-<td id="T_1b869_row0_col2" class="data row0 col2">No</td>
-<td id="T_1b869_row0_col3" class="data row0 col3">Brown</td>
-<td id="T_1b869_row0_col4" class="data row0 col4">Buteo jamaicensis</td>
+<td id="T_dbd14_row0_col0" class="data row0 col0">1000.100000</td>
+<td id="T_dbd14_row0_col1" class="data row0 col1">125.000000</td>
+<td id="T_dbd14_row0_col2" class="data row0 col2">No</td>
+<td id="T_dbd14_row0_col3" class="data row0 col3">Brown</td>
+<td id="T_dbd14_row0_col4" class="data row0 col4">Buteo jamaicensis</td>
 </tr>
 <tr class="even">
-<td id="T_1b869_row1_col0" class="data row1 col0">3000.700000</td>
-<td id="T_1b869_row1_col1" class="data row1 col1">200.000000</td>
-<td id="T_1b869_row1_col2" class="data row1 col2">No</td>
-<td id="T_1b869_row1_col3" class="data row1 col3">Gray</td>
-<td id="T_1b869_row1_col4" class="data row1 col4">Sagittarius serpentarius</td>
+<td id="T_dbd14_row1_col0" class="data row1 col0">3000.700000</td>
+<td id="T_dbd14_row1_col1" class="data row1 col1">200.000000</td>
+<td id="T_dbd14_row1_col2" class="data row1 col2">No</td>
+<td id="T_dbd14_row1_col3" class="data row1 col3">Gray</td>
+<td id="T_dbd14_row1_col4" class="data row1 col4">Sagittarius serpentarius</td>
 </tr>
 <tr class="odd">
-<td id="T_1b869_row2_col0" class="data row2 col0">3300.000000</td>
-<td id="T_1b869_row2_col1" class="data row2 col1">220.300000</td>
-<td id="T_1b869_row2_col2" class="data row2 col2">No</td>
-<td id="T_1b869_row2_col3" class="data row2 col3">Gray</td>
-<td id="T_1b869_row2_col4" class="data row2 col4">Sagittarius serpentarius</td>
+<td id="T_dbd14_row2_col0" class="data row2 col0">3300.000000</td>
+<td id="T_dbd14_row2_col1" class="data row2 col1">220.300000</td>
+<td id="T_dbd14_row2_col2" class="data row2 col2">No</td>
+<td id="T_dbd14_row2_col3" class="data row2 col3">Gray</td>
+<td id="T_dbd14_row2_col4" class="data row2 col4">Sagittarius serpentarius</td>
 </tr>
 <tr class="even">
-<td id="T_1b869_row3_col0" class="data row3 col0">4100.000000</td>
-<td id="T_1b869_row3_col1" class="data row3 col1">136.000000</td>
-<td id="T_1b869_row3_col2" class="data row3 col2">Yes</td>
-<td id="T_1b869_row3_col3" class="data row3 col3">Black</td>
-<td id="T_1b869_row3_col4" class="data row3 col4">Gavia immer</td>
+<td id="T_dbd14_row3_col0" class="data row3 col0">4100.000000</td>
+<td id="T_dbd14_row3_col1" class="data row3 col1">136.000000</td>
+<td id="T_dbd14_row3_col2" class="data row3 col2">Yes</td>
+<td id="T_dbd14_row3_col3" class="data row3 col3">Black</td>
+<td id="T_dbd14_row3_col4" class="data row3 col4">Gavia immer</td>
 </tr>
 <tr class="odd">
-<td id="T_1b869_row4_col0" class="data row4 col0">3.000000</td>
-<td id="T_1b869_row4_col1" class="data row4 col1">11.000000</td>
-<td id="T_1b869_row4_col2" class="data row4 col2">No</td>
-<td id="T_1b869_row4_col3" class="data row4 col3">Green</td>
-<td id="T_1b869_row4_col4" class="data row4 col4">Calothorax lucifer</td>
+<td id="T_dbd14_row4_col0" class="data row4 col0">3.000000</td>
+<td id="T_dbd14_row4_col1" class="data row4 col1">11.000000</td>
+<td id="T_dbd14_row4_col2" class="data row4 col2">No</td>
+<td id="T_dbd14_row4_col3" class="data row4 col3">Green</td>
+<td id="T_dbd14_row4_col4" class="data row4 col4">Calothorax lucifer</td>
 </tr>
 <tr class="even">
-<td id="T_1b869_row5_col0" class="data row5 col0">570.000000</td>
-<td id="T_1b869_row5_col1" class="data row5 col1">75.000000</td>
-<td id="T_1b869_row5_col2" class="data row5 col2">No</td>
-<td id="T_1b869_row5_col3" class="data row5 col3">Black</td>
-<td id="T_1b869_row5_col4" class="data row5 col4">Campephilus principalis</td>
+<td id="T_dbd14_row5_col0" class="data row5 col0">570.000000</td>
+<td id="T_dbd14_row5_col1" class="data row5 col1">75.000000</td>
+<td id="T_dbd14_row5_col2" class="data row5 col2">No</td>
+<td id="T_dbd14_row5_col3" class="data row5 col3">Black</td>
+<td id="T_dbd14_row5_col4" class="data row5 col4">Campephilus principalis</td>
 </tr>
 </tbody>
 </table>
@@ -557,10 +563,113 @@ In the binary case, the above method can be stated in another way. We choose a t
 ### One-hot coding -->
 </section>
 </section>
-<section id="python-quick-guide" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="python-quick-guide"><span class="header-section-number">1.4</span> Python quick guide</h2>
-<section id="python-notebook" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="python-notebook"><span class="header-section-number">1.4.1</span> Python Notebook</h3>
+<section id="data-visualization" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">1.4</span> Data visualization</h2>
+<p>We need to visualize the data during toying with models. We will introduce two ways for the visualization.</p>
+<section id="naive-way" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="naive-way"><span class="header-section-number">1.4.1</span> Naive way</h3>
+<p>The idea is to record the data we want to visualize, and then direct display the data with a certain visualization library. The most popular and default choice is <code>matplotlib</code>. Although there are many customizations, the basic usage is very simple.</p>
+<div id="9fb8393a" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb2-4"><a href="#cb2-4"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb2-5"><a href="#cb2-5"></a>z <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>plt.plot(x, y, label<span class="op">=</span><span class="st">'y'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>plt.plot(x, z, label<span class="op">=</span><span class="st">'z'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/cell-3-output-1.png" width="569" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Since in most cases in this course we would like to see line plot, this piece of code shows the main usage.</p>
+<ul>
+<li>We need to specify two series of data as <code>x</code> and <code>y</code> respectively.</li>
+<li>We could show two lines in the same plot.</li>
+<li>If we add labels, and show legend, legends and labels in the plot will be automatically generated.</li>
+</ul>
+</section>
+<section id="tensorboard" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="tensorboard"><span class="header-section-number">1.4.2</span> <code>Tensorboard</code></h3>
+<p>Instead of manually recording data and show plots, we could use logging tools for visualization. Similar to libraries, there are many tools of choice. <code>tensorboard</code> is one of simpler tools. <code>tensorboard</code> originally is a tool for <code>tensorflow</code>. It later joins <code>PyTorch</code> and becomes a (relatively independent) tool. Here we will use it with <code>PyTorch</code> since in the second half of the semester we will talk about <code>PyTorch</code>. To install <code>tensorboard</code> after you install <code>PyTorch</code> you could use the following command. More details can be found <a href="https://pytorch.org/tutorials/beginner/introyt/tensorboardyt_tutorial.html">here</a>. Note that <code>tensorboard</code> depends on <code>matplotlib</code> therefore they have to be installed simutanously.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">pip</span> install matplotlib tensorboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The basic idea of tensorboard is that it is logger that record the information you send to it. It can then retrieve the information and show some plots later. Whether the plots are good or not depends on how you structure the data sent to it. There are many customizations. Here we will only discuss one way to use it.</p>
+<p>The mindset of using <code>tensorboard</code> is as follows. 1. A logger should be initialized to accept your data. 2. For organization, we put the logs in a foler structure. 3. During runs, we send data to the logger. 4. After the run, the logger is closed. 5. We could later run <code>tensorboard</code> to load these logs to see the data we generated during runs.</p>
+<div id="aa0fbf56" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> torch.utils.tensorboard <span class="im">import</span> SummaryWriter</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>writer <span class="op">=</span> SummaryWriter(<span class="st">'runs/ex1'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb4-5"><a href="#cb4-5"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb4-6"><a href="#cb4-6"></a>z <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    writer.add_scalar(<span class="st">'y'</span>, y[i], x[i])</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    writer.add_scalar(<span class="st">'z'</span>, z[i], x[i])</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>writer.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This piece of code shows the basic usage of <code>tensorboard</code>.</p>
+<ol type="1">
+<li>We first initialize the logger and put it in the folder <code>runs/ex1</code>. Note that if this folder is not assigned, a folder with random name will be generated. But if the name is assigned like what we do here, the logs will be recorded in this folder everytime we run the code. This is NOT recommended.</li>
+<li>Then we use <code>.add_scalar</code> to send the data we need to the logger one by one. Note that for these scalar data the three arguments are <code>label</code>, <code>value</code> and <code>independent variable</code>.</li>
+<li>At the end, the logger will be closed and saved to disk.</li>
+</ol>
+<p>To visualize the result, you may type the command in comma line, and <code>tensorboard</code> will then let you know where you can visualize the data.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">tensorboard</span> <span class="at">--logdir</span><span class="op">=</span>runs/ex1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>TensorBoard 2.18.0 at http://localhost:6006/ (Press CTRL+C to quit)</code></pre>
+<p>Click the link, you will see tensorboard as follows.</p>
+<p><img src="assests/img/20250228164959.png" class="img-fluid"></p>
+<p>How <code>tensorboard</code> show the data depends on how you structure your data. Here I suggest a way to organize the data you send to <code>tensorboard</code>.</p>
+<ol type="1">
+<li>Use date/time and other indicators as the name of each run.</li>
+<li>Group similar metrics together and record them in a dictionary.</li>
+<li>When using a dictionary to send many scalars, use <code>add_scalars</code> instead of <code>add_scalar</code>.</li>
+</ol>
+<div id="4983fd44" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> torch.utils.tensorboard <span class="im">import</span> SummaryWriter</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>runfolder <span class="op">=</span> datetime.now().strftime(<span class="st">'%Y</span><span class="sc">%d</span><span class="st">%m-%H%M%S'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>writer <span class="op">=</span> SummaryWriter(<span class="ss">f'runs/</span><span class="sc">{</span>runfolder<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb7-7"><a href="#cb7-7"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb7-8"><a href="#cb7-8"></a>z <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    scalars <span class="op">=</span> {</span>
+<span id="cb7-12"><a href="#cb7-12"></a>        <span class="st">'y'</span>: y[i],</span>
+<span id="cb7-13"><a href="#cb7-13"></a>        <span class="st">'z'</span>: z[i]</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    }</span>
+<span id="cb7-15"><a href="#cb7-15"></a>    writer.add_scalars(<span class="st">'scalars'</span>, scalars, x[i])</span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a>writer.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="assests/img/20250228170146.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the plots from <code>tensorboard</code> and <code>matplotlib</code> are a little different. The reason is that <code>tensorboard</code> automatically smooth the curve. You can use the cmoothing factor to control the effect. When you change it to be 0, you will get exactly the same plot.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="python-quick-guide" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="python-quick-guide"><span class="header-section-number">1.5</span> Python quick guide</h2>
+<section id="python-notebook" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="python-notebook"><span class="header-section-number">1.5.1</span> Python Notebook</h3>
 <p>We mainly use Python Notebook (.ipynb) to write documents for this course. Currently all main stream Python IDE support Python Notebook. All of them are not entirely identical but the differences are not huge and you may choose any you like.</p>
 <p>One of the easiest ways to use Python Notebook is through <a href="https://jupyter.org/try">JupyterLab</a>. The best part about it is that you don’t need to worry about installation and configuration in the first place, and you can directly start to code.</p>
 <p>Click the above link and choose JupyterLab. Then you will see the following page.</p>
@@ -577,25 +686,25 @@ JupyterLite contains a few popular packages. Therefore it is totally ok if you w
 <li><a href="https://www.anaconda.com/">Anaconda</a></li>
 </ul>
 </section>
-<section id="python-fundamentals" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="python-fundamentals"><span class="header-section-number">1.4.2</span> Python fundamentals</h3>
+<section id="python-fundamentals" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="python-fundamentals"><span class="header-section-number">1.5.2</span> Python fundamentals</h3>
 <p>We will put some very basic Python commands here for you to warm up. More advanced Python knowledge will be covered during the rest of the semester. The main reference for this part is <span class="citation" data-cites="Har2012">[<a href="../../index.html#ref-Har2012" role="doc-biblioref">3</a>]</span>. Another referenece is <a href="https://xiaoxl.github.io/pr24/">My notes</a>.</p>
-<section id="indentation" class="level4" data-number="1.4.2.1">
-<h4 data-number="1.4.2.1" class="anchored" data-anchor-id="indentation"><span class="header-section-number">1.4.2.1</span> Indentation</h4>
+<section id="indentation" class="level4" data-number="1.5.2.1">
+<h4 data-number="1.5.2.1" class="anchored" data-anchor-id="indentation"><span class="header-section-number">1.5.2.1</span> Indentation</h4>
 <p>Python is using indentation to denote code blocks. It is not convienent to write in the first place, but it forces you to write clean, readable code.</p>
 <p>By the way, the <code>if</code> and <code>for</code> block are actually straightforward.</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">if</span> jj <span class="op">&lt;</span> <span class="dv">3</span>:</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    jj <span class="op">=</span> jj </span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="bu">print</span>(<span class="st">"It is smaller than 3."</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="cf">if</span> jj <span class="op">&lt;</span> <span class="dv">3</span>:</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    jj <span class="op">=</span> jj</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="bu">print</span>(<span class="st">"It is smaller than 3."</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="bu">print</span>(i)</span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">if</span> jj <span class="op">&lt;</span> <span class="dv">3</span>:</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    jj <span class="op">=</span> jj </span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="bu">print</span>(<span class="st">"It is smaller than 3."</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="cf">if</span> jj <span class="op">&lt;</span> <span class="dv">3</span>:</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    jj <span class="op">=</span> jj</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">print</span>(<span class="st">"It is smaller than 3."</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout-nrow="2">
 <div class="quarto-layout-row">
 
@@ -606,50 +715,50 @@ JupyterLite contains a few popular packages. Therefore it is totally ok if you w
 </div>
 <p>Please tell the differences between the above codes.</p>
 </section>
-<section id="list-and-dict" class="level4" data-number="1.4.2.2">
-<h4 data-number="1.4.2.2" class="anchored" data-anchor-id="list-and-dict"><span class="header-section-number">1.4.2.2</span> <code>list</code> and <code>dict</code></h4>
+<section id="list-and-dict" class="level4" data-number="1.5.2.2">
+<h4 data-number="1.5.2.2" class="anchored" data-anchor-id="list-and-dict"><span class="header-section-number">1.5.2.2</span> <code>list</code> and <code>dict</code></h4>
 <p>Here are some very basic usage of lists of dictionaries in Python.</p>
-<div id="e1d651a3" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>newlist <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb3-2"><a href="#cb3-2"></a>newlist.append(<span class="dv">1</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>newlist.append(<span class="st">'hello'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>newlist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>[1, 'hello']</code></pre>
-</div>
-</div>
-<div id="995ada21" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>newlisttwo <span class="op">=</span> [<span class="dv">1</span>, <span class="st">'hello'</span>]</span>
-<span id="cb5-2"><a href="#cb5-2"></a>newlisttwo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5ca6c003" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>newlist <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb9-2"><a href="#cb9-2"></a>newlist.append(<span class="dv">1</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>newlist.append(<span class="st">'hello'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>newlist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>[1, 'hello']</code></pre>
 </div>
 </div>
-<div id="b16b039e" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>newdict <span class="op">=</span> <span class="bu">dict</span>()</span>
-<span id="cb7-2"><a href="#cb7-2"></a>newdict[<span class="st">'one'</span>] <span class="op">=</span> <span class="st">'good'</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>newdict[<span class="dv">1</span>] <span class="op">=</span> <span class="st">'yes'</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>newdict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cc652a38" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>newlisttwo <span class="op">=</span> [<span class="dv">1</span>, <span class="st">'hello'</span>]</span>
+<span id="cb11-2"><a href="#cb11-2"></a>newlisttwo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>{'one': 'good', 1: 'yes'}</code></pre>
+<pre><code>[1, 'hello']</code></pre>
 </div>
 </div>
-<div id="0cbc6a0a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>newdicttwo <span class="op">=</span> {<span class="st">'one'</span>: <span class="st">'good'</span>, <span class="dv">1</span>: <span class="st">'yes'</span>}</span>
-<span id="cb9-2"><a href="#cb9-2"></a>newdicttwo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b39b9711" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>newdict <span class="op">=</span> <span class="bu">dict</span>()</span>
+<span id="cb13-2"><a href="#cb13-2"></a>newdict[<span class="st">'one'</span>] <span class="op">=</span> <span class="st">'good'</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>newdict[<span class="dv">1</span>] <span class="op">=</span> <span class="st">'yes'</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>newdict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>{'one': 'good', 1: 'yes'}</code></pre>
 </div>
 </div>
+<div id="aa996311" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>newdicttwo <span class="op">=</span> {<span class="st">'one'</span>: <span class="st">'good'</span>, <span class="dv">1</span>: <span class="st">'yes'</span>}</span>
+<span id="cb15-2"><a href="#cb15-2"></a>newdicttwo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>{'one': 'good', 1: 'yes'}</code></pre>
+</div>
+</div>
 </section>
-<section id="loop-through-lists" class="level4" data-number="1.4.2.3">
-<h4 data-number="1.4.2.3" class="anchored" data-anchor-id="loop-through-lists"><span class="header-section-number">1.4.2.3</span> Loop through lists</h4>
+<section id="loop-through-lists" class="level4" data-number="1.5.2.3">
+<h4 data-number="1.5.2.3" class="anchored" data-anchor-id="loop-through-lists"><span class="header-section-number">1.5.2.3</span> Loop through lists</h4>
 <p>When creating <code>for</code> loops we may let Python directly loop through lists. Here is an example. The code is almost self-explained.</p>
-<div id="01f68dfc" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>alist <span class="op">=</span> [<span class="st">'one'</span>, <span class="dv">2</span>, <span class="st">'three'</span>, <span class="dv">4</span>]</span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="cf">for</span> item <span class="kw">in</span> alist:</span>
-<span id="cb11-4"><a href="#cb11-4"></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ecde449a" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>alist <span class="op">=</span> [<span class="st">'one'</span>, <span class="dv">2</span>, <span class="st">'three'</span>, <span class="dv">4</span>]</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="cf">for</span> item <span class="kw">in</span> alist:</span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>one
 2
@@ -658,8 +767,8 @@ three
 </div>
 </div>
 </section>
-<section id="reading-files" class="level4" data-number="1.4.2.4">
-<h4 data-number="1.4.2.4" class="anchored" data-anchor-id="reading-files"><span class="header-section-number">1.4.2.4</span> Reading files</h4>
+<section id="reading-files" class="level4" data-number="1.5.2.4">
+<h4 data-number="1.5.2.4" class="anchored" data-anchor-id="reading-files"><span class="header-section-number">1.5.2.4</span> Reading files</h4>
 <p>There are a lot of functions that can read files. The basic one is to read any files as a big string. After we get the string, we may parse it based on the structure of the data.</p>
 <p>The above process sounds complicated. That’s why we have so many different functions reading files. Usually they focus on a certain types of files (e.g.&nbsp;spreadsheets, images, etc..), parse the data into a particular data structure for us to use later.</p>
 <p>I will mention a few examples.</p>
@@ -670,8 +779,8 @@ three
 <li><p><code>.json</code> files <code>.json</code> is a file format to store dictionary type of data. To read a <code>json</code> file and parse it as a dictionary, we need <a href="https://docs.python.org/3/library/json.html#json.load"><code>json.load</code></a> from the package <code>json</code>.</p></li>
 </ul>
 </section>
-<section id="writing-files" class="level4" data-number="1.4.2.5">
-<h4 data-number="1.4.2.5" class="anchored" data-anchor-id="writing-files"><span class="header-section-number">1.4.2.5</span> Writing files</h4>
+<section id="writing-files" class="level4" data-number="1.5.2.5">
+<h4 data-number="1.5.2.5" class="anchored" data-anchor-id="writing-files"><span class="header-section-number">1.5.2.5</span> Writing files</h4>
 <ul>
 <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html"><code>pandas.DataFrame.to_csv</code></a></li>
 <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html"><code>pandas.DataFrame.to_excel</code></a></li>
@@ -680,8 +789,8 @@ three
 <li><a href="https://docs.python.org/3/library/json.html#json.dump"><code>json.dump</code></a></li>
 </ul>
 </section>
-<section id="relative-paths" class="level4" data-number="1.4.2.6">
-<h4 data-number="1.4.2.6" class="anchored" data-anchor-id="relative-paths"><span class="header-section-number">1.4.2.6</span> Relative paths</h4>
+<section id="relative-paths" class="level4" data-number="1.5.2.6">
+<h4 data-number="1.5.2.6" class="anchored" data-anchor-id="relative-paths"><span class="header-section-number">1.5.2.6</span> Relative paths</h4>
 <p>In this course, when reading and writing files, please keep all the files using relative paths. That is, only write the path starting from the working directory.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.2</strong></span> Consider the following tasks:</p>
@@ -691,17 +800,17 @@ three
 <li>Want to generate a file whose name is <code>result.csv</code> and put it in a subfoler named <code>foldername</code>.</li>
 </ol>
 <p>To do the tasks, don’t directly run the code <code>pd.read_csv('D:/Files/example.csv')</code>. Instead you should first copy the file to your working directory <code>C:/Users/Xinli/projects/</code>, and then run the following code.</p>
-<div id="02630089" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'example.csv'</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a>df.to_csv(<span class="st">'foldername/result.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7f7a9482" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'example.csv'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>df.to_csv(<span class="st">'foldername/result.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please pay attention to how the paths are written.</p>
 </div>
 </section>
-<section id="section" class="level4" data-number="1.4.2.7">
-<h4 data-number="1.4.2.7" class="anchored" data-anchor-id="section"><span class="header-section-number">1.4.2.7</span> <code>.</code></h4>
+<section id="section" class="level4" data-number="1.5.2.7">
+<h4 data-number="1.5.2.7" class="anchored" data-anchor-id="section"><span class="header-section-number">1.5.2.7</span> <code>.</code></h4>
 <ul>
 <li>class and packages.</li>
 <li>Get access to attributes and methods</li>
@@ -709,11 +818,11 @@ three
 </ul>
 </section>
 </section>
-<section id="some-additional-topics" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="some-additional-topics"><span class="header-section-number">1.4.3</span> Some additional topics</h3>
+<section id="some-additional-topics" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="some-additional-topics"><span class="header-section-number">1.5.3</span> Some additional topics</h3>
 <p>You may read about these parts from the appendices of <a href="https://xiaoxl.github.io/pr23f/contents/app/virtenv.html">My notes</a>.</p>
-<section id="package-management-and-virtual-environment" class="level4" data-number="1.4.3.1">
-<h4 data-number="1.4.3.1" class="anchored" data-anchor-id="package-management-and-virtual-environment"><span class="header-section-number">1.4.3.1</span> Package management and Virtual environment</h4>
+<section id="package-management-and-virtual-environment" class="level4" data-number="1.5.3.1">
+<h4 data-number="1.5.3.1" class="anchored" data-anchor-id="package-management-and-virtual-environment"><span class="header-section-number">1.5.3.1</span> Package management and Virtual environment</h4>
 <ul>
 <li><a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html"><code>conda</code></a>
 <ul>
@@ -746,8 +855,8 @@ three
 </ul></li>
 </ul>
 </section>
-<section id="version-control" class="level4" data-number="1.4.3.2">
-<h4 data-number="1.4.3.2" class="anchored" data-anchor-id="version-control"><span class="header-section-number">1.4.3.2</span> Version Control</h4>
+<section id="version-control" class="level4" data-number="1.5.3.2">
+<h4 data-number="1.5.3.2" class="anchored" data-anchor-id="version-control"><span class="header-section-number">1.5.3.2</span> Version Control</h4>
 <ul>
 <li><code>Git</code>
 <ul>
@@ -761,11 +870,11 @@ three
 </section>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.5</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.6</span> Exercises</h2>
 <p>These exercises are from <span class="citation" data-cites="Klo2021">[<a href="../../index.html#ref-Klo2021" role="doc-biblioref">4</a>]</span>, <span class="citation" data-cites="Ger2019">[<a href="../../index.html#ref-Ger2019" role="doc-biblioref">1</a>]</span> and <span class="citation" data-cites="Har2012">[<a href="../../index.html#ref-Har2012" role="doc-biblioref">3</a>]</span>.</p>
-<section id="python-notebook-1" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="python-notebook-1"><span class="header-section-number">1.5.1</span> Python Notebook</h3>
+<section id="python-notebook-1" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="python-notebook-1"><span class="header-section-number">1.6.1</span> Python Notebook</h3>
 <div id="exr-helloworld" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.1 (Hello World!)</strong></span> Please set up a Python Notebook environment and type <code>print('Hello World!')</code>.</p>
 </div>
@@ -773,8 +882,8 @@ three
 <p><span class="theorem-title"><strong>Exercise 1.2</strong></span> Please set up a Python Notebook and start a new virtual environment and type <code>print('Hello World!')</code>.</p>
 </div>
 </section>
-<section id="basic-python" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="basic-python"><span class="header-section-number">1.5.2</span> Basic Python</h3>
+<section id="basic-python" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="basic-python"><span class="header-section-number">1.6.2</span> Basic Python</h3>
 <div id="exr-ex1helloworld" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.3 (Play with lists)</strong></span> Please complete the following tasks.</p>
 <ul>
@@ -784,10 +893,10 @@ three
 </ul>
 </div>
 <!-- 
-````xomwkwbxfk ex1helloworld
+````eybugebojy ex1helloworld
 :class: dropdown
 
-```ngoolgowppto python
+```kbxwmiswcreo python
 for i in range(5):
     print(i)
 
@@ -812,7 +921,7 @@ Please be careful about the last line. `sorted()` doesn't change the original li
 </div>
 <!-- ````{solution} ex1list
 :class: dropdown
-```ngoolgowppto python
+```kbxwmiswcreo python
 import pandas as pd
 
 people = {'name': list(), 'age': list()}
@@ -828,9 +937,9 @@ df = pd.DataFrame(people)
 ```` -->
 <div id="exr-ex1iris" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.5 (The dataset iris)</strong></span> &nbsp;</p>
-<div id="9b9964d9" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb14-2"><a href="#cb14-2"></a>iris <span class="op">=</span> load_iris()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="13ae094d" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb20-2"><a href="#cb20-2"></a>iris <span class="op">=</span> load_iris()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please explore this dataset.</p>
 <ul>
@@ -843,7 +952,7 @@ df = pd.DataFrame(people)
 <!-- ````{solution} ex1iris
 :class: dropdown
 We first find that `iris` is a dictionary. Then we can look at all the keys by `iris.keys()`. The interesting keys are `data`, `target`, `target_names` and `feature_names`. We can also read the description of the dataset by looking at `DESCR`. 
-```ngoolgowppto python
+```kbxwmiswcreo python
 X = iris['data']
 print(iris['feature_names'])
 y = iris['target']
@@ -967,8 +1076,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1079,7 +1186,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
