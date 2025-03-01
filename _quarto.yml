@@ -35,8 +35,8 @@ format:
   #   documentclass: scrreprt
 
 book:
-  title: "Machine Learning Fall 2025"
-  subtitle: "Lecture notes for Fall 2025 at Arkansas Tech University"
+  title: "Machine Learning {{< var info.date >}}"
+  subtitle: "Lecture notes for {{< var info.date >}} at Arkansas Tech University"
   author: "Xinli Xiao"
   date: last-modified
   # downloads: [pdf]
@@ -70,7 +70,7 @@ book:
     search: true
     collapse-level: 1
   navbar:
-    subtitle: "Fall 2025"
+    subtitle: "{{< var info.date >}}"
   page-navigation: true
 
 

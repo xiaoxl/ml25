@@ -1,5 +1,5 @@
 # Preface {.unnumbered}
-This is the lecture notes for STAT 4803/5803 Machine Learning Fall 2024 at ATU. If you have any comments/suggetions/concers about the notes please contact us at <xxiao@atu.edu>.
+This is the lecture notes for STAT 4803/5803 Machine Learning {{< var info.date >}} at ATU. If you have any comments/suggetions/concers about the notes please contact us at <xxiao@atu.edu>.
 
 
 # References {.unnumbered}
