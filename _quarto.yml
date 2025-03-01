@@ -42,6 +42,7 @@ book:
   # downloads: [pdf]
   # crossref:
   #   app-prefix: Appendix
+
   chapters: 
     - index.qmd
     - contents/1/intro.qmd
@@ -71,6 +72,10 @@ book:
     collapse-level: 1
   navbar:
     subtitle: "{{< var info.date >}}"
+    # left:
+    #     - text: "Introduction"
+    #     - href: contents/1/intro.qmd
+
   page-navigation: true
 
 
