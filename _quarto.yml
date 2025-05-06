@@ -21,16 +21,19 @@ knitr:
     comment: "#>"
     collapse: true
 
-jupyter: ds25
+jupyter: ml25
 
 format:
-  html:
-    theme: 
-      - lumen
-    code-block-bg: true
-    code-block-border-left: true #"#31BAE9"
-    code-line-numbers: true
-    highlight-style: atom-one
+  bookup-html:
+      toc: true
+      toc-depth: 3
+  # html:
+  #   theme: 
+  #     - lumen
+  #   code-block-bg: true
+  #   code-block-border-left: true #"#31BAE9"
+  #   code-line-numbers: true
+  #   highlight-style: atom-one
   # pdf:
   #   documentclass: scrreprt
 
@@ -64,7 +67,7 @@ book:
   #   - contents/app/concepts.qmd
   #   - contents/app/r.qmd
   sidebar:
-    style: floating
+    style: "docked"
     pinned: true
     align: center
     border: true
