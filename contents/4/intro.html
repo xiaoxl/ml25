@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.13">
+<meta name="generator" content="quarto-1.8.13">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -67,14 +68,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../contents/3/intro.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-615660eb60d47078aa9677353a5e1ff2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-431eccc52ae2c1c2116134277a88f774.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-cb670960ec325c0428aa2b56460101c9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-431eccc52ae2c1c2116134277a88f774.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a690798582648e0d1beb5891af9d8de2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-35f53d7b911fc252392f32fd410b90b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-90c5576e295dd0104991b786afe8f8df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-35f53d7b911fc252392f32fd410b90b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/bookup_fonts_gwf-0.0/fonts-embed.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -123,7 +130,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -141,7 +148,169 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,6 +322,7 @@ window.Quarto = {
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
@@ -174,7 +344,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -230,6 +400,23 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Netural networks</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/app/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Python IDE Setup</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -268,6 +455,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ensemble methods</span></h1>
@@ -305,13 +493,13 @@ window.Quarto = {
 <p>One approach to get many estimators is to use the same training algorithm for every predictor and train them on different random subsets of the training set. When sampling is performed with replacement, this method is called <em>bagging</em> (short for <em>bootstrap aggregating</em>). When sampling is performed without replacement, it is called <em>pasting</em>.</p>
 <p>Consider the following example. The dataset is the one we used in Chpater 3: <code>make_moon</code>. We split the dataset into training and test sets.</p>
 <div id="f418adcd" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>X, y <span class="op">=</span> make_moons(n_samples<span class="op">=</span><span class="dv">10000</span>, noise<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>plt.scatter(x<span class="op">=</span>X[:, <span class="dv">0</span>], y<span class="op">=</span>X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
-<span id="cb1-7"><a href="#cb1-7"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_moons(n_samples<span class="op">=</span><span class="dv">10000</span>, noise<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(x<span class="op">=</span>X[:, <span class="dv">0</span>], y<span class="op">=</span>X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -325,43 +513,43 @@ window.Quarto = {
 <p>Note that <code>ShuffleSplit</code> is originally used to shuffle data into training and test sets. We would only use the shuffle function out of it, so we will set <code>test_size</code> to be <code>1</code> and use <code>_</code> later in the <code>for</code> loop since we won’t use that part of the information.</p>
 <p>What we finally get is a generator <code>rs</code> that produces indexes of subsets of <code>X_train</code> and <code>y_train</code>.</p>
 <div id="f3aeebc5" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> ShuffleSplit</span>
-<span id="cb2-2"><a href="#cb2-2"></a>n_trees <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>n_instances <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> ShuffleSplit</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_trees <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n_instances <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we would like to generate a list of Decision Trees. We could use the hyperparameters we get from Chapter 3. We train each tree over a certain mini set, and then evaluate the trained model over the test set. The average accuracy is around 80%.</p>
 <p>Note that <code>rs</code> is a generator. We put it in a for loop, and during each loop it will produce a list of indexes which gives a subset. We will directly train our model over the subset and use it to predict the test set. The result of each tree is put in the list <code>y_pred_list</code> and the accuracy is stored in the list <code>acc_list</code>. The mean of the accuracy is then computed by <code>np.mean(acc_list)</code>.</p>
 <div id="9bb87444" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb3-6"><a href="#cb3-6"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
-<span id="cb3-8"><a href="#cb3-8"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
-<span id="cb3-9"><a href="#cb3-9"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
-<span id="cb3-10"><a href="#cb3-10"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(min_samples_split<span class="op">=</span><span class="dv">2</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb3-11"><a href="#cb3-11"></a>    clf_ind.fit(X_subset, y_subset)</span>
-<span id="cb3-12"><a href="#cb3-12"></a>    y_pred <span class="op">=</span> clf_ind.predict(X_test)</span>
-<span id="cb3-13"><a href="#cb3-13"></a>    y_pred_list.append(y_pred)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a>np.mean(acc_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(min_samples_split<span class="op">=</span><span class="dv">2</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    clf_ind.fit(X_subset, y_subset)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> clf_ind.predict(X_test)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    y_pred_list.append(y_pred)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>np.mean(acc_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>0.7852906666666667</code></pre>
 </div>
 </div>
 <p>Now for each test data, we actually have <code>n_trees=1000</code> predicted results. We can treat it as the options from 1000 exports and would like to use the majority as our result. For this purpose we would like to use <code>mode()</code> which will find the most frequent entry.</p>
 <div id="3641299f" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mode</span>
-<span id="cb5-2"><a href="#cb5-2"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mode</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Since the output of <code>mode</code> is a tuple where the first entry is a 2D array, we need to reshape <code>y_pred_mode</code>. This is the result using this voting system. Then we are able to compute the accuracy, and find that it is increased from the previous prediction.</p>
 <div id="a6af144a" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>accuracy_score(y_pred_mode, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_mode, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0.8526666666666667</code></pre>
 </div>
@@ -374,24 +562,24 @@ window.Quarto = {
 <h4 data-number="4.1.2.1" class="anchored" data-anchor-id="case-1"><span class="header-section-number">4.1.2.1</span> Case 1</h4>
 <p>Let us continue with the previous dataset. We start from using Decision Tree with <code>max_depth=1</code>. In other words each tree only split once.</p>
 <div id="707a6e8a" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>n_trees <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>n_instances <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb8-5"><a href="#cb8-5"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
-<span id="cb8-8"><a href="#cb8-8"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
-<span id="cb8-9"><a href="#cb8-9"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-10"><a href="#cb8-10"></a>    clf_ind.fit(X_subset, y_subset)</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    y_pred <span class="op">=</span> clf_ind.predict(X_test)</span>
-<span id="cb8-12"><a href="#cb8-12"></a>    y_pred_list.append(y_pred)</span>
-<span id="cb8-13"><a href="#cb8-13"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="bu">print</span>(<span class="st">'The mean of individual accuracy: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(np.mean(acc_list)))</span>
-<span id="cb8-15"><a href="#cb8-15"></a></span>
-<span id="cb8-16"><a href="#cb8-16"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
-<span id="cb8-17"><a href="#cb8-17"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="bu">print</span>(<span class="st">'The accuracy of the bagging classifier: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(accuracy_score(y_pred_mode, y_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n_trees <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n_instances <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    clf_ind.fit(X_subset, y_subset)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> clf_ind.predict(X_test)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    y_pred_list.append(y_pred)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The mean of individual accuracy: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(np.mean(acc_list)))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The accuracy of the bagging classifier: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(accuracy_score(y_pred_mode, y_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean of individual accuracy: 0.7716333333333334
 The accuracy of the bagging classifier: 0.778</code></pre>
@@ -399,8 +587,8 @@ The accuracy of the bagging classifier: 0.778</code></pre>
 </div>
 <p>The two accuracy has some differences, but not much. This is due to the fact that the sample size of the subset is too large: 1000 can already help the individual classifers to capture the major ideas of the datasets. Let us see the first 1000 data points. The scattering plot is very similar to that of the whole dataset shown above.</p>
 <div id="9e4e407e" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>Npiece <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>plt.scatter(x<span class="op">=</span>X[:Npiece, <span class="dv">0</span>], y<span class="op">=</span>X[:Npiece, <span class="dv">1</span>], c<span class="op">=</span>y[:Npiece])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Npiece <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(x<span class="op">=</span>X[:Npiece, <span class="dv">0</span>], y<span class="op">=</span>X[:Npiece, <span class="dv">1</span>], c<span class="op">=</span>y[:Npiece])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -414,8 +602,8 @@ The accuracy of the bagging classifier: 0.778</code></pre>
 <h4 data-number="4.1.2.2" class="anchored" data-anchor-id="case-2"><span class="header-section-number">4.1.2.2</span> Case 2</h4>
 <p>If we reduce the sample size to be very small, for example, 20, the sampled subset will lose a lot of information and it will be much harder to capture the idea of the original dataset. See the scattering plot of the first 20 data points.</p>
 <div id="ef033a2e" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>Npiece <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>plt.scatter(x<span class="op">=</span>X[:Npiece, <span class="dv">0</span>], y<span class="op">=</span>X[:Npiece, <span class="dv">1</span>], c<span class="op">=</span>y[:Npiece])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Npiece <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(x<span class="op">=</span>X[:Npiece, <span class="dv">0</span>], y<span class="op">=</span>X[:Npiece, <span class="dv">1</span>], c<span class="op">=</span>y[:Npiece])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -426,24 +614,24 @@ The accuracy of the bagging classifier: 0.778</code></pre>
 </div>
 <p>In this case, let us see the performance comparison between multiple decision trees and the bagging classifier.</p>
 <div id="b47598d9" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>n_trees <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>n_instances <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span>
-<span id="cb12-4"><a href="#cb12-4"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb12-5"><a href="#cb12-5"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
-<span id="cb12-7"><a href="#cb12-7"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
-<span id="cb12-8"><a href="#cb12-8"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
-<span id="cb12-9"><a href="#cb12-9"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb12-10"><a href="#cb12-10"></a>    clf_ind.fit(X_subset, y_subset)</span>
-<span id="cb12-11"><a href="#cb12-11"></a>    y_pred <span class="op">=</span> clf_ind.predict(X_test)</span>
-<span id="cb12-12"><a href="#cb12-12"></a>    y_pred_list.append(y_pred)</span>
-<span id="cb12-13"><a href="#cb12-13"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="bu">print</span>(<span class="st">'The mean of individual accuracy: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(np.mean(acc_list)))</span>
-<span id="cb12-15"><a href="#cb12-15"></a></span>
-<span id="cb12-16"><a href="#cb12-16"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
-<span id="cb12-17"><a href="#cb12-17"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="bu">print</span>(<span class="st">'The accuracy of the bagging classifier: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(accuracy_score(y_pred_mode, y_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n_trees <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>n_instances <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    clf_ind.fit(X_subset, y_subset)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> clf_ind.predict(X_test)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    y_pred_list.append(y_pred)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The mean of individual accuracy: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(np.mean(acc_list)))</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The accuracy of the bagging classifier: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(accuracy_score(y_pred_mode, y_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean of individual accuracy: 0.7122986666666666
 The accuracy of the bagging classifier: 0.8046666666666666</code></pre>
@@ -456,20 +644,20 @@ The accuracy of the bagging classifier: 0.8046666666666666</code></pre>
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="using-sklearn"><span class="header-section-number">4.1.3</span> Using <code>sklearn</code></h3>
 <p><code>sklearn</code> provides <code>BaggingClassifier</code> to directly perform bagging or pasting. The code is as follows.</p>
 <div id="c8560eff" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> BaggingClassifier</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb14-3"><a href="#cb14-3"></a></span>
-<span id="cb14-4"><a href="#cb14-4"></a>bag_clf <span class="op">=</span> BaggingClassifier(DecisionTreeClassifier(),</span>
-<span id="cb14-5"><a href="#cb14-5"></a>                            n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb14-6"><a href="#cb14-6"></a>                            max_samples<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb14-7"><a href="#cb14-7"></a>                            bootstrap<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> BaggingClassifier</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>bag_clf <span class="op">=</span> BaggingClassifier(DecisionTreeClassifier(),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                            n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                            max_samples<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                            bootstrap<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the above code, <code>bag_clf</code> is a bagging classifier, made of 500 <code>DecisionTreeClassifer</code>s, and is trained over subsets of size <code>100</code>. The option <code>bootstrap=True</code> means that it is bagging. If you would like to use pasting, the option is <code>bootstrap=False</code>.</p>
 <p>This <code>bag_clf</code> also has <code>.fit()</code> and <code>.predict()</code> methods. It is used the same as our previous classifiers. Let us try the <code>make_moon</code> dataset.</p>
 <div id="18375b4c" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>bag_clf.fit(X_train, y_train)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>y_pred_bag <span class="op">=</span> bag_clf.predict(X_test)</span>
-<span id="cb15-3"><a href="#cb15-3"></a>accuracy_score(y_pred_bag, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bag_clf.fit(X_train, y_train)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y_pred_bag <span class="op">=</span> bag_clf.predict(X_test)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_bag, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0.8506666666666667</code></pre>
 </div>
@@ -480,13 +668,13 @@ The accuracy of the bagging classifier: 0.8046666666666666</code></pre>
 <p>When we use <code>bagging</code>, it is possible that some of the training data are not used. In this case, we could record which data are not used, and just use them as the test set, instead of providing extra data for test. The data that are not used is called <em>out-of-bag</em> instances, or <em>oob</em> for short. The accuracy over the oob data is called the oob score.</p>
 <p>We could set <code>oob_score=True</code> to enable the function when creating a <code>BaggingClassifier</code>, and use <code>.oob_score_</code> to get the oob score after training.</p>
 <div id="33927974" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>bag_clf_oob <span class="op">=</span> BaggingClassifier(DecisionTreeClassifier(),</span>
-<span id="cb17-2"><a href="#cb17-2"></a>                                n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb17-3"><a href="#cb17-3"></a>                                max_samples<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb17-4"><a href="#cb17-4"></a>                                bootstrap<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb17-5"><a href="#cb17-5"></a>                                oob_score<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb17-6"><a href="#cb17-6"></a>bag_clf_oob.fit(X_train, y_train)</span>
-<span id="cb17-7"><a href="#cb17-7"></a>bag_clf_oob.oob_score_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bag_clf_oob <span class="op">=</span> BaggingClassifier(DecisionTreeClassifier(),</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                                n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                                max_samples<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                                bootstrap<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                                oob_score<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>bag_clf_oob.fit(X_train, y_train)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>bag_clf_oob.oob_score_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>0.8667058823529412</code></pre>
 </div>
@@ -496,12 +684,12 @@ The accuracy of the bagging classifier: 0.8046666666666666</code></pre>
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="random-forests"><span class="header-section-number">4.1.5</span> Random Forests</h3>
 <p>When the classifiers used in a bagging classifier are all Decision Trees, the bagging classifier is called a <code>random forest</code>. <code>sklearn</code> provide <code>RandomForestClassifier</code> class. It is almost the same as <code>BaggingClassifier</code> + <code>DecisionTreeClassifer</code>.</p>
 <div id="f91c9d21" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb19-4"><a href="#cb19-4"></a>rnd_clf.fit(X_train, y_train)</span>
-<span id="cb19-5"><a href="#cb19-5"></a>y_pred_rnd <span class="op">=</span> rnd_clf.predict(X_test)</span>
-<span id="cb19-6"><a href="#cb19-6"></a>accuracy_score(y_pred_rnd, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>y_pred_rnd <span class="op">=</span> rnd_clf.predict(X_test)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_rnd, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0.85</code></pre>
 </div>
@@ -513,39 +701,39 @@ The accuracy of the bagging classifier: 0.8046666666666666</code></pre>
 <p>When growing a Decision Tree, our method is to search through all possible ways to find the best split point that get the lowest Gini impurity. Anohter method is to use a random split. Of course a random tree performs much worse, but if we use it to form a random forest, the voting system can help to increase the accuracy. On the other hand, random split is much faster than a regular Decision Tree.</p>
 <p>This type of forest is called <em>Extremely Randomized Trees</em>, or <em>Extra-Trees</em> for short. We could modify the above random forest classifier code to implement the extra-tree algorithm. The key point is that we don’t apply the Decision Tree algorithm to <code>X_subset</code>. Instead we perform a random split.</p>
 <div id="48f55a50" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>n_trees <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>n_instances <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span>
-<span id="cb21-4"><a href="#cb21-4"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb21-5"><a href="#cb21-5"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
-<span id="cb21-7"><a href="#cb21-7"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
-<span id="cb21-8"><a href="#cb21-8"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
-<span id="cb21-9"><a href="#cb21-9"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="co"># random split</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a>    i <span class="op">=</span> np.random.randint(<span class="dv">0</span>, X_subset.shape[<span class="dv">0</span>])</span>
-<span id="cb21-12"><a href="#cb21-12"></a>    j <span class="op">=</span> np.random.randint(<span class="dv">0</span>, X_subset.shape[<span class="dv">1</span>])</span>
-<span id="cb21-13"><a href="#cb21-13"></a>    split_threshold <span class="op">=</span> X_subset[i, j]</span>
-<span id="cb21-14"><a href="#cb21-14"></a>    lsetindex <span class="op">=</span> np.where(X_subset[:, j]<span class="op">&lt;</span>split_threshold)[<span class="dv">0</span>]</span>
-<span id="cb21-15"><a href="#cb21-15"></a></span>
-<span id="cb21-16"><a href="#cb21-16"></a>    <span class="cf">if</span> <span class="bu">len</span>(lsetindex) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb21-17"><a href="#cb21-17"></a>        rsetindex <span class="op">=</span> np.where(X_subset[:, j]<span class="op">&gt;=</span>split_threshold)</span>
-<span id="cb21-18"><a href="#cb21-18"></a>        rmode, _ <span class="op">=</span> mode(y_subset[rsetindex], keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb21-19"><a href="#cb21-19"></a>        rmode <span class="op">=</span> rmode[<span class="dv">0</span>]</span>
-<span id="cb21-20"><a href="#cb21-20"></a>        lmode <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> rmode</span>
-<span id="cb21-21"><a href="#cb21-21"></a>    <span class="cf">else</span>:</span>
-<span id="cb21-22"><a href="#cb21-22"></a>        lmode, _ <span class="op">=</span> mode(y_subset[lsetindex], keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb21-23"><a href="#cb21-23"></a>        lmode <span class="op">=</span> lmode[<span class="dv">0</span>]</span>
-<span id="cb21-24"><a href="#cb21-24"></a>        rmode <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> lmode</span>
-<span id="cb21-25"><a href="#cb21-25"></a>    y_pred <span class="op">=</span> np.where(X_test[:, j] <span class="op">&lt;</span> split_threshold, lmode, rmode).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb21-26"><a href="#cb21-26"></a><span class="co"># The above code is used to use the random split to classify the data points</span></span>
-<span id="cb21-27"><a href="#cb21-27"></a>    y_pred_list.append(y_pred)</span>
-<span id="cb21-28"><a href="#cb21-28"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
-<span id="cb21-29"><a href="#cb21-29"></a><span class="bu">print</span>(<span class="st">'The mean of individual accuracy: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(np.mean(acc_list)))</span>
-<span id="cb21-30"><a href="#cb21-30"></a></span>
-<span id="cb21-31"><a href="#cb21-31"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
-<span id="cb21-32"><a href="#cb21-32"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb21-33"><a href="#cb21-33"></a><span class="bu">print</span>(<span class="st">'The accuracy of the bagging classifier: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(accuracy_score(y_pred_mode, y_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>n_trees <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>n_instances <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>y_pred_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>acc_list <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mini_train_index, _ <span class="kw">in</span> rs:</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    X_subset <span class="op">=</span> X_train[mini_train_index]</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    y_subset <span class="op">=</span> y_train[mini_train_index]</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    clf_ind <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># random split</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> np.random.randint(<span class="dv">0</span>, X_subset.shape[<span class="dv">0</span>])</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    j <span class="op">=</span> np.random.randint(<span class="dv">0</span>, X_subset.shape[<span class="dv">1</span>])</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    split_threshold <span class="op">=</span> X_subset[i, j]</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    lsetindex <span class="op">=</span> np.where(X_subset[:, j]<span class="op">&lt;</span>split_threshold)[<span class="dv">0</span>]</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(lsetindex) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        rsetindex <span class="op">=</span> np.where(X_subset[:, j]<span class="op">&gt;=</span>split_threshold)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        rmode, _ <span class="op">=</span> mode(y_subset[rsetindex], keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        rmode <span class="op">=</span> rmode[<span class="dv">0</span>]</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>        lmode <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> rmode</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        lmode, _ <span class="op">=</span> mode(y_subset[lsetindex], keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        lmode <span class="op">=</span> lmode[<span class="dv">0</span>]</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        rmode <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> lmode</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> np.where(X_test[:, j] <span class="op">&lt;</span> split_threshold, lmode, rmode).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a><span class="co"># The above code is used to use the random split to classify the data points</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    y_pred_list.append(y_pred)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    acc_list.append(accuracy_score(y_pred, y_test))</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The mean of individual accuracy: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(np.mean(acc_list)))</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>voting <span class="op">=</span> np.array(y_pred_list)</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>y_pred_mode, _ <span class="op">=</span> mode(voting, axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The accuracy of the bagging classifier: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(accuracy_score(y_pred_mode, y_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean of individual accuracy: 0.620696
 The accuracy of the bagging classifier: 0.794</code></pre>
@@ -554,30 +742,30 @@ The accuracy of the bagging classifier: 0.794</code></pre>
 <p>From the above example, you may find a significant increase in the performace from the mean individual accuracy to the Extra-tree classifier accuracy. The accuracy of the Extra-tree classifier is also very close to what we get from the original data points, although its base classifier is much simpler.</p>
 <p>In <code>sklearn</code> there is an <code>ExtraTreesClassifier</code> to create such a classifier. It is hard to say which random forest is better beforehand. What we can do is to test and calculate the cross-validation scores (with grid search for hyperparameters tuning).</p>
 <div id="345248a1" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier</span>
-<span id="cb23-2"><a href="#cb23-2"></a></span>
-<span id="cb23-3"><a href="#cb23-3"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb23-4"><a href="#cb23-4"></a>ext_clf.fit(X_train, y_train)</span>
-<span id="cb23-5"><a href="#cb23-5"></a>y_pred_rnd <span class="op">=</span> ext_clf.predict(X_test)</span>
-<span id="cb23-6"><a href="#cb23-6"></a>accuracy_score(y_pred_rnd, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>ext_clf.fit(X_train, y_train)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>y_pred_rnd <span class="op">=</span> ext_clf.predict(X_test)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_rnd, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>0.8466666666666667</code></pre>
 </div>
 </div>
 <p>In the above example, <code>RandomForestClassifier</code> and <code>ExtraTreesClassifier</code> get similar accuracy. However from the code below, you will see that in this example <code>ExtraTreesClassifier</code> is much faster than <code>RandomForestClassifier</code>.</p>
 <div id="b64c295a" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
-<span id="cb25-2"><a href="#cb25-2"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb25-3"><a href="#cb25-3"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a>rnd_clf.fit(X_train, y_train)</span>
-<span id="cb25-5"><a href="#cb25-5"></a>t1 <span class="op">=</span> time()</span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(<span class="st">'Random Frorest: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span>
-<span id="cb25-7"><a href="#cb25-7"></a></span>
-<span id="cb25-8"><a href="#cb25-8"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb25-9"><a href="#cb25-9"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb25-10"><a href="#cb25-10"></a>ext_clf.fit(X_train, y_train)</span>
-<span id="cb25-11"><a href="#cb25-11"></a>t1 <span class="op">=</span> time()</span>
-<span id="cb25-12"><a href="#cb25-12"></a><span class="bu">print</span>(<span class="st">'Extremely Randomized Trees: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time()</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Random Frorest: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>ext_clf.fit(X_train, y_train)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time()</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Extremely Randomized Trees: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Random Frorest: 9.331970930099487
 Extremely Randomized Trees: 2.714216470718384</code></pre>
@@ -591,8 +779,8 @@ Extremely Randomized Trees: 2.714216470718384</code></pre>
 <p>In the case of random forest, since there are many trees, we might compute the weighted average of the Gini importance across all trees. The weight depends on how many times the feature is used in a specific node.</p>
 <p>Using <code>RandomForestClassifier</code>, we can directly get access to the Gini importance of each feature by <code>.feature_importance_</code>. Please see the following example.</p>
 <div id="4833f59f" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>rnd_clf.fit(X_train, y_train)</span>
-<span id="cb27-2"><a href="#cb27-2"></a>rnd_clf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rnd_clf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([0.44934782, 0.55065218])</code></pre>
 </div>
@@ -607,37 +795,37 @@ Extremely Randomized Trees: 2.714216470718384</code></pre>
 <p>Assume that we have several trained classifiers. The easiest way to make a better classifer out of what we already have is to build a voting system. That is, each classifier give its own prediction, and it will be considered as a vote, and finally the highest vote will be the prediction of the system.</p>
 <p>In <code>sklearn</code>, you may use <code>VotingClassifier</code>. It works as follows.</p>
 <div id="268cf3a0" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> VotingClassifier</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb29-4"><a href="#cb29-4"></a></span>
-<span id="cb29-5"><a href="#cb29-5"></a>clfs <span class="op">=</span> [(<span class="st">'knn'</span>, KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)),</span>
-<span id="cb29-6"><a href="#cb29-6"></a>        (<span class="st">'dt'</span>, DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">2</span>))]</span>
-<span id="cb29-7"><a href="#cb29-7"></a>voting_clf <span class="op">=</span> VotingClassifier(estimators<span class="op">=</span>clfs, voting<span class="op">=</span><span class="st">'hard'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> VotingClassifier</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>clfs <span class="op">=</span> [(<span class="st">'knn'</span>, KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'dt'</span>, DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">2</span>))]</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>voting_clf <span class="op">=</span> VotingClassifier(estimators<span class="op">=</span>clfs, voting<span class="op">=</span><span class="st">'hard'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All classifiers are stored in the list <code>clfs</code>, whose elements are tuples. The syntax is very similar to <code>Pipeline</code>. What the classifier does is to train all listed classifiers and use the majority vote to predict the class of given test data. If each classifier has one vote, the voting method is <code>hard</code>. There is also a <code>soft</code> voting method. In this case, every classifiers not only can predict the classes of the given data, but also estimiate the probability of the given data that belongs to certain classes. On coding level, each classifier should have the <code>predict_proba()</code> method. In this case, the weight of each vote is determined by the probability computed. In our course we mainly use <code>hard</code> voting.</p>
 <p>Let us use <code>make_moon</code> as an example. We first load the dataset.</p>
 <div id="06c676c5" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb30-3"><a href="#cb30-3"></a></span>
-<span id="cb30-4"><a href="#cb30-4"></a>X, y <span class="op">=</span> make_moons(n_samples<span class="op">=</span><span class="dv">10000</span>, noise<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb30-5"><a href="#cb30-5"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_moons(n_samples<span class="op">=</span><span class="dv">10000</span>, noise<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We would like to apply kNN model. As before, we build a data pipeline <code>pipe</code> to first apply <code>MinMaxScaler</code> and then <code>KNeighborsClassifier</code>.</p>
 <div id="928af7ed" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
-<span id="cb31-5"><a href="#cb31-5"></a></span>
-<span id="cb31-6"><a href="#cb31-6"></a>pipe <span class="op">=</span> Pipeline(steps<span class="op">=</span>[(<span class="st">'scalar'</span>, MinMaxScaler()),</span>
-<span id="cb31-7"><a href="#cb31-7"></a>                       (<span class="st">'knn'</span>, KNeighborsClassifier())])</span>
-<span id="cb31-8"><a href="#cb31-8"></a>parameters <span class="op">=</span> {<span class="st">'knn__n_neighbors'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">51</span>))}</span>
-<span id="cb31-9"><a href="#cb31-9"></a>gs_knn <span class="op">=</span> GridSearchCV(pipe, param_grid<span class="op">=</span>parameters) </span>
-<span id="cb31-10"><a href="#cb31-10"></a>gs_knn.fit(X_train, y_train)</span>
-<span id="cb31-11"><a href="#cb31-11"></a>clf_knn <span class="op">=</span> gs_knn.best_estimator_</span>
-<span id="cb31-12"><a href="#cb31-12"></a>clf_knn.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> Pipeline(steps<span class="op">=</span>[(<span class="st">'scalar'</span>, MinMaxScaler()),</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                       (<span class="st">'knn'</span>, KNeighborsClassifier())])</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> {<span class="st">'knn__n_neighbors'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">51</span>))}</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>gs_knn <span class="op">=</span> GridSearchCV(pipe, param_grid<span class="op">=</span>parameters) </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>gs_knn.fit(X_train, y_train)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>clf_knn <span class="op">=</span> gs_knn.best_estimator_</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>clf_knn.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>0.856</code></pre>
 </div>
@@ -645,37 +833,37 @@ Extremely Randomized Trees: 2.714216470718384</code></pre>
 <p>The resulted accuracy is shown above.</p>
 <p>We then try it with the Decision Tree.</p>
 <div id="278ce676" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb33-2"><a href="#cb33-2"></a></span>
-<span id="cb33-3"><a href="#cb33-3"></a>gs_dt <span class="op">=</span> GridSearchCV(DecisionTreeClassifier(), param_grid<span class="op">=</span>{<span class="st">'max_depth'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)), <span class="st">'max_leaf_nodes'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">30</span>))})</span>
-<span id="cb33-4"><a href="#cb33-4"></a>gs_dt.fit(X_train, y_train)</span>
-<span id="cb33-5"><a href="#cb33-5"></a>clf_dt <span class="op">=</span> gs_dt.best_estimator_</span>
-<span id="cb33-6"><a href="#cb33-6"></a>clf_dt.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>gs_dt <span class="op">=</span> GridSearchCV(DecisionTreeClassifier(), param_grid<span class="op">=</span>{<span class="st">'max_depth'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)), <span class="st">'max_leaf_nodes'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">30</span>))})</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>gs_dt.fit(X_train, y_train)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>clf_dt <span class="op">=</span> gs_dt.best_estimator_</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>clf_dt.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>0.8586666666666667</code></pre>
 </div>
 </div>
 <p>We would also want to try Logistic regression method. This will be covered in the next Chapter. At current stage we just use the default setting without changing any hyperparameters.</p>
 <div id="adbd1a96" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb35-2"><a href="#cb35-2"></a>clf_lr <span class="op">=</span> LogisticRegression()</span>
-<span id="cb35-3"><a href="#cb35-3"></a>clf_lr.fit(X_train, y_train)</span>
-<span id="cb35-4"><a href="#cb35-4"></a>clf_lr.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>clf_lr <span class="op">=</span> LogisticRegression()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>clf_lr.fit(X_train, y_train)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>clf_lr.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>0.834</code></pre>
 </div>
 </div>
 <p>Now we use a voting classifier to combine the results.</p>
 <div id="628c33de" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> VotingClassifier</span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb37-3"><a href="#cb37-3"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
-<span id="cb37-4"><a href="#cb37-4"></a>clfs <span class="op">=</span> [(<span class="st">'knn'</span>, KNeighborsClassifier()),</span>
-<span id="cb37-5"><a href="#cb37-5"></a>        (<span class="st">'dt'</span>, DecisionTreeClassifier()),</span>
-<span id="cb37-6"><a href="#cb37-6"></a>        (<span class="st">'lr'</span>, LogisticRegression())]</span>
-<span id="cb37-7"><a href="#cb37-7"></a>voting_clf <span class="op">=</span> VotingClassifier(estimators<span class="op">=</span>clfs, voting<span class="op">=</span><span class="st">'hard'</span>)</span>
-<span id="cb37-8"><a href="#cb37-8"></a>voting_clf.fit(X_train, y_train)</span>
-<span id="cb37-9"><a href="#cb37-9"></a>voting_clf.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> VotingClassifier</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>clfs <span class="op">=</span> [(<span class="st">'knn'</span>, KNeighborsClassifier()),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'dt'</span>, DecisionTreeClassifier()),</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'lr'</span>, LogisticRegression())]</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>voting_clf <span class="op">=</span> VotingClassifier(estimators<span class="op">=</span>clfs, voting<span class="op">=</span><span class="st">'hard'</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>voting_clf.fit(X_train, y_train)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>voting_clf.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>0.8433333333333334</code></pre>
 </div>
@@ -696,7 +884,7 @@ Extremely Randomized Trees: 2.714216470718384</code></pre>
 <style type="text/css">
 </style>
 
-<table id="T_771a3" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_771a3" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th id="T_771a3_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">x0</th>
@@ -800,20 +988,20 @@ Note
 <p>Similar to all previous models, <code>sklearn</code> provides <code>AdaBoostClassifier</code>. The way to use it is similar to previous models. Note that although we are able to use any classifiers for <code>AdaBoost</code>, the most popular choice is Decision Tree with <code>max_depth=1</code>. This type of Decision Trees are also called <em>Decision Stumps</em>.</p>
 <p>In the following examples, we initialize an <code>AdaBoostClassifier</code> with 500 Decision Stumps and <code>learning_rate=0.5</code>.</p>
 <div id="9ca10890" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> AdaBoostClassifier</span>
-<span id="cb39-3"><a href="#cb39-3"></a></span>
-<span id="cb39-4"><a href="#cb39-4"></a>ada_clf <span class="op">=</span> AdaBoostClassifier(DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>), n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb39-5"><a href="#cb39-5"></a>                             learning_rate<span class="op">=</span><span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> AdaBoostClassifier</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>ada_clf <span class="op">=</span> AdaBoostClassifier(DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>), n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                             learning_rate<span class="op">=</span><span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will use the <code>iris</code> dataset for illustration. The cross_val_score is calculated as follows.</p>
 <div id="675e2e57" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb40-3"><a href="#cb40-3"></a></span>
-<span id="cb40-4"><a href="#cb40-4"></a>X, y <span class="op">=</span> load_iris(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb40-5"><a href="#cb40-5"></a>scores <span class="op">=</span> cross_val_score(ada_clf, X, y, cv<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb40-6"><a href="#cb40-6"></a>scores.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> load_iris(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(ada_clf, X, y, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>scores.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\Xinli\miniforge3\envs\ds25\Lib\site-packages\sklearn\ensemble\_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
   warnings.warn(
@@ -835,21 +1023,21 @@ C:\Users\Xinli\miniforge3\envs\ds25\Lib\site-packages\sklearn\ensemble\_weight_b
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="example-2-the-horse-colic-dataset"><span class="header-section-number">4.3.4</span> Example 2: the Horse Colic dataset</h3>
 <p>This dataset is from UCI Machine Learning Repository. The data is about whether horses survive if they get a disease called Colic. The dataset is preprocessed as follows. Note that there are a few missing values inside, and we replace them with <code>0</code>.</p>
 <div id="54b81fea" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb43-3"><a href="#cb43-3"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb43-4"><a href="#cb43-4"></a></span>
-<span id="cb43-5"><a href="#cb43-5"></a>url <span class="op">=</span> <span class="st">'http://archive.ics.uci.edu/ml/machine-learning-databases/horse-colic/horse-colic.data'</span></span>
-<span id="cb43-6"><a href="#cb43-6"></a>df <span class="op">=</span> pd.read_csv(url, delim_whitespace<span class="op">=</span><span class="va">True</span>, header<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb43-7"><a href="#cb43-7"></a>df <span class="op">=</span> df.replace(<span class="st">"?"</span>, np.NaN)</span>
-<span id="cb43-8"><a href="#cb43-8"></a>df <span class="op">=</span> df.fillna(<span class="dv">0</span>)</span>
-<span id="cb43-9"><a href="#cb43-9"></a>X <span class="op">=</span> df.iloc[:, <span class="dv">1</span>:].to_numpy().astype(<span class="bu">float</span>)</span>
-<span id="cb43-10"><a href="#cb43-10"></a>y <span class="op">=</span> df[<span class="dv">0</span>].to_numpy().astype(<span class="bu">int</span>)</span>
-<span id="cb43-11"><a href="#cb43-11"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span>
-<span id="cb43-12"><a href="#cb43-12"></a></span>
-<span id="cb43-13"><a href="#cb43-13"></a>clf <span class="op">=</span> AdaBoostClassifier(DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>), n_estimators<span class="op">=</span><span class="dv">50</span>, learning_rate<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb43-14"><a href="#cb43-14"></a>clf.fit(X_train, y_train)</span>
-<span id="cb43-15"><a href="#cb43-15"></a>clf.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'http://archive.ics.uci.edu/ml/machine-learning-databases/horse-colic/horse-colic.data'</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, delim_whitespace<span class="op">=</span><span class="va">True</span>, header<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.replace(<span class="st">"?"</span>, np.NaN)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.fillna(<span class="dv">0</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.iloc[:, <span class="dv">1</span>:].to_numpy().astype(<span class="bu">float</span>)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="dv">0</span>].to_numpy().astype(<span class="bu">int</span>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> AdaBoostClassifier(DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>), n_estimators<span class="op">=</span><span class="dv">50</span>, learning_rate<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train, y_train)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>clf.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\Xinli\AppData\Local\Temp\ipykernel_33896\244007590.py:6: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
   df = pd.read_csv(url, delim_whitespace=True, header=None)
@@ -881,14 +1069,14 @@ C:\Users\Xinli\miniforge3\envs\ds25\Lib\site-packages\sklearn\ensemble\_weight_b
 <div id="exr-" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Please use the following code to get the <code>mgq</code> dataset.</p>
 <div id="575012d6" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_gaussian_quantiles</span>
-<span id="cb46-2"><a href="#cb46-2"></a></span>
-<span id="cb46-3"><a href="#cb46-3"></a>X1, y1 <span class="op">=</span> make_gaussian_quantiles(cov<span class="op">=</span><span class="fl">2.0</span>, n_samples<span class="op">=</span><span class="dv">200</span>, n_features<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb46-4"><a href="#cb46-4"></a>                                 n_classes<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb46-5"><a href="#cb46-5"></a>X2, y2 <span class="op">=</span> make_gaussian_quantiles(mean<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), cov<span class="op">=</span><span class="fl">1.5</span>, n_samples<span class="op">=</span><span class="dv">300</span>,</span>
-<span id="cb46-6"><a href="#cb46-6"></a>                                 n_features<span class="op">=</span><span class="dv">2</span>, n_classes<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb46-7"><a href="#cb46-7"></a>X <span class="op">=</span> np.concatenate((X1, X2))</span>
-<span id="cb46-8"><a href="#cb46-8"></a>y <span class="op">=</span> np.concatenate((y1, <span class="op">-</span>y2 <span class="op">+</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_gaussian_quantiles</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>X1, y1 <span class="op">=</span> make_gaussian_quantiles(cov<span class="op">=</span><span class="fl">2.0</span>, n_samples<span class="op">=</span><span class="dv">200</span>, n_features<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                                 n_classes<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>X2, y2 <span class="op">=</span> make_gaussian_quantiles(mean<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), cov<span class="op">=</span><span class="fl">1.5</span>, n_samples<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>                                 n_features<span class="op">=</span><span class="dv">2</span>, n_classes<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.concatenate((X1, X2))</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.concatenate((y1, <span class="op">-</span>y2 <span class="op">+</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please build an <code>AdaBoost</code> model.</p>
 </div>
@@ -901,21 +1089,21 @@ C:\Users\Xinli\miniforge3\envs\ds25\Lib\site-packages\sklearn\ensemble\_weight_b
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code>MNIST</code>
+<span class="screen-reader-only">Note</span><code>MNIST</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>This dataset can be loaded using the following code.</p>
 <div id="eee1abf5" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="im">import</span> requests</span>
-<span id="cb47-3"><a href="#cb47-3"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
-<span id="cb47-4"><a href="#cb47-4"></a>r <span class="op">=</span> requests.get(<span class="st">'https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz'</span>, stream <span class="op">=</span> <span class="va">True</span>) </span>
-<span id="cb47-5"><a href="#cb47-5"></a>data <span class="op">=</span> np.load(BytesIO(r.raw.read()))</span>
-<span id="cb47-6"><a href="#cb47-6"></a>X_train <span class="op">=</span> data[<span class="st">'x_train'</span>]</span>
-<span id="cb47-7"><a href="#cb47-7"></a>X_test <span class="op">=</span> data[<span class="st">'x_test'</span>]</span>
-<span id="cb47-8"><a href="#cb47-8"></a>y_train <span class="op">=</span> data[<span class="st">'y_train'</span>]</span>
-<span id="cb47-9"><a href="#cb47-9"></a>y_test <span class="op">=</span> data[<span class="st">'y_test'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz'</span>, stream <span class="op">=</span> <span class="va">True</span>) </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.load(BytesIO(r.raw.read()))</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data[<span class="st">'x_train'</span>]</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> data[<span class="st">'x_test'</span>]</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> data[<span class="st">'y_train'</span>]</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> data[<span class="st">'y_test'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -925,236 +1113,255 @@ C:\Users\Xinli\miniforge3\envs\ds25\Lib\site-packages\sklearn\ensemble\_weight_b
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1162,185 +1369,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../contents/3/intro.html" class="pagination-link" aria-label="Decision Trees">

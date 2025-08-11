@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Netural networks – Machine Learning {{&lt; var info.date &gt;}}</title>
+<title>Appendix A — Some Hard Python concepts – Machine Learning 2025 Fall</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../contents/app/setup.html" rel="next">
-<link href="../../contents/6/intro.html" rel="prev">
+<link href="../../contents/app/path.html" rel="next">
+<link href="../../contents/7/intro.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -110,35 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -326,7 +297,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/7/intro.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Netural networks</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/app/concepts.html">Appendices</a></li><li class="breadcrumb-item"><a href="../../contents/app/concepts.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Some Hard Python concepts</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -390,23 +361,41 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../contents/7/intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../contents/7/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Netural networks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/app/concepts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Some Hard Python concepts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/app/path.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Environemnt Variable <code>PATH</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../contents/app/virtenv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Python Virtual Environment</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../contents/app/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Python IDE Setup</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Python Setup</span></span></a>
   </div>
 </li>
       </ul>
@@ -421,9 +410,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#neural-network-back-propagation" id="toc-neural-network-back-propagation" class="nav-link active" data-scroll-target="#neural-network-back-propagation"><span class="header-section-number">7.1</span> Neural network: Back propagation</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">7.2</span> Example</a></li>
-  <li><a href="#exercises-and-projects" id="toc-exercises-and-projects" class="nav-link" data-scroll-target="#exercises-and-projects"><span class="header-section-number">7.3</span> Exercises and Projects</a></li>
+  <li><a href="#language" id="toc-language" class="nav-link active" data-scroll-target="#language"><span class="header-section-number">A.1</span> Language</a></li>
+  <li><a href="#interpreters" id="toc-interpreters" class="nav-link" data-scroll-target="#interpreters"><span class="header-section-number">A.2</span> Interpreters</a></li>
+  <li><a href="#repl" id="toc-repl" class="nav-link" data-scroll-target="#repl"><span class="header-section-number">A.3</span> REPL</a></li>
+  <li><a href="#ipython" id="toc-ipython" class="nav-link" data-scroll-target="#ipython"><span class="header-section-number">A.4</span> <code>IPython</code></a></li>
+  <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter"><span class="header-section-number">A.5</span> <code>Jupyter</code></a></li>
+  <li><a href="#multi-kernels-setup" id="toc-multi-kernels-setup" class="nav-link" data-scroll-target="#multi-kernels-setup"><span class="header-section-number">A.6</span> Multi-kernels setup</a></li>
   </ul>
 </nav>
     </div>
@@ -431,9 +423,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../contents/app/concepts.html">Appendices</a></li><li class="breadcrumb-item"><a href="../../contents/app/concepts.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Some Hard Python concepts</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Netural networks</span></h1>
+<h1 class="title">Appendix A — Some Hard Python concepts</h1>
 </div>
 
 
@@ -450,238 +442,114 @@ window.Quarto = {
 </header>
 
 
-<p>There are many different architects of netural networks. In our course we will only talk about the simplest one: multilayer perceptron (MLP). We will treat it as the generalization of logistic regression. In other words, we will treat logistic regression as an one-layer netural network. Under this idea, all the concepts and ideas, like gradient descent, mini-batch training, loss functions, learning curves, etc.. will be used.</p>
-<section id="neural-network-back-propagation" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="neural-network-back-propagation"><span class="header-section-number">7.1</span> Neural network: Back propagation</h2>
-<div class="hidden">
-<p><span class="math display">\[
-\newcommand\diffp[2]{\dfrac{\partial #1}{\partial #2}}
-\]</span></p>
+<section id="language" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="language"><span class="header-section-number">A.1</span> Language</h2>
+<p>Python is a programming language. In other words, it is a collection of syntaxes.</p>
+</section>
+<section id="interpreters" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="interpreters"><span class="header-section-number">A.2</span> Interpreters</h2>
+<p>Python needs to be interpreted into codes that computers can understand. Therefore there should be some programs that translate Python scripts. These programs are called <em>interpreters</em>.</p>
+<p><code>CPython</code> is the refernce interpreter of Python programming language, and it is the most widely used ones for Python. It is written in C and Python. When Python programming language introduces new features, they are developed based on <code>CPython</code>, and are first implemented in <code>CPython</code>. Sometimes an interpreter is also called an <em>implementation</em>.</p>
+<p>There are alternatives to <code>CPython</code>, like <a href="https://www.pypy.org/"><code>PyPy</code></a>, <a href="https://www.jython.org/"><code>Jython</code></a>, <a href="https://ironpython.net/"><code>IronPython</code></a>, etc.. In theory, any Python scripts should be able to run on any of these implementations, and the result should be the same. The differences mainly come from perfamance and compatiblity with non-Python packages. For example, <code>CPython</code> is executed by a C interpreter. Therefore it is very easy to write C-extensions for your Python code. <code>Jython</code>, since it is implemented in Java, makes it very easy to work with other Java programs that you can import any Java classes with no additional effort.</p>
+<p>Since <code>CPython</code> is most-widely used and tested, it is the best choice, at least for beginners. And actually, if you have no idea about this topic, but you use Python, it is highly possible that you are using <code>CPython</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>To train a MLP model, we still use gradient descent. Therefore it is very important to know how to compute the gradient. Actually the idea is the same as logistic regreesion. The only issue is that now the model is more complicated. The gradient computation is summrized as an algorithm called <code>back propagation</code>. It is described as follows.</p>
-<p>Here is an example of a Neural network with one hidden layer.</p>
-<p><img src="assests/img/20221114232327.png" class="img-fluid"></p>
-<p><span class="math inline">\(\Theta\)</span> is the coefficients of the whole Neural network.</p>
-<ul>
-<li><span class="math inline">\(a^{(1)}=\hat{\textbf{x}}\)</span> is the input. <span class="math inline">\(a_0^{(1)}\)</span> is added. This is an <span class="math inline">\((n+1)\)</span>-dimension column vector.</li>
-<li><span class="math inline">\(\Theta^{(1)}\)</span> is the coefficient matrix from the input layer to the hidden layer, of size <span class="math inline">\(k\times(n+1)\)</span>.</li>
-<li><span class="math inline">\(z^{(2)}=\Theta^{(1)}a^{(1)}\)</span>.</li>
-<li><span class="math inline">\(a^{(2)}=\sigma(z^{(2)})\)</span>, and then add <span class="math inline">\(a^{(2)}_0\)</span>. This is an <span class="math inline">\((k+1)\)</span>-dimension column vector.</li>
-<li><span class="math inline">\(\Theta^{(2)}\)</span> is the coefficient matrix from the hidden layer to the output layer, of size <span class="math inline">\(r\times(k+1)\)</span>.</li>
-<li><span class="math inline">\(z^{(3)}=\Theta^{(2)}a^{(2)}\)</span>.</li>
-<li><span class="math inline">\(a^{(3)}=\sigma(z^{(3)})\)</span>. Since this is the output layer, <span class="math inline">\(a^{(3)}_0\)</span> won’t be added. %
-These <span class="math inline">\(a^{(3)}\)</span> are <span class="math inline">\(h_{\Theta}(\textbf{x})\)</span>.</li>
-</ul>
-<p>The dependency is as follows:</p>
-<ul>
-<li><span class="math inline">\(J\)</span> depends on <span class="math inline">\(z^{(3)}\)</span> and <span class="math inline">\(a^{(3)}\)</span>.</li>
-<li><span class="math inline">\(z^{(3)}\)</span> and <span class="math inline">\(a^{(3)}\)</span> depends on <span class="math inline">\(\Theta^{(2)}\)</span> and <span class="math inline">\(a^{(2)}\)</span>.</li>
-<li><span class="math inline">\(z^{(2)}\)</span> and <span class="math inline">\(a^{(2)}\)</span> depends on <span class="math inline">\(\Theta^{(1)}\)</span> and <span class="math inline">\(a^{(1)}\)</span>.</li>
-<li><span class="math inline">\(J\)</span> depends on <span class="math inline">\(\Theta^{(1)}\)</span>, <span class="math inline">\(\Theta^{(2)}\)</span> and <span class="math inline">\(a^{(1)}\)</span>.</li>
-</ul>
-<p>Each layer is represented by the following diagram:</p>
-<p><img src="assests/img/20221114232354.png" class="img-fluid"></p>
-<p>The diagram says:</p>
-<p><span class="math display">\[
-z^{(k+1)}=b^{(k)}+\Theta^{(k)}a^{(k)},\quad z^{(k+1)}_j=b^{(k)}_j+\sum \Theta^{(k)}_{jl}a^{(k)}_l,\quad a^{(k)}_j=\sigma(z^{(k)}_j).
-\]</span></p>
-<p>Assume <span class="math inline">\(r,j\geq1\)</span>. Then</p>
-<p><span class="math display">\[
-\begin{aligned}
-\diffp{z^{(k+1)}_i}{a^{(k)}_r}&amp;=\diffp*{\left(b^{(k)}_i+\sum\Theta^{(k)}_{il}a^{(k)}_l\right)}{a^{(k)}_r}=\Theta_{ir}^{(k)},\\
-% \diffp{z^{(k+1)}_i}{\Theta^{(k)}_{ij}}&amp;=\diffp*{\qty(a^{(k)}_0+\sum\Theta^{(k)}_{il}a^{(k)}_l)}{\Theta^{(k)}_{ij}}=a^{(k)}_j,\\
-\diffp{z^{(k+1)}_i}{z^{(k)}_j}&amp;=\sum_r \diffp{z^{(k+1)}_i}{a^{k}_r}\diffp{a^{(k)}_r}{z^{(k)}_j}+\sum_{p,g}\diffp{z^{(k+1)}_i}{\Theta^{(k)}_{pq}}\diffp{\Theta^{(k)}_{pq}}{z^{(k)}_j}+\sum_r \diffp{z^{(k+1)}_i}{b^{k}_r}\diffp{b^{(k)}_r}{z^{(k)}_j}\\
-&amp;=\sum_r \Theta^{(k)}_{ir}\diffp{a^{(k)}_r}{z^{(k)}_j}=\Theta^{(k)}_{ij}\diffp{a^{(k)}_j}{z^{(k)}_j}=\Theta^{(k)}_{ij}\sigma'(z^{(k)}_j),\\
-\diffp{J}{z^{(k)}_j}&amp;=\sum_r \diffp{J}{z^{(k+1)}_r}\diffp{z^{(k+1)}_r}{z^{(k)}_j}=\sum_r\diffp{J}{z^{(k+1)}_r}\Theta^{(k)}_{rj}\sigma'(z^{(k)}_j).
-\end{aligned}
-\]</span></p>
-<p>We set</p>
-<ul>
-<li><span class="math inline">\(\delta^k_j=\diffp{J}{z^{(k)}_j}\)</span>, <span class="math inline">\(\delta^k=\left[\delta^k_1,\delta_2^k,\ldots\right]^T\)</span>.</li>
-<li><span class="math inline">\(\mathbf{z}^k=\left[z^{(k)}_1,z^{(k)}_2,\ldots\right]^T\)</span>, <span class="math inline">\(\mathbf{a}^k=\left[a^{(k)}_1,a^{(k)}_2,\ldots\right]^T\)</span>, <span class="math inline">\(\hat{\mathbf{a}}^k=\left[a^{(k)}_0,a^{(k)}_1,\ldots\right]^T\)</span>.</li>
-<li><span class="math inline">\(\Theta^{k}=\left[\Theta^{(k)}_{ij}\right]\)</span>.</li>
-</ul>
-<p>Then we have the following formula. Note that there are ``<span class="math inline">\(z_0\)</span>’’ terms.</p>
-<p><span class="math display">\[
-    \delta^k=\left[(\Theta^k)^T\delta^{k+1}\right]\circ \sigma'(\mathbf{z}^k).
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-\diffp{z^{(k+1)}_r}{\Theta^{(k)}_{pq}}&amp;=\diffp*{\left(b^{(k)}_r+\sum_l\Theta^{(k)}_{rl}a^{(k)}_l\right)}{\Theta^{(k)}_{pq}}=\begin{cases}
-0&amp;\text{ for }r\neq q,\\
-a^{(k)}_q&amp;\text{ for }r=q,
-\end{cases}\\
-\diffp{J}{\Theta^{(k)}_{pq}}&amp;=\sum_{r}\diffp{J}{z^{(k+1)}_r}\diffp{z^{(k+1)}_r}{\Theta^{(k)}_{pq}}=\diffp{J}{z^{(k+1)}_p}\diffp{z^{(k+1)}_p}{\Theta^{(k)}_{pq}}=\delta^{k+1}_pa^{k}_q,\\
-\diffp{J}{b^{(k)}_{j}}&amp;=\sum_{r}\diffp{J}{z^{(k+1)}_r}\diffp{z^{(k+1)}_r}{b^{(k)}_{j}}=\diffp{J}{z^{(k+1)}_j}\diffp{z^{(k+1)}_j}{b^{(k)}_{j}}=\diffp{J}{z^{(k+1)}_j}=\delta^{k+1}_j.
-\end{aligned}
-\]</span></p>
-<p>Extend <span class="math inline">\(\hat{\Theta}=\left[b^{(k)},\Theta^{(k)}\right]\)</span>, and <span class="math inline">\(\partial^k J=\left[\diffp{J}{\hat{\Theta}^{(k)}_{ij}}\right]\)</span>. Then <span class="math display">\[
-    \partial^k J=\left[\delta^{k+1}, \delta^{k+1}(\mathbf{a}^k)^T\right].
-\]</span> Then the algorithm is as follows.</p>
-<ol type="1">
-<li>Starting from <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> and some random <span class="math inline">\(\Theta\)</span>.</li>
-<li>Forward computation: compute <span class="math inline">\(z^{(k)}\)</span> and <span class="math inline">\(a^{(k)}\)</span>. The last <span class="math inline">\(a^{(n)}\)</span> is <span class="math inline">\(h\)</span>.</li>
-<li>Compute <span class="math inline">\(\delta^n=\nabla J\circ\sigma'(z^{(n)})\)</span>. In the case of <span class="math inline">\(J=\frac12||{h-y}||^2\)</span>, <span class="math inline">\(\nabla J=(a^{(n)}-y)\)</span>, and then <span class="math inline">\(\delta^n=(a^{(n)}-y)\circ\sigma'(z^{(n)})\)</span>.</li>
-<li>Backwards: <span class="math inline">\(\delta^k=\left[(\Theta^k)^T\delta^{k+1}\right]\circ \sigma'(\mathbf{z}^k)\)</span>, and <span class="math inline">\(\partial^k J=\left[\delta^{k+1}, \delta^{k+1}(\mathbf{a}^k)^T\right]\)</span> .</li>
-</ol>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 7.1</strong></span> Consider there are 3 layers: input, hidden and output. There are <span class="math inline">\(m+1\)</span> nodes in the input layer, <span class="math inline">\(n+1\)</span> nodes in the hidden layer and <span class="math inline">\(k\)</span> in the output layer. Therefore</p>
-<ul>
-<li><span class="math inline">\(a^{(1)}\)</span> and <span class="math inline">\(\delta^1\)</span> are <span class="math inline">\(m\)</span>-dim column vectors.</li>
-<li><span class="math inline">\(z^{(2)}\)</span>, <span class="math inline">\(a^{(2)}\)</span> and <span class="math inline">\(\delta^2\)</span> are <span class="math inline">\(n\)</span>-dim column vectors.</li>
-<li><span class="math inline">\(z^{(3)}\)</span>, <span class="math inline">\(a^{(3)}\)</span> and <span class="math inline">\(\delta^3\)</span> are <span class="math inline">\(k\)</span>-dim column vectors.</li>
-<li><span class="math inline">\(\hat{\Theta}^1\)</span> is <span class="math inline">\(n\times(m+1)\)</span>, <span class="math inline">\(\hat{\Theta}^2\)</span> is <span class="math inline">\(k\times(n+1)\)</span>.</li>
-<li><span class="math inline">\(z^{(2)}=b^{(1)}+\Theta^{(1)}a^{(1)}=\hat{\Theta}^{(1)}\hat{a}^{(1)}\)</span>, <span class="math inline">\(z^{(3)}=b^{(2)}+\Theta^{(2)}a^{(2)}=\hat{\Theta}^{(2)}\hat{a}^{(2)}\)</span>.</li>
-<li><span class="math inline">\(\delta^3=\nabla_aJ\circ\sigma'(z^{(3)})\)</span>. This is a <span class="math inline">\(k\)</span>-dim column vector.</li>
-<li><span class="math inline">\(\partial^2 J=\left[\delta^3,\delta^3(a^{(2)})^T\right]\)</span>.</li>
-<li><span class="math inline">\(\delta^2=\left[(\Theta^2)^T\delta^3\right]\circ \sigma'(z^{(2)})\)</span>, where <span class="math inline">\((\hat{\Theta^2})^T\delta^3=(\hat{\Theta^2})^T\delta^3\)</span> and then remove the first row.</li>
-<li><span class="math inline">\(\delta^1=\begin{bmatrix}(\Theta^1)^T\delta^2\end{bmatrix}\circ \sigma'(z^{(1)})\)</span>, where <span class="math inline">\((\hat{\Theta^1})^T\delta^2=(\hat{\Theta^1})^T\delta^2\)</span> and then remove the first row.</li>
-<li><span class="math inline">\(\partial^1 J=\left[\delta^2,\delta^2(a^{(1)})^T\right]\)</span>.</li>
-<li>When <span class="math inline">\(J=-\frac1m\sum y\ln a+(1-y)\ln(1-a)\)</span>, <span class="math inline">\(\delta^3=\frac1m(\sum a^{(3)}-\sum y)\)</span>.</li>
-</ul>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We mentioned “interpreter” here. There are mainly two types of implimentations of programming langauges: interpreters and compilers. There are also some additional types like just-in-time compilers which can be treated as combinations of the two.</p>
+<p>Python is usually treated as an <em>interpreted</em> language since <code>CPython</code> is an interpreter. One of Python’s most useful features is its interactive interpreter, which allows for very fast testing of ideas without the overhead of creating test files as is typical in most programming languages.</p>
+</div>
+</div>
 </div>
 </section>
-<section id="example" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="example"><span class="header-section-number">7.2</span> Example</h2>
-<p>Let us take some of our old dataset as an example. This is an continuation of the horse colic dataset from Logistic regression. Note that most of the codes are directly taken from logistic regression section, since MLP is just a generalization of logistic regression.</p>
-<div id="3f949071" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'http://archive.ics.uci.edu/ml/machine-learning-databases/horse-colic/horse-colic.data'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, sep<span class="op">=</span><span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, header<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.replace(<span class="st">"?"</span>, np.NaN)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.fillna(<span class="dv">0</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">27</span>])</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">23</span>] <span class="op">=</span> df[<span class="dv">23</span>].replace({<span class="dv">1</span>: <span class="dv">1</span>, <span class="dv">2</span>: <span class="dv">0</span>})</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.iloc[:, :<span class="op">-</span><span class="dv">1</span>].to_numpy().astype(<span class="bu">float</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="dv">23</span>].to_numpy().astype(<span class="bu">int</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>mms <span class="op">=</span> MinMaxScaler()</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>mms.fit(X_train)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> mms.transform(X_train)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> mms.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="repl" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="repl"><span class="header-section-number">A.3</span> REPL</h2>
+<p>There are two ways to use Python interpreter. The default way is that Python interpreter reads a file and execute a script from there. The second way is called <em>the intereactive shell</em>, that Python interpreter read the input from user directly, and print the result immediately. The model is like code example: prompt the user for some code, and when they’ve entered it, execute it in the same process. This model is often called a <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a>, or <em>Read-Eval-Print-Loop</em>.</p>
+<p><em>Shell</em>, <em>terminal</em>, <em>console</em> have different meanings in their original contexts. However, nowadays, especially when talking about Python intereactive shell, these terminologies are used interchangeably. They are referred to the frontend of the system. In other words, the main task for the Python intereactive shell is to handle the user inputs and communicate with the backend, which is also called a <em>kernel</em>. We won’t distinguish the real differences between these terminologies. The kernel will be discussed in the next section.</p>
+<p>The standard interactive Python interpreter can be invoked on the command line with the <code>python</code> command. Note that you should make sure that the <code>PATH</code> system enviroment variable is configured, otherwise you have to specifiy the path to the Python execuatable file. To quit the intereactive shell you can type the commands <code>quit()</code>/<code>exit()</code>/<code>Ctrl+Z</code> then <code>Enter</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>The data is feed into the dataloader. Note that we change the batch size of the test dataloader to be the whole set, since I don’t want to do batch evaluation. This can be modified accordingly.</p>
-<div id="32b8fec7" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset, DataLoader</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyDataset(Dataset):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, X, y):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.X <span class="op">=</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> torch.tensor(y, dtype<span class="op">=</span>torch.float32).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.X.shape[<span class="dv">0</span>]</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="va">self</span>.X[idx], <span class="va">self</span>.y[idx])</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>trainloader <span class="op">=</span> DataLoader(MyDataset(X_train, y_train), batch_size <span class="op">=</span><span class="dv">32</span>)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>testloader <span class="op">=</span> DataLoader(MyDataset(X_test, y_test), batch_size<span class="op">=</span>X_test.shape[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we build a neural network. This is a 2-layer model, with 1 hidden layer with 10 nodes. Since we are going to use BCEWithLogitsLoss, we don’t add the final activation function here in the model, but leave it to the loss function.</p>
-<div id="ff06b1e1" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyModel(nn.Module):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, num_inputs):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear1 <span class="op">=</span> nn.Linear(num_inputs, <span class="dv">10</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.act1 <span class="op">=</span> nn.ReLU()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear2 <span class="op">=</span> nn.Linear(<span class="dv">10</span>, <span class="dv">1</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># self.act2 = nn.Sigmoid()</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.linear1(x)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.act1(x)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.linear2(x)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># x = self.act2(x)</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we start to train the model and evaluate. Note that the majority part of the code is about evaluating the result. Since we are doing binary classification, our result can be computed by checking whether our model output (before the final sigmoid function) is positive or negative. This is where <code>(y_pred_test&gt;0)</code> comes from.</p>
-<p>For simplicity, when recording the training and validating results, I only record those from the last batch. This can be improved by designing a better result recorder.</p>
-<div id="708f0080" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim <span class="im">import</span> SGD</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.nn <span class="im">import</span> BCEWithLogitsLoss</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>EPOCHS <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> MyModel(X.shape[<span class="dv">1</span>])</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> SGD(model.parameters(), lr<span class="op">=</span>learning_rate)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> BCEWithLogitsLoss()</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>loss_train <span class="op">=</span> []</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>loss_val <span class="op">=</span> []</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>acc_train <span class="op">=</span> []</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>acc_val <span class="op">=</span> []</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(EPOCHS):</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> X_batch, y_batch <span class="kw">in</span> trainloader:</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model(X_batch)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss_fn(y_pred, y_batch)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        loss_train.append(loss.item())</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        y_hat <span class="op">=</span> (y_pred<span class="op">&gt;</span><span class="dv">0</span>).to(torch.float32)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        acc_train.append(accuracy_score(y_hat, y_batch))</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X_test, y_test <span class="kw">in</span> testloader:</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            y_pred_test <span class="op">=</span> model(X_test)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        loss_test <span class="op">=</span> loss_fn(y_pred_test, y_test)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        loss_val.append(loss_test.item())</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        y_hat_test<span class="op">=</span> (y_pred_test<span class="op">&gt;</span><span class="dv">0</span>).to(torch.float32)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        acc_val.append(accuracy_score(y_hat_test, y_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>And the learning curve are shown in the following plots.</p>
-<div id="02f67a45" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(loss_train, label<span class="op">=</span><span class="st">'train_loss'</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(loss_val, label<span class="op">=</span><span class="st">'val_loss'</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend()</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(acc_train, label<span class="op">=</span><span class="st">'train_acc'</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(acc_val, label<span class="op">=</span><span class="st">'val_acc'</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="intro_files/figure-html/cell-6-output-1.png" width="579" height="411" class="figure-img"></p>
-</figure>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>In the REPL model, the backend (evaluation) is basically handled by the Python interpreter. The frontend is dealing with the user interface. Some typically tasks include the <em>primary/secondary prompt</em> and multi-line commands. The original REPL is very limited.</p>
 </div>
-<p>As you may see, to build a netural network model it requires many testing. There are many established models. When you build your own architecture, you may start from there and modify it to fit your data.</p>
+</div>
 </section>
-<section id="exercises-and-projects" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="exercises-and-projects"><span class="header-section-number">7.3</span> Exercises and Projects</h2>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.1</strong></span> Please hand write a report about the details of back propagation.</p>
-</div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.2</strong></span> CHOOSE ONE: Please use netural network to one of the following datasets. - the <code>iris</code> dataset. - the dating dataset. - the <code>titanic</code> dataset.</p>
-<p>Please in addition answer the following questions.</p>
+<section id="ipython" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="ipython"><span class="header-section-number">A.4</span> <code>IPython</code></h2>
+<p><code>IPython</code> was initially designed as an Enhanced interactive Python shell. However after many year’s development, the whole <code>IPython</code> project becomes too big to maintain as one single project. Therefore it is now split into many smaller projects. The two most popular projects are <code>IPython</code> and <code>Jupyter</code>. This is called <a href="https://blog.jupyter.org/the-big-split-9d7b88a031a7">the Big Split</a>.</p>
+<p>The current <a href="https://ipython.readthedocs.io/en/stable/overview.html"><code>IPython</code></a> play two fundamental roles:</p>
+<ul>
+<li>Terminal <code>IPython</code> as the familiar REPL;</li>
+<li>The <code>IPython</code> kernel (which is defined below) that provides computation and communication with the frontend interfaces, like the notebook.</li>
+</ul>
+<p>The core idea in the design of <code>IPython</code> is to abstract and extend the notion of a traditional REPL environment by decoupling the evaluation into its own process. We call this process a <em>kernel</em>: it receives execution instructions from clients and communicates the results back to them.</p>
+<p>This decoupling allows us to have several clients connected to the same kernel, and even allows clients and kernels to live on different machines. This two-process model is now used by most of the <code>Jupyter</code> project.</p>
+<p>You can launch the <code>IPython</code> shell on the command line with the <code>ipython</code> command (which similar to <code>python</code> case requires <code>PATH</code> configuration), and quit the shell with <code>exit</code>/<code>exit()</code>/<code>quit</code>/<code>quit()</code> commands.</p>
+<p>The reference Python kernel provided by <code>IPython</code> is called <code>ipykernel</code>. With <code>ipykernel</code> you may create and maintain multiple kernels.</p>
+</section>
+<section id="jupyter" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="jupyter"><span class="header-section-number">A.5</span> <code>Jupyter</code></h2>
+<p><a href="https://docs.jupyter.org/en/latest/projects/architecture/content-architecture.html"><code>Jupyter</code></a> projects contain many subprojects, which includes <code>Jupyter</code> User Interfaces. The <code>Jupyter</code> user interfaces offer a foundation of interactive computing environments where scientific computing, data science, and analytics can be performed using a wide range of programming languages. This includes <code>Jupyter console</code>, <code>Jupyter qtconsole</code>, and <code>Jupyter notebook</code>. Here we mainly focus on <code>Jupyter notebook</code>.</p>
+<p><code>Jupyter notebooks</code> are structured data that represent your code, metadata, content, and outputs. When saved to disk, the notebook uses the extension <code>.ipynb</code>, and uses a <code>JSON</code> structure. After receiving the user input, the notebook communicates with the kernel using <code>JSON</code> messages sent over <code>ZeroMQ</code> sockets. The protocol used between the frontends and the kernel is described in <a href="https://jupyter-client.readthedocs.io/en/latest/messaging.html#messaging">Messaging in Jupyter</a>.</p>
+<p>A kernel process can be connected to more than one frontend simultaneously. In this case, the different frontends will have access to the same variables.</p>
+<p>This design was intended to allow easy development of different frontends based on the same kernel, but it also made it possible to support new languages in the same frontends, by developing kernels in those languages. The <code>Jupyter</code> Notebook Application has three main kernels: the <code>ipykernel</code>, <code>irkernel</code> and <code>ijulia</code> kernels. Actually the name of <code>Jupyter</code> comes from these three programming languages for data science: <a href="https://julialang.org/">Julia</a>, Python and R.</p>
+</section>
+<section id="multi-kernels-setup" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="multi-kernels-setup"><span class="header-section-number">A.6</span> Multi-kernels setup</h2>
+<p>This section is mainly following the <a href="https://ipython.readthedocs.io/en/stable/install/kernel_install.html">official document</a>.</p>
+<p>To install one <code>IPython</code> kernel, you may use <code>conda</code> or <code>pip</code> to install <code>ipykernel</code> in the environment. If you want to have multiple <code>IPython</code> kernels for different virtualenvs or <code>conda</code> environments, you will need to specify unique names for the kernelspecs.</p>
 <ol type="1">
-<li>What is your accuracy score?</li>
-<li>How many epochs do you use?</li>
-<li>What is the batch size do you use?</li>
-<li>Plot the learning curve (loss vs epochs, accuracy vs epochs).</li>
-<li>Analyze the bias / variance status.</li>
+<li>Activate the environment you want.</li>
 </ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Install the kernel in the environment.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install jupyter</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> myenv <span class="at">--display-name</span> <span class="st">"Python (myenv)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>--user</code> means that the kernel is installed in the user’s folder instead of a system folder, and it can be removed. The <code>--name</code> value (in this case it is <code>myenv</code>) is used by Jupyter internally. These commands will overwrite any existing kernel with the same name. <code>--display-name</code> is what you see in the notebook menus.</p>
+<ol start="3" type="1">
+<li>You could use the command to find all kernels installed in your system.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Available kernels are shown, as well as the path to the kernel configuration file <code>kernel.json</code>. The most important configuration is the path to the Python interpreter executatable file.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>kernel.json</strong></pre>
 </div>
+<div class="sourceCode" id="cb4" data-filename="kernel.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="dt">"argv"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">Xinli</span><span class="ch">\\</span><span class="st">anaconda3</span><span class="ch">\\</span><span class="st">envs</span><span class="ch">\\</span><span class="st">myenv</span><span class="ch">\\</span><span class="st">python.exe"</span><span class="ot">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"-m"</span><span class="ot">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ipykernel_launcher"</span><span class="ot">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"-f"</span><span class="ot">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"{connection_file}"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a> <span class="dt">"display_name"</span><span class="fu">:</span> <span class="st">"Python (3.10)"</span><span class="fu">,</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"python"</span><span class="fu">,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a> <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"debugger"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">}</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>There is a possibility that <code>Jupyter</code> cannot find the kernel you create in a <code>conda</code> environment. In this case you may want to try <a href="https://github.com/Anaconda-Platform/nb_conda_kernels/"><code>nb_conda_kernels</code></a>. This is a tool to enable a Jupyter notebook in one <code>conda</code> environment to access kernels found in other environments. It should be installed in the environment from which you run <code>Jupyter</code> Notebook or <code>JupyterLab</code>. This might be your base <code>conda</code> environment, but it need not be. After you finish installation, you may use <code>jupyter kernelspec list</code> to check whether it works.</li>
+</ol>
 
 
 </section>
@@ -1101,13 +969,13 @@ a^{(k)}_q&amp;\text{ for }r=q,
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../contents/6/intro.html" class="pagination-link" aria-label="Logistic regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Logistic regression</span></span>
+      <a href="../../contents/7/intro.html" class="pagination-link" aria-label="Netural networks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Netural networks</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../contents/app/setup.html" class="pagination-link" aria-label="Python IDE Setup">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Python IDE Setup</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../contents/app/path.html" class="pagination-link" aria-label="Environemnt Variable `PATH`">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Environemnt Variable <code>PATH</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
