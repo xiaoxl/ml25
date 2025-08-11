@@ -1,0 +1,20 @@
+# Environemnt Variable `PATH` {#sec-path}
+
+
+Here are the steps to edit the system environment variables in Windows 10/11. 
+
+1. First in the start menu search for `Edit the system environment variables`. 
+
+![](assests/img/20220817235031.png){fig-align="center"}
+
+2. Then click the `Environment Variables...` button at the right lower corner. 
+
+![](assests/img/20220817235002.png){fig-align="center"} 
+
+3. Find the `Path` variable in either the upper window or the lower window. Use which one depends on whether you want to register the variable for the user or for the machine. In this example I add for the user.
+
+![](assests/img/20220819091713.png){fig-align="center"}
+
+4. Finally double click the variable and add the following path to it. You need to make changes according to your installation. I recommend you to locate your Anaconda installation first to get the path.
+
+![](assests/img/20220819091555.png){fig-align="center"}

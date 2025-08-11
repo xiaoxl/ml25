@@ -1,0 +1,307 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Python quick guide\n",
+        "\n",
+        "### Python Notebook\n",
+        "We mainly use Jupyter Notebook (.ipynb) to write documents for this course. Currently most main stream Python IDEs support Jupyter Notebook. They are not entirely identical but the differences are not huge and you may choose any you like. In this course we recommand using VS Code. The setup can be found in @sec-vscode.\n",
+        "\n",
+        "One of the easiest ways to use Python Notebook is through [JupyterLab](https://jupyter.org/try). The best part about it is that you don't need to worry about installation and configuration in the first place, and you can directly start to code. \n",
+        "\n",
+        "Click the above link and choose JupyterLab. Then you will see the following page. \n",
+        "\n",
+        "![](assests/img/20220727120418.png)  \n",
+        "\n",
+        "The webapp you just started is called JupyterLite. This is a demo version. The full JupyterLab installation instruction can also be found from the link.\n",
+        "\n",
+        "\n",
+        "There is a small button `+` under the tab bar. This is the place where you click to start a new cell. You may type codes or markdown documents or raw texts in the cell according to your needs. The drag-down menu at the end of the row which is named `Code` or `Markdown` or `Raw` can help you make the switch. Markdown is a very simple light wighted language to write documents. In most cases it behaves very similar to plain texts. Codes are just regular Python codes (while some other languages are supported). You may either use the triangle button in the menu to execute the codes, or hit `shift + enter`. \n",
+        "\n",
+        "![](assests/img/20220727120505.png)  \n",
+        "JupyterLite contains a few popular packages. Therefore it is totally ok if you would like to play with some simple things. However since it is an online evironment, it has many limitations. Therefore it is still recommended to set up a local environment once you get familiar with Python Notebook. Please check the following links for some popular choices for notebooks and Python installations in general, either local and online.\n",
+        "\n",
+        "- [Jupyter Notebook / JupyterLab](https://jupyter.org/install)\n",
+        "- [VS Code](https://code.visualstudio.com/docs/languages/python)\n",
+        "- [PyCharm](https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html)\n",
+        "- [Google Colab](https://colab.research.google.com/)\n",
+        "- [Anaconda](https://www.anaconda.com/)\n",
+        "\n",
+        "\n",
+        "### Python fundamentals\n",
+        "We will put some very basic Python commands here for you to warm up. More advanced Python knowledge will be covered during the rest of the semester. The main reference for this part is @Har2012. Another referenece is [My notes](https://xiaoxl.github.io/pr24/).\n",
+        "\n",
+        "#### Indentation\n",
+        "Python is using indentation to denote code blocks. It is not convienent to write in the first place, but it forces you to write clean, readable code.\n",
+        "\n",
+        "By the way, the `if` and `for` block are actually straightforward.\n",
+        "\n",
+        ":::{layout-nrow=2}"
+      ],
+      "id": "27dedf2f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "if jj < 3:\n",
+        "    jj = jj \n",
+        "    print(\"It is smaller than 3.\")"
+      ],
+      "id": "d74d7343",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "if jj < 3:\n",
+        "    jj = jj\n",
+        "print(\"It is smaller than 3.\")"
+      ],
+      "id": "24c84278",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "for i in range(3):\n",
+        "    i = i + 1\n",
+        "    print(i)"
+      ],
+      "id": "a138ed4a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "for i in range(3):\n",
+        "    i = i + 1\n",
+        "print(i)"
+      ],
+      "id": "08b6a58b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "\n",
+        "Please tell the differences between the above codes.\n",
+        "\n",
+        "\n",
+        "#### `list` and `dict`\n",
+        "Here are some very basic usage of lists of dictionaries in Python."
+      ],
+      "id": "3d51624c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "newlist = list()\n",
+        "newlist.append(1)\n",
+        "newlist.append('hello')\n",
+        "newlist"
+      ],
+      "id": "45be938e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "newlisttwo = [1, 'hello']\n",
+        "newlisttwo"
+      ],
+      "id": "8ac55f5e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "newdict = dict()\n",
+        "newdict['one'] = 'good'\n",
+        "newdict[1] = 'yes'\n",
+        "newdict"
+      ],
+      "id": "88c141ba",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "newdicttwo = {'one': 'good', 1: 'yes'}\n",
+        "newdicttwo"
+      ],
+      "id": "82895636",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Loop through lists\n",
+        "When creating `for` loops we may let Python directly loop through lists. Here is an example. The code is almost self-explained."
+      ],
+      "id": "e15f7991"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "alist = ['one', 2, 'three', 4]\n",
+        "\n",
+        "for item in alist:\n",
+        "    print(item)"
+      ],
+      "id": "d2c29404",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Reading files\n",
+        "There are a lot of functions that can read files. The basic one is to read any files as a big string. After we get the string, we may parse it based on the structure of the data.\n",
+        "\n",
+        "The above process sounds complicated. That's why we have so many different functions reading files. Usually they focus on a certain types of files (e.g. spreadsheets, images, etc..), parse the data into a particular data structure for us to use later.\n",
+        "\n",
+        "I will mention a few examples.\n",
+        "\n",
+        "- `csv` files and `excel` files\n",
+        "Both of them are spreadsheets format. Usually we use [`pandas.read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) and [`pandas.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) both of which are from the package `pandas` to read these two types of files. \n",
+        "\n",
+        "- images\n",
+        "    Images can be treated as matrices, that each entry represents one pixel. If the image is black/white, it is represented by one matrix where each entry represents the gray value. If the image is colored, it is represented by three matrices where each entry represents one color. To use which three colors depends on the color map. `rgb` is a popular choice. \n",
+        "\n",
+        "    In this course when we need to read images, we usually use [`matplotlib.pyplot.imread`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imread.html) from the package `matplotlib` or [`cv.imread`](https://docs.opencv.org/4.x/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56) from the package `opencv`.\n",
+        "\n",
+        "- `.json` files\n",
+        "`.json` is a file format to store dictionary type of data. To read a `json` file and parse it as a dictionary, we need [`json.load`](https://docs.python.org/3/library/json.html#json.load) from the package `json`. \n",
+        "\n",
+        "#### Writing files\n",
+        "\n",
+        "- [`pandas.DataFrame.to_csv`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)\n",
+        "- [`pandas.DataFrame.to_excel`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html)\n",
+        "- [`matplotlib.pyplot.imsave`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imsave.html)\n",
+        "- [`cv.imwrite`](https://docs.opencv.org/3.4/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce)\n",
+        "- [`json.dump`](https://docs.python.org/3/library/json.html#json.dump)\n",
+        "\n",
+        "#### Relative paths\n",
+        "In this course, when reading and writing files, please keep all the files using relative paths. That is, only write the path starting from the working directory. \n",
+        "\n",
+        "\n",
+        "::: {#exm-}\n",
+        "\n",
+        "\n",
+        "Consider the following tasks:\n",
+        "\n",
+        "1. Your working directory is `C:/Users/Xinli/projects/`.\n",
+        "2. Want to read a file `D:/Files/example.csv`.\n",
+        "3. Want to generate a file whose name is `result.csv` and put it in a subfoler named `foldername`.\n",
+        "\n",
+        "To do the tasks, don't directly run the code `pd.read_csv('D:/Files/example.csv')`. Instead you should first copy the file to your working directory `C:/Users/Xinli/projects/`, and then run the following code. "
+      ],
+      "id": "2bed0cef"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('example.csv')\n",
+        "df.to_csv('foldername/result.csv')"
+      ],
+      "id": "7f417a70",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Please pay attention to how the paths are written.\n",
+        "\n",
+        "\n",
+        ":::\n",
+        "\n",
+        "\n",
+        "#### `.`\n",
+        "\n",
+        "- class and packages.\n",
+        "- Get access to attributes and methods\n",
+        "- Chaining dots.\n",
+        "\n",
+        "### Some additional topics\n",
+        "\n",
+        "You may read about these parts from the appendices of [My notes](https://xiaoxl.github.io/pr23f/contents/app/virtenv.html).\n",
+        "\n",
+        "#### Package management and Virtual environment\n",
+        "\n",
+        "- [`conda`](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)\n",
+        "  - `conda create`\n",
+        "    - `conda create --name myenv` \n",
+        "    - `conda create --name myenv python=3.9` \n",
+        "    - `conda create --name myenv --file spec-file.txt`\n",
+        "  - `conda install`\n",
+        "    - `conda install -c conda-forge numpy`\n",
+        "  - `conda activate myenv`\n",
+        "  - `conda list`\n",
+        "    - `conda list numpy`\n",
+        "    - `conda list --explicit > spec-file.txt`\n",
+        "  - `conda env list`\n",
+        "- `pip` / [`venv`](https://docs.python.org/3/library/venv.html)\n",
+        "  - `python -m venv newenv`\n",
+        "  - `newenv\\Scripts\\activate`\n",
+        "  - `pip install`\n",
+        "  - `pip freeze > requirements.txt`\n",
+        "  - `pip install -r /path/to/requirements.txt`\n",
+        "  - `deactivate`\n",
+        "\n",
+        "#### Version Control\n",
+        "\n",
+        "- `Git`\n",
+        "  - [Install](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)\n",
+        "  - `git config --list`\n",
+        "  - `git config --global user.name \"My Name\"`\n",
+        "  - `git config --global user.email \"myemail@example.com\"`\n",
+        "- `GitHub`"
+      ],
+      "id": "e33cc716"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "D:\\Codes\\Onlinenotes\\MachineLearning\\ml25\\ml25\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

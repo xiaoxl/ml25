@@ -1,27 +1,7 @@
 ## Python quick guide
 
 ### Python Notebook
-We mainly use Python Notebook (.ipynb) to write documents for this course. Currently all main stream Python IDE support Python Notebook. All of them are not entirely identical but the differences are not huge and you may choose any you like.
-
-One of the easiest ways to use Python Notebook is through [JupyterLab](https://jupyter.org/try). The best part about it is that you don't need to worry about installation and configuration in the first place, and you can directly start to code. 
-
-Click the above link and choose JupyterLab. Then you will see the following page. 
-
-![](assests/img/20220727120418.png)  
-
-The webapp you just started is called JupyterLite. This is a demo version. The full JupyterLab installation instruction can also be found from the link.
-
-
-There is a small button `+` under the tab bar. This is the place where you click to start a new cell. You may type codes or markdown documents or raw texts in the cell according to your needs. The drag-down menu at the end of the row which is named `Code` or `Markdown` or `Raw` can help you make the switch. Markdown is a very simple light wighted language to write documents. In most cases it behaves very similar to plain texts. Codes are just regular Python codes (while some other languages are supported). You may either use the triangle button in the menu to execute the codes, or hit `shift + enter`. 
-
-![](assests/img/20220727120505.png)  
-JupyterLite contains a few popular packages. Therefore it is totally ok if you would like to play with some simple things. However since it is an online evironment, it has many limitations. Therefore it is still recommended to set up a local environment once you get familiar with Python Notebook. Please check the following links for some popular choices for notebooks and Python installations in general, either local and online.
-
-- [Jupyter Notebook / JupyterLab](https://jupyter.org/install)
-- [VS Code](https://code.visualstudio.com/docs/languages/python)
-- [PyCharm](https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html)
-- [Google Colab](https://colab.research.google.com/)
-- [Anaconda](https://www.anaconda.com/)
+We mainly use Jupyter Notebook (.ipynb) to write documents for this course. Currently most main stream Python IDEs support Jupyter Notebook. They are not entirely identical but the differences are not huge and you may choose any you like. In this course we recommand using VS Code. The setup can be found in Appendix @sec-vscode.
 
 
 ### Python fundamentals
@@ -116,24 +96,35 @@ The above process sounds complicated. That's why we have so many different funct
 
 I will mention a few examples.
 
-- `csv` files and `excel` files
-Both of them are spreadsheets format. Usually we use [`pandas.read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) and [`pandas.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) both of which are from the package `pandas` to read these two types of files. 
+::: {.callout-note collapse="true"}
+## `csv` files and `excel` files
+Both of them are spreadsheets format. Usually we use [`pandas.read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) and [`pandas.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) both of which are from the package `pandas` to read these two types of files. When reading `excel`, package `openpyxl` is needed.
+:::
 
-- images
-    Images can be treated as matrices, that each entry represents one pixel. If the image is black/white, it is represented by one matrix where each entry represents the gray value. If the image is colored, it is represented by three matrices where each entry represents one color. To use which three colors depends on the color map. `rgb` is a popular choice. 
 
-    In this course when we need to read images, we usually use [`matplotlib.pyplot.imread`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imread.html) from the package `matplotlib` or [`cv.imread`](https://docs.opencv.org/4.x/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56) from the package `opencv`.
+::: {.callout-note collapse="true"}
+## images
+Images can be treated as matrices, that each entry represents one pixel. If the image is black/white, it is represented by one matrix where each entry represents the gray value. If the image is colored, it is represented by three matrices where each entry represents one color. To use which three colors depends on the color map. `rgb` is a popular choice. 
 
-- `.json` files
+In this course when we need to read images, we usually use [`matplotlib.pyplot.imread`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imread.html) from the package `matplotlib` or [`cv.imread`](https://docs.opencv.org/4.x/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56) from the package `opencv`.
+:::
+
+<!-- 
+::: {.callout-note collapse="true"}
+## `.json` files
 `.json` is a file format to store dictionary type of data. To read a `json` file and parse it as a dictionary, we need [`json.load`](https://docs.python.org/3/library/json.html#json.load) from the package `json`. 
+::: -->
+
+
+
 
 #### Writing files
 
 - [`pandas.DataFrame.to_csv`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
 - [`pandas.DataFrame.to_excel`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html)
-- [`matplotlib.pyplot.imsave`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imsave.html)
-- [`cv.imwrite`](https://docs.opencv.org/3.4/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce)
-- [`json.dump`](https://docs.python.org/3/library/json.html#json.dump)
+- [`matplotlib.figure.Figure.savefig()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig)
+<!-- - [`cv.imwrite`](https://docs.opencv.org/3.4/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce) -->
+<!-- - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) -->
 
 #### Relative paths
 In this course, when reading and writing files, please keep all the files using relative paths. That is, only write the path starting from the working directory. 
@@ -161,16 +152,18 @@ Please pay attention to how the paths are written.
 
 
 :::
-
+<!-- 
 
 #### `.`
 
 - class and packages.
 - Get access to attributes and methods
-- Chaining dots.
+- Chaining dots. -->
 
-### Some additional topics
 
+
+<!-- ### Some additional topics -->
+<!-- 
 You may read about these parts from the appendices of [My notes](https://xiaoxl.github.io/pr23f/contents/app/virtenv.html).
 
 #### Package management and Virtual environment
@@ -202,4 +195,4 @@ You may read about these parts from the appendices of [My notes](https://xiaoxl.
   - `git config --list`
   - `git config --global user.name "My Name"`
   - `git config --global user.email "myemail@example.com"`
-- `GitHub`
+- `GitHub` -->

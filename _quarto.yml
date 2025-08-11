@@ -60,11 +60,11 @@ book:
   #       - contents/7/07-.qmd
   #       - contents/8/08-.qmd
   #   - contents/references.qmd
-  # appendices:
-    # - contents/app/intro.qmd
-  #   - contents/app/path.qmd
-  #   - contents/app/virtenv.qmd
-  #   - contents/app/concepts.qmd
+  appendices:
+    # - contents/app/concepts.qmd
+    # - contents/app/path.qmd
+    - contents/app/setup.qmd
+    # - contents/app/virtenv.qmd
   #   - contents/app/r.qmd
   sidebar:
     style: "docked"
