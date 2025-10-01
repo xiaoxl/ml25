@@ -3,3 +3,5 @@
 /docs/
 /ml25/
 /_extensions/
+
+**/*.quarto_ipynb

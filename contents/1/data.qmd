@@ -80,7 +80,7 @@ To summarize:
 - Validation set: used to tune the hyperparameters;
 - Test set: used to check the overall performance of the model.
 
-The validation set is not always required. If we use cross-validation technique for hyperparameters tuning, like `sklearn.model_selection.GridSearchCV()`, we don't need a separated validation set. In this case, we will only need the training set and the test set, and run `GridSearchCV` over the training set. The cross-validation will be discussed in {numref}`Section %s<section-cross-validation>`. 
+The validation set is not always required. If we use cross-validation technique for hyperparameters tuning, like `sklearn.model_selection.GridSearchCV()`, we don't need a separated validation set. In this case, we will only need the training set and the test set, and run `GridSearchCV` over the training set. The cross-validation will be discussed in @sec-cross-validation. 
 
 The sizes and strategies for dataset division depends on the problem and data available. It is often recommanded that more training data should be used. The typical distribution of training, validation and test is $(6:3:1)$, $(7:2:1)$ or $(8:1:1)$. Sometimes validation set is discarded and only training set and test set are used. In this case the distribution of training and test set is usually $(7:3)$, $(8:2)$ or $(9:1)$.
 

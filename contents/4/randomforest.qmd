@@ -36,7 +36,7 @@ n_instances = 100
 rs = ShuffleSplit(n_splits=n_trees, test_size=1, train_size=n_instances).split(X_train)
 ```
 
-
+<!-- 
 
 Now we would like to generate a list of Decision Trees. We could use the hyperparameters we get from Chapter 3. We train each tree over a certain mini set, and then evaluate the trained model over the test set. The average accuracy is around 80%.
 
@@ -164,7 +164,7 @@ print('The accuracy of the bagging classifier: {}'.format(accuracy_score(y_pred_
 This time you may see a significant increase in the performance.
 
 
-### Using `sklearn`
+### Using `sklearn` -->
 
 `sklearn` provides `BaggingClassifier` to directly perform bagging or pasting. The code is as follows.
 
@@ -176,12 +176,12 @@ from sklearn.tree import DecisionTreeClassifier
 
 bag_clf = BaggingClassifier(DecisionTreeClassifier(),
                             n_estimators=1000,
-                            max_samples=100,
+                            max_samples=1.0,
                             bootstrap=True)
 ```
 
 
-In the above code, `bag_clf` is a bagging classifier, made of 500 `DecisionTreeClassifer`s, and is trained over subsets of size `100`. The option `bootstrap=True` means that it is bagging. If you would like to use pasting, the option is `bootstrap=False`.
+In the above code, `bag_clf` is a bagging classifier, made of 500 `DecisionTreeClassifer`s, and is trained over subsets of size `1.0`. The option `bootstrap=True` means that it is bagging. If you would like to use pasting, the option is `bootstrap=False`.
 
 This `bag_clf` also has `.fit()` and `.predict()` methods. It is used the same as our previous classifiers. Let us try the `make_moon` dataset.
 
@@ -192,6 +192,43 @@ bag_clf.fit(X_train, y_train)
 y_pred_bag = bag_clf.predict(X_test)
 accuracy_score(y_pred_bag, y_test)
 ```
+
+### `max_samples`
+The original bagging algoithm requires the "subset" has the same number of datapoints as the original set. Since duplicates are allowed, we are expected to use 63% of the data from the original dataset.
+
+
+<details>
+<summary>Click to expand for more details.</summary>
+Let the original dataset have $N$ elements. The probability to pick any specific data is $1/N$, and therefore the probability not to pick it is $1-1/N$. If we pick $N$ elements with replacement, the probability that we never pick a specific element is 
+$$
+(1-\frac1N)^N\rightarrow \mathrm e^{-1},\quad \text{when }N\rightarrow\infty.
+$$
+Therefore when $N$ is large, the probability for each element not to be picked is approximately $\mathrm e^{-1}$, and then the probability for it to be picked is approximately $1-\mathrm e^{-1}$. 
+
+Let $I_i$ be the random variable representing whether the element $i$ is picked or not. So
+$$
+I_i=\begin{cases}1&i \text{ is picked}\\
+0&i\text{ is not picked}\end{cases}.
+$$
+So
+$$
+ P(I_i=1)=1-\mathrm e^{-1},\quad P(I_i=0)=\mathrm e^{-1},\quad \text{ and }E[I_i]=1\cdot(1-\mathrm e^{-1})+0\cdot(\mathrm e^{-1})=1-\mathrm e^{-1}.
+$$
+The expectation of the final sample size proportion is
+$$
+E[\frac1N\sum_{i=1}^NI_i]=\frac1N\sum_{i=1}^IE[I_i]=1-\mathrm e^{-1}\approx 0.63.
+$$
+
+With similar calculation, if we pick $\alpha N$ data, the expectation of the final sample size proportion is $1-\mathrm e^{-\alpha}$.
+<hr>
+</details>
+
+In `sklearn`, the requiremnt is relaxed, that you may have any number of data in each sample. This gives more flexiblity to adjust your model, that the sample size may affect the performance of the model. It is set by the argument `max_samples`. 
+
+- If it is float that between 0 and 1, it will be used as the proportion. The default value is $1.0$ which means that we use the original size as the sample size.
+- IF it is an integer that is bigger than $1$, it will be used as the fixed sample size, no matter what the orginal data size is.
+
+
 
 
 ### OOB score
@@ -204,7 +241,6 @@ We could set `oob_score=True` to enable the function when creating a `BaggingCla
 ```{python}
 bag_clf_oob = BaggingClassifier(DecisionTreeClassifier(),
                                 n_estimators=1000,
-                                max_samples=100,
                                 bootstrap=True,
                                 oob_score=True)
 bag_clf_oob.fit(X_train, y_train)

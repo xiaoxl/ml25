@@ -51,7 +51,7 @@ fig.savefig('example.png')
 
 
 <details>
-<summary>Click to expand.</summary>
+<summary>This section is optional.</summary>
 
 
 
