@@ -114,8 +114,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/horse-colic/horse-colic.data'
-df = pd.read_csv(url, delim_whitespace=True, header=None)
-df = df.replace("?", np.NaN)
+df = pd.read_csv(url, sep=r'\s+', header=None)
+df = df.replace("?", np.nan)
 df = df.fillna(0)
 X = df.iloc[:, 1:].to_numpy().astype(float)
 y = df[0].to_numpy().astype(int)
