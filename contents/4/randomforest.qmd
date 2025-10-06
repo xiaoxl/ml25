@@ -129,10 +129,9 @@ When the classifiers used in a bagging classifier are all Decision Trees, the ba
 
 from sklearn.ensemble import RandomForestClassifier
 
-rnd_clf = RandomForestClassifier(n_estimators=1000, max_leaf_nodes=17)
+rnd_clf = RandomForestClassifier(n_estimators=1000, random_state=1)
 rnd_clf.fit(X_train, y_train)
-y_pred_rnd = rnd_clf.predict(X_test)
-accuracy_score(y_pred_rnd, y_test)
+rnd_clf.score(X_test, y_test)
 ```
 
 
@@ -144,19 +143,18 @@ When we use the Decision Tree as our base estimators, the class `RandomForestCla
 ### Extra-trees
 When growing a Decision Tree, our method is to search through all possible ways to find the best split point that get the lowest Gini impurity. Anohter method is to use a random split. Of course a random tree performs much worse, but if we use it to form a random forest, the voting system can help to increase the accuracy. On the other hand, random split is much faster than a regular Decision Tree. 
 
-This type of forest is called *Extremely Randomized Trees*, or *Extra-Trees* for short. We could modify the above random forest classifier code to implement the extra-tree algorithm. The key point is that we don't apply the Decision Tree algorithm to `X_subset`. Instead we perform a random split.
+This type of forest is called *Extremely Randomized Trees*, or *Extra-Trees* for short. We could modify the above random forest classifier code to implement the extra-tree algorithm. The key point is that we don't apply the Decision Tree algorithm. Instead we perform a random split: select a random feature, and split at a random value. In `sklearn` there is an `ExtraTreesClassifier` to create such a classifier. 
 
-In `sklearn` there is an `ExtraTreesClassifier` to create such a classifier. It is hard to say which random forest is better beforehand. What we can do is to test and calculate the cross-validation scores (with grid search for hyperparameters tuning).
+Note that for Extra-Tree, we use the whole dataset instead of samples, because the random split already ensures diversity so we need to reduce variance from resampling. So technically Extra-Tree is not a Bagging method in the standard way, although it looks like one.
 
 
 
 ```{python}
 from sklearn.ensemble import ExtraTreesClassifier
 
-ext_clf = ExtraTreesClassifier(n_estimators=1000, max_leaf_nodes=17)
+ext_clf = ExtraTreesClassifier(n_estimators=1000, random_state=1)
 ext_clf.fit(X_train, y_train)
-y_pred_rnd = ext_clf.predict(X_test)
-accuracy_score(y_pred_rnd, y_test)
+ext_clf.score(X_test, y_test)
 ```
 
 
@@ -167,17 +165,18 @@ In the above example, `RandomForestClassifier` and `ExtraTreesClassifier` get si
 
 ```{python}
 from time import time
-t0 = time()
-rnd_clf = RandomForestClassifier(n_estimators=1000, max_leaf_nodes=17)
-rnd_clf.fit(X_train, y_train)
-t1 = time()
-print('Random Frorest: {}'.format(t1 - t0))
 
 t0 = time()
-ext_clf = ExtraTreesClassifier(n_estimators=1000, max_leaf_nodes=17)
+rnd_clf = RandomForestClassifier(n_estimators=1000, random_state=1)
+rnd_clf.fit(X_train, y_train)
+t1 = time()
+print("Random Frorest: {}".format(t1 - t0))
+
+t0 = time()
+ext_clf = ExtraTreesClassifier(n_estimators=1000, random_state=1)
 ext_clf.fit(X_train, y_train)
 t1 = time()
-print('Extremely Randomized Trees: {}'.format(t1 - t0))
+print("Extremely Randomized Trees: {}".format(t1 - t0))
 ```
 
 
