@@ -497,7 +497,7 @@ window.Quarto = {
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="basic-bagging"><span class="header-section-number">4.1.1</span> Basic bagging</h3>
 <p>One approach to get many estimators is to use the same training algorithm for every predictor and train them on different random subsets of the training set. When sampling is performed with replacement, this method is called <em>bagging</em> (short for <em>bootstrap aggregating</em>). When sampling is performed without replacement, it is called <em>pasting</em>.</p>
 <p>Consider the following example. The dataset is the one we used in Chpater 3: <code>make_moon</code>. We split the dataset into training and test sets.</p>
-<div id="7a3c3afd" class="cell" data-execution_count="1">
+<div id="cd3f95a1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -517,14 +517,14 @@ window.Quarto = {
 <p>The output of <code>ShuffleSplit</code> is a generator. To get the index out of it we need a <code>for</code> loop. You may check out the following code.</p>
 <p>Note that <code>ShuffleSplit</code> is originally used to shuffle data into training and test sets. We would only use the shuffle function out of it, so we will set <code>test_size</code> to be <code>1</code> and use <code>_</code> later in the <code>for</code> loop since we won’t use that part of the information.</p>
 <p>What we finally get is a generator <code>rs</code> that produces indexes of subsets of <code>X_train</code> and <code>y_train</code>.</p>
-<div id="31c49d99" class="cell" data-execution_count="2">
+<div id="00c031b8" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> ShuffleSplit</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_trees <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n_instances <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rs <span class="op">=</span> ShuffleSplit(n_splits<span class="op">=</span>n_trees, test_size<span class="op">=</span><span class="dv">1</span>, train_size<span class="op">=</span>n_instances).split(X_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>sklearn</code> provides <code>BaggingClassifier</code> to directly perform bagging or pasting. The code is as follows.</p>
-<div id="3b04481f" class="cell" data-execution_count="3">
+<div id="b7bad95e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> BaggingClassifier</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -535,14 +535,14 @@ window.Quarto = {
 </div>
 <p>In the above code, <code>bag_clf</code> is a bagging classifier, made of 500 <code>DecisionTreeClassifer</code>s, and is trained over subsets of size <code>1.0</code>. The option <code>bootstrap=True</code> means that it is bagging. If you would like to use pasting, the option is <code>bootstrap=False</code>.</p>
 <p>This <code>bag_clf</code> also has <code>.fit()</code> and <code>.predict()</code> methods. It is used the same as our previous classifiers. Let us try the <code>make_moon</code> dataset.</p>
-<div id="bedd70e1" class="cell" data-execution_count="4">
+<div id="65f86bb4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bag_clf.fit(X_train, y_train)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>y_pred_bag <span class="op">=</span> bag_clf.predict(X_test)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_bag, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>0.842</code></pre>
+<pre><code>0.8446666666666667</code></pre>
 </div>
 </div>
 </section>
@@ -577,7 +577,7 @@ With similar calculation, if we pick <span class="math inline">\(\alpha N\)</spa
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="oob-score"><span class="header-section-number">4.1.3</span> OOB score</h3>
 <p>When we use <code>bagging</code>, it is possible that some of the training data are not used. In this case, we could record which data are not used, and just use them as the test set, instead of providing extra data for test. The data that are not used is called <em>out-of-bag</em> instances, or <em>oob</em> for short. The accuracy over the oob data is called the oob score.</p>
 <p>We could set <code>oob_score=True</code> to enable the function when creating a <code>BaggingClassifier</code>, and use <code>.oob_score_</code> to get the oob score after training.</p>
-<div id="436f6378" class="cell" data-execution_count="5">
+<div id="6bf67834" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bag_clf_oob <span class="op">=</span> BaggingClassifier(DecisionTreeClassifier(),</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                n_estimators<span class="op">=</span><span class="dv">1000</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                bootstrap<span class="op">=</span><span class="va">True</span>,</span>
@@ -585,22 +585,21 @@ With similar calculation, if we pick <span class="math inline">\(\alpha N\)</spa
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bag_clf_oob.fit(X_train, y_train)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>bag_clf_oob.oob_score_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>0.8409411764705882</code></pre>
+<pre><code>0.8398823529411765</code></pre>
 </div>
 </div>
 </section>
 <section id="random-forests" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="random-forests"><span class="header-section-number">4.1.4</span> Random Forests</h3>
 <p>When the classifiers used in a bagging classifier are all Decision Trees, the bagging classifier is called a <code>random forest</code>. <code>sklearn</code> provide <code>RandomForestClassifier</code> class. It is almost the same as <code>BaggingClassifier</code> + <code>DecisionTreeClassifer</code>.</p>
-<div id="32343630" class="cell" data-execution_count="6">
+<div id="2d9831bf" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>y_pred_rnd <span class="op">=</span> rnd_clf.predict(X_test)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_rnd, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>rnd_clf.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>0.8686666666666667</code></pre>
+<pre><code>0.844</code></pre>
 </div>
 </div>
 <p>When we use the Decision Tree as our base estimators, the class <code>RandomForestClassifier</code> provides more control over growing the random forest, with a certain optimizations. If you would like to use other estimators, then <code>BaggingClassifier</code> should be used.</p>
@@ -608,36 +607,36 @@ With similar calculation, if we pick <span class="math inline">\(\alpha N\)</spa
 <section id="extra-trees" class="level3" data-number="4.1.5">
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="extra-trees"><span class="header-section-number">4.1.5</span> Extra-trees</h3>
 <p>When growing a Decision Tree, our method is to search through all possible ways to find the best split point that get the lowest Gini impurity. Anohter method is to use a random split. Of course a random tree performs much worse, but if we use it to form a random forest, the voting system can help to increase the accuracy. On the other hand, random split is much faster than a regular Decision Tree.</p>
-<p>This type of forest is called <em>Extremely Randomized Trees</em>, or <em>Extra-Trees</em> for short. We could modify the above random forest classifier code to implement the extra-tree algorithm. The key point is that we don’t apply the Decision Tree algorithm to <code>X_subset</code>. Instead we perform a random split.</p>
-<p>In <code>sklearn</code> there is an <code>ExtraTreesClassifier</code> to create such a classifier. It is hard to say which random forest is better beforehand. What we can do is to test and calculate the cross-validation scores (with grid search for hyperparameters tuning).</p>
-<div id="46cbfca7" class="cell" data-execution_count="7">
+<p>This type of forest is called <em>Extremely Randomized Trees</em>, or <em>Extra-Trees</em> for short. We could modify the above random forest classifier code to implement the extra-tree algorithm. The key point is that we don’t apply the Decision Tree algorithm. Instead we perform a random split: select a random feature, and split at a random value. In <code>sklearn</code> there is an <code>ExtraTreesClassifier</code> to create such a classifier.</p>
+<p>Note that for Extra-Tree, we use the whole dataset instead of samples, because the random split already ensures diversity so we need to reduce variance from resampling. So technically Extra-Tree is not a Bagging method in the standard way, although it looks like one.</p>
+<div id="ba0d3a65" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ext_clf.fit(X_train, y_train)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>y_pred_rnd <span class="op">=</span> ext_clf.predict(X_test)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred_rnd, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ext_clf.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>0.856</code></pre>
+<pre><code>0.8466666666666667</code></pre>
 </div>
 </div>
 <p>In the above example, <code>RandomForestClassifier</code> and <code>ExtraTreesClassifier</code> get similar accuracy. However from the code below, you will see that in this example <code>ExtraTreesClassifier</code> is much faster than <code>RandomForestClassifier</code>.</p>
-<div id="7fc1e8a6" class="cell" data-execution_count="8">
+<div id="7458c758" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time()</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Random Frorest: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_leaf_nodes<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ext_clf.fit(X_train, y_train)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time()</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Extremely Randomized Trees: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>rnd_clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Random Frorest: </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ext_clf <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>ext_clf.fit(X_train, y_train)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time()</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Extremely Randomized Trees: </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(t1 <span class="op">-</span> t0))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Random Frorest: 5.688506603240967
-Extremely Randomized Trees: 1.8642053604125977</code></pre>
+<pre><code>Random Frorest: 11.967942476272583
+Extremely Randomized Trees: 5.601980447769165</code></pre>
 </div>
 </div>
 </section>
@@ -647,11 +646,11 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <p>Using the average Gini impurity decreased as a metric, we could measure the importance of each feature. This is called <em>Gini importance</em>. If the feature is useful, it tends to split mixed labeled nodes into pure single class nodes.</p>
 <p>In the case of random forest, since there are many trees, we might compute the weighted average of the Gini importance across all trees. The weight depends on how many times the feature is used in a specific node.</p>
 <p>Using <code>RandomForestClassifier</code>, we can directly get access to the Gini importance of each feature by <code>.feature_importance_</code>. Please see the following example.</p>
-<div id="07810ef5" class="cell" data-execution_count="9">
+<div id="79fe7c8b" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rnd_clf.fit(X_train, y_train)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rnd_clf.feature_importances_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>array([0.43301237, 0.56698763])</code></pre>
+<pre><code>array([0.46353558, 0.53646442])</code></pre>
 </div>
 </div>
 <p>In this example, you may see that the two features are relavely equally important, where the second feature is slightly more important since on average it decrease the Gini impurity a little bit more.</p>
@@ -663,7 +662,7 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="voting-classifier"><span class="header-section-number">4.2.1</span> Voting classifier</h3>
 <p>Assume that we have several trained classifiers. The easiest way to make a better classifer out of what we already have is to build a voting system. That is, each classifier give its own prediction, and it will be considered as a vote, and finally the highest vote will be the prediction of the system.</p>
 <p>In <code>sklearn</code>, you may use <code>VotingClassifier</code>. It works as follows.</p>
-<div id="53356882" class="cell" data-execution_count="10">
+<div id="10db6262" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> VotingClassifier</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
@@ -674,7 +673,7 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 </div>
 <p>All classifiers are stored in the list <code>clfs</code>, whose elements are tuples. The syntax is very similar to <code>Pipeline</code>. What the classifier does is to train all listed classifiers and use the majority vote to predict the class of given test data. If each classifier has one vote, the voting method is <code>hard</code>. There is also a <code>soft</code> voting method. In this case, every classifiers not only can predict the classes of the given data, but also estimiate the probability of the given data that belongs to certain classes. On coding level, each classifier should have the <code>predict_proba()</code> method. In this case, the weight of each vote is determined by the probability computed. In our course we mainly use <code>hard</code> voting.</p>
 <p>Let us use <code>make_moon</code> as an example. We first load the dataset.</p>
-<div id="5f25e08f" class="cell" data-execution_count="11">
+<div id="586954b3" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -682,7 +681,7 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We would like to apply kNN model. As before, we build a data pipeline <code>pipe</code> to first apply <code>MinMaxScaler</code> and then <code>KNeighborsClassifier</code>.</p>
-<div id="157804a4" class="cell" data-execution_count="12">
+<div id="e6204874" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
@@ -696,12 +695,12 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>clf_knn <span class="op">=</span> gs_knn.best_estimator_</span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>clf_knn.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>0.8633333333333333</code></pre>
+<pre><code>0.8666666666666667</code></pre>
 </div>
 </div>
 <p>The resulted accuracy is shown above.</p>
 <p>We then try it with the Decision Tree.</p>
-<div id="aa17bcfd" class="cell" data-execution_count="13">
+<div id="a3b361a5" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>gs_dt <span class="op">=</span> GridSearchCV(DecisionTreeClassifier(), param_grid<span class="op">=</span>{<span class="st">'max_depth'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)), <span class="st">'max_leaf_nodes'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">30</span>))})</span>
@@ -709,21 +708,21 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>clf_dt <span class="op">=</span> gs_dt.best_estimator_</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>clf_dt.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>0.858</code></pre>
+<pre><code>0.8613333333333333</code></pre>
 </div>
 </div>
 <p>We would also want to try Logistic regression method. This will be covered in the next Chapter. At current stage we just use the default setting without changing any hyperparameters.</p>
-<div id="c222985e" class="cell" data-execution_count="14">
+<div id="27dc6f1c" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>clf_lr <span class="op">=</span> LogisticRegression()</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>clf_lr.fit(X_train, y_train)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>clf_lr.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>0.8346666666666667</code></pre>
+<pre><code>0.8393333333333334</code></pre>
 </div>
 </div>
 <p>Now we use a voting classifier to combine the results.</p>
-<div id="1efc6e84" class="cell" data-execution_count="15">
+<div id="777a5028" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> VotingClassifier</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
@@ -734,7 +733,7 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>voting_clf.fit(X_train, y_train)</span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>voting_clf.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>0.848</code></pre>
+<pre><code>0.85</code></pre>
 </div>
 </div>
 <p>You may compare the results of all these four classifiers. The voting classifier is not guaranteed to be better. It is just a way to form a model.</p>
@@ -748,50 +747,50 @@ Extremely Randomized Trees: 1.8642053604125977</code></pre>
 <p>We firstly talk about training a Decision Tree on a weighted dataset. The idea is very simple. When building a Decision Tree, we use some method to determine the split. In this course the Gini impurity is used. There are at least two other methods: cross-entropy and misclassified rate. For all three, the count of the elemnts in some classes is the essnetial part. To train the model over the weighted dataset, we just need to upgrade the count of the elements by the weighted count.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 4.1</strong></span> Consider the following data:</p>
-<div id="bff29c1f" class="cell" data-execution_count="16">
+<div id="a86e9989" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display" data-execution_count="16">
 <style type="text/css">
 </style>
 
-<table id="T_a8dba" class="caption-top table table-sm table-striped small">
+<table id="T_2a41d" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th id="T_a8dba_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">x0</th>
-<th id="T_a8dba_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">x1</th>
-<th id="T_a8dba_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">y</th>
-<th id="T_a8dba_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Weight</th>
+<th id="T_2a41d_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">x0</th>
+<th id="T_2a41d_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">x1</th>
+<th id="T_2a41d_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">y</th>
+<th id="T_2a41d_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Weight</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_a8dba_row0_col0" class="data row0 col0">1.0</td>
-<td id="T_a8dba_row0_col1" class="data row0 col1">2.1</td>
-<td id="T_a8dba_row0_col2" class="data row0 col2">+</td>
-<td id="T_a8dba_row0_col3" class="data row0 col3">0.5</td>
+<td id="T_2a41d_row0_col0" class="data row0 col0">1.0</td>
+<td id="T_2a41d_row0_col1" class="data row0 col1">2.1</td>
+<td id="T_2a41d_row0_col2" class="data row0 col2">+</td>
+<td id="T_2a41d_row0_col3" class="data row0 col3">0.5</td>
 </tr>
 <tr class="even">
-<td id="T_a8dba_row1_col0" class="data row1 col0">1.0</td>
-<td id="T_a8dba_row1_col1" class="data row1 col1">1.1</td>
-<td id="T_a8dba_row1_col2" class="data row1 col2">+</td>
-<td id="T_a8dba_row1_col3" class="data row1 col3">0.125</td>
+<td id="T_2a41d_row1_col0" class="data row1 col0">1.0</td>
+<td id="T_2a41d_row1_col1" class="data row1 col1">1.1</td>
+<td id="T_2a41d_row1_col2" class="data row1 col2">+</td>
+<td id="T_2a41d_row1_col3" class="data row1 col3">0.125</td>
 </tr>
 <tr class="odd">
-<td id="T_a8dba_row2_col0" class="data row2 col0">1.3</td>
-<td id="T_a8dba_row2_col1" class="data row2 col1">1.0</td>
-<td id="T_a8dba_row2_col2" class="data row2 col2">-</td>
-<td id="T_a8dba_row2_col3" class="data row2 col3">0.125</td>
+<td id="T_2a41d_row2_col0" class="data row2 col0">1.3</td>
+<td id="T_2a41d_row2_col1" class="data row2 col1">1.0</td>
+<td id="T_2a41d_row2_col2" class="data row2 col2">-</td>
+<td id="T_2a41d_row2_col3" class="data row2 col3">0.125</td>
 </tr>
 <tr class="even">
-<td id="T_a8dba_row3_col0" class="data row3 col0">1.0</td>
-<td id="T_a8dba_row3_col1" class="data row3 col1">1.0</td>
-<td id="T_a8dba_row3_col2" class="data row3 col2">-</td>
-<td id="T_a8dba_row3_col3" class="data row3 col3">0.125</td>
+<td id="T_2a41d_row3_col0" class="data row3 col0">1.0</td>
+<td id="T_2a41d_row3_col1" class="data row3 col1">1.0</td>
+<td id="T_2a41d_row3_col2" class="data row3 col2">-</td>
+<td id="T_2a41d_row3_col3" class="data row3 col3">0.125</td>
 </tr>
 <tr class="odd">
-<td id="T_a8dba_row4_col0" class="data row4 col0">2.0</td>
-<td id="T_a8dba_row4_col1" class="data row4 col1">1.0</td>
-<td id="T_a8dba_row4_col2" class="data row4 col2">+</td>
-<td id="T_a8dba_row4_col3" class="data row4 col3">0.125</td>
+<td id="T_2a41d_row4_col0" class="data row4 col0">2.0</td>
+<td id="T_2a41d_row4_col1" class="data row4 col1">1.0</td>
+<td id="T_2a41d_row4_col2" class="data row4 col2">+</td>
+<td id="T_2a41d_row4_col3" class="data row4 col3">0.125</td>
 </tr>
 </tbody>
 </table>
@@ -856,7 +855,7 @@ Note
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="example-1-the-iris-dataset"><span class="header-section-number">4.3.3</span> Example 1: the <code>iris</code> dataset</h3>
 <p>Similar to all previous models, <code>sklearn</code> provides <code>AdaBoostClassifier</code>. The way to use it is similar to previous models. Note that although we are able to use any classifiers for <code>AdaBoost</code>, the most popular choice is Decision Tree with <code>max_depth=1</code>. This type of Decision Trees are also called <em>Decision Stumps</em>.</p>
 <p>In the following examples, we initialize an <code>AdaBoostClassifier</code> with 500 Decision Stumps and <code>learning_rate=0.5</code>.</p>
-<div id="b0991e2e" class="cell" data-execution_count="17">
+<div id="7e357328" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> AdaBoostClassifier</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -864,7 +863,7 @@ Note
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                             learning_rate<span class="op">=</span><span class="fl">.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will use the <code>iris</code> dataset for illustration. The cross_val_score is calculated as follows.</p>
-<div id="c85e91bb" class="cell" data-execution_count="18">
+<div id="45be6532" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -879,7 +878,7 @@ Note
 <section id="example-2-the-horse-colic-dataset" class="level3" data-number="4.3.4">
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="example-2-the-horse-colic-dataset"><span class="header-section-number">4.3.4</span> Example 2: the Horse Colic dataset</h3>
 <p>This dataset is from <a href="https://archive.ics.uci.edu/dataset/47/horse+colic">UCI Machine Learning Repository</a>. The data is about whether horses survive if they get a disease called Colic. The dataset is preprocessed, and the result can be downloaded <a href="assests/datasets/horse_colic_clean.csv">here</a>. Note that based on the description, we only use the first 23 columns, and we change the original 3 outcomes (lived, died was euthanized) into 2 outcomes (lived, died) by combining outcome 2 and 3.</p>
-<div id="c467ce2e" class="cell" data-execution_count="19">
+<div id="8972ba13" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -890,7 +889,7 @@ Note
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> (df.iloc[:, <span class="dv">22</span>]<span class="op">&lt;</span><span class="dv">2</span>).to_numpy().astype(<span class="bu">int</span>)</span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="649187b1" class="cell" data-execution_count="20">
+<div id="0d4438ee" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> AdaBoostClassifier</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
@@ -920,13 +919,13 @@ Note
 <span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>grid.fit(X_train, y_train)</span>
 <span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>grid.best_estimator_.score(X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>0.7142857142857143</code></pre>
+<pre><code>0.6964285714285714</code></pre>
 </div>
 </div>
-<div id="998350da" class="cell" data-execution_count="21">
+<div id="907519e8" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>grid.best_params_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>{'estimator__max_depth': 1, 'learning_rate': 0.1, 'n_estimators': 100}</code></pre>
+<pre><code>{'estimator__max_depth': 2, 'learning_rate': 0.01, 'n_estimators': 200}</code></pre>
 </div>
 </div>
 </section>
@@ -949,7 +948,7 @@ Note
 </div>
 <div id="exr-" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Please use the following code to get the <code>mgq</code> dataset.</p>
-<div id="92477017" class="cell" data-execution_count="22">
+<div id="be59e3ea" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_gaussian_quantiles</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>X1, y1 <span class="op">=</span> make_gaussian_quantiles(cov<span class="op">=</span><span class="fl">2.0</span>, n_samples<span class="op">=</span><span class="dv">200</span>, n_features<span class="op">=</span><span class="dv">2</span>,</span>
@@ -975,7 +974,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>This dataset can be loaded using the following code.</p>
-<div id="16a6f88f" class="cell" data-execution_count="23">
+<div id="3912ecd9" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
