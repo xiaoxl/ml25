@@ -104,8 +104,7 @@ scores.mean()
 
 
 ### Example 2: the Horse Colic dataset
-This dataset is from UCI Machine Learning Repository. The data is about whether horses survive if they get a disease called Colic. The dataset is preprocessed as follows. Note that there are a few missing values inside, and we replace them with `0`. 
-
+This dataset is from [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/47/horse+colic). The data is about whether horses survive if they get a disease called Colic. The dataset is preprocessed, and the result can be downloaded [here](assests/datasets/horse_colic_clean.csv). Note that based on the description, we only use the first 23 columns, and we change the original 3 outcomes (lived, died was euthanized) into 2 outcomes (lived, died) by combining outcome 2 and 3.
 
 
 ```{python}
@@ -113,15 +112,43 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/horse-colic/horse-colic.data'
-df = pd.read_csv(url, sep=r'\s+', header=None)
-df = df.replace("?", np.nan)
-df = df.fillna(0)
-X = df.iloc[:, 1:].to_numpy().astype(float)
-y = df[0].to_numpy().astype(int)
+filepath = "assests/datasets/horse_colic_clean.csv"
+df = pd.read_csv(filepath)
+X = df.iloc[:, :22].to_numpy().astype(float)
+y = (df.iloc[:, 22]<2).to_numpy().astype(int)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15)
+```
+```{python}
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import GridSearchCV
 
-clf = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), n_estimators=50, learning_rate=0.2)
-clf.fit(X_train, y_train)
-clf.score(X_test, y_test)
+RANDOMSTATE = 1 
+ada = AdaBoostClassifier(
+    estimator=DecisionTreeClassifier(max_depth=1, random_state=RANDOMSTATE),
+    random_state=RANDOMSTATE
+)
+
+# Hyperparameter grid
+param_grid = {
+    "n_estimators": [50, 100, 200],
+    "learning_rate": [0.01, 0.1, 1.0],
+    "estimator__max_depth": [1, 2, 3]
+}
+
+# Grid search with cross-validation
+grid = GridSearchCV(
+    estimator=ada,
+    param_grid=param_grid,
+    cv=5,
+    scoring="accuracy"
+)
+
+
+grid.fit(X_train, y_train)
+grid.best_estimator_.score(X_test, y_test)
+```
+
+```{python}
+grid.best_params_
 ```
