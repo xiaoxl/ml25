@@ -14,7 +14,6 @@ The dataset and its scattering plot is given below.
 The following code is for ploting. You may also get the precise data points by reading the code. You don't need to write codes to solve the problem.
 
 ```{python}
-#| echo: false
 import pandas as pd
 import matplotlib.pyplot as plt
 data = {'x0': [0.22, 0.37, 0.42, 0.45, 0.18, 0.20, 0.21, 0.23, 0.35, 0.58,
