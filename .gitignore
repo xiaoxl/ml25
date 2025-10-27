@@ -3,5 +3,6 @@
 /docs/
 /ml25/
 /_extensions/
+/venv/
 
 **/*.quarto_ipynb
