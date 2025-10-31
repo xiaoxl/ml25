@@ -1,9 +1,14 @@
 /.quarto/
 /_freeze/
-/docs/
-/ml25/
 /_extensions/
-/venv/
 /bookup/
+**/fonts/
+**/*files/
+**/*cache/
+
+/venv/
+/ml25/
+
+/docs/
 
 **/*.quarto_ipynb
