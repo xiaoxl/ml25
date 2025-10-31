@@ -4,5 +4,6 @@
 /ml25/
 /_extensions/
 /venv/
+/bookup/
 
 **/*.quarto_ipynb

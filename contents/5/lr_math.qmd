@@ -4,6 +4,7 @@
 {{< include ../math.qmd >}}
 
 
+
 We only consider the simplest case: simple linear regression (SLR). The idea is very simple. The dataset contains two variables (the independent variable $x$ and the response variable $y$.) The goal is to find the relation between $x$ and $y$ with the given dataset. We assume their relation is $y=b+wx$. How do we find $b$ and $w$?
 
 Let us first see an example. We would like to find the red line (which is the best fitted curve) shown below.
