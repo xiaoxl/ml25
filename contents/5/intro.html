@@ -541,7 +541,7 @@ window.Quarto = {
 </div>
 <p>We only consider the simplest case: simple linear regression (SLR). The idea is very simple. The dataset contains two variables (the independent variable <span class="math inline">\(x\)</span> and the response variable <span class="math inline">\(y\)</span>.) The goal is to find the relation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> with the given dataset. We assume their relation is <span class="math inline">\(y=b+wx\)</span>. How do we find <span class="math inline">\(b\)</span> and <span class="math inline">\(w\)</span>?</p>
 <p>Let us first see an example. We would like to find the red line (which is the best fitted curve) shown below.</p>
-<div id="899304a0" class="cell" data-execution_count="1">
+<div id="ac3e8a81" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -553,7 +553,7 @@ window.Quarto = {
 <section id="parameter-space" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="parameter-space"><span class="header-section-number">5.1.1</span> Parameter space</h3>
 <p>The key here is to understand the idea of “parameter space”. Since we already know that the function we are looking for has a formula <span class="math inline">\(y=b+wx\)</span>, we could use the pair <span class="math inline">\((b, w)\)</span> to denote different candidates of our answer. For example, the following plot show some possibilities in green dashed lines, while each possiblity is denoted by <span class="math inline">\((b, w)\)</span>. Then the problem is reworded as to find the best pair <span class="math inline">\((b, w)\)</span>.</p>
-<div id="b905a1d1" class="cell" data-execution_count="2">
+<div id="45ba2e72" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -569,7 +569,7 @@ window.Quarto = {
 <p><span id="eq-cost_lr"><span class="math display">\[
 J_{\{(x_i,y_i)\}}(b,w)=\frac1N\sum_{i=1}^N(y_i-\hat{y_i})^2=\frac1N\sum_{i=1}^N(y_i-b-wx_i)^2
 \tag{5.1}\]</span></span> and we are expected to find the <span class="math inline">\((b,w)\)</span> such that the loss function is minimized. The contour map of <span class="math inline">\(J\)</span> is shown below.</p>
-<div id="8d60ae1a" class="cell" data-execution_count="3">
+<div id="16a6ab24" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -582,7 +582,7 @@ J_{\{(x_i,y_i)\}}(b,w)=\frac1N\sum_{i=1}^N(y_i-\hat{y_i})^2=\frac1N\sum_{i=1}^N(
 <section id="gradient-descent" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="gradient-descent"><span class="header-section-number">5.1.3</span> Gradient Descent</h3>
 <p>We use a technique called “gradient descent” to find the global minimal of <span class="math inline">\(J\)</span>. We start from a random point. For example <span class="math inline">\((1.0, 1.5)\)</span>. Then we find a direction where the cost <span class="math inline">\(J\)</span> reduces the most, and move in that direction. This direction is computed by the gradient of the cost <span class="math inline">\(J\)</span>, and this is the reason why the algorithm is called “gradient descent”. After we get to a new point, we evaluate the new gradient and move in the new direction. The process is repeated and we are expected to get close to the minimal point after several iterations. Just like shown in the following plot.</p>
-<div id="fbbddee7" class="cell" data-execution_count="4">
+<div id="19371146" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -611,7 +611,7 @@ J_{\{(x_i,y_i)\}}(b,w)=\frac1N\sum_{i=1}^N(y_i-\hat{y_i})^2=\frac1N\sum_{i=1}^N(
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Generally speaking, larger <span class="math inline">\(\eta\)</span> will move faster to the global minimal, but might be jumpy which cause it harder to converge. On the other side, smaller <span class="math inline">\(\eta\)</span> moves in a more stable fashion, but may take a long time to converge. See the following examples.</p>
-<div id="ff965566" class="cell" data-execution_count="5">
+<div id="2bb2d5f4" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -625,7 +625,7 @@ J_{\{(x_i,y_i)\}}(b,w)=\frac1N\sum_{i=1}^N(y_i-\hat{y_i})^2=\frac1N\sum_{i=1}^N(
 </div>
 </div>
 <p>We may record the curve of the cost function.</p>
-<div id="58eba828" class="cell" data-execution_count="6">
+<div id="a01a71cf" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>After 200 iterations, the parameters are (2.291241352364798, 1.203587494484257).</code></pre>
 </div>
@@ -715,7 +715,7 @@ Note
 <section id="prepare-the-dataset" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="prepare-the-dataset"><span class="header-section-number">5.2.1</span> Prepare the dataset</h3>
 <p>We first randomly generate a dataset <code>(X, y)</code> for the linear regression problem.</p>
-<div id="bda565db" class="cell" data-execution_count="7">
+<div id="ccc50767" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
@@ -723,7 +723,7 @@ Note
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">2.3</span> <span class="op">+</span> <span class="fl">1.2</span> <span class="op">*</span> X <span class="op">+</span> np.random.randn(<span class="dv">100</span>) <span class="op">*</span> <span class="fl">0.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We set the seed to be 42 for reproducing the results. We will also split the dataset into training and test sets.</p>
-<div id="31e14053" class="cell" data-execution_count="8">
+<div id="c81cfece" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">.15</span>,</span>
@@ -741,7 +741,7 @@ J(b,w)&amp;=\frac1N\sum_{i=1}^N(y_i-b-wx_i)^2,\\
 \pdv{J}{w}&amp;=\frac1N\sum_{i=1}^N2(y_i-b-wx_i)(-x_i).
 \end{aligned}
 \]</span></p>
-<div id="575d701f" class="cell" data-execution_count="9">
+<div id="a60ba036" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> J(parameters, X, y):    </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> parameters[<span class="dv">0</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> parameters[<span class="dv">1</span>]</span>
@@ -758,7 +758,7 @@ J(b,w)&amp;=\frac1N\sum_{i=1}^N(y_i-b-wx_i)^2,\\
 <section id="sec-gradeientdescent_numpy_example" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-gradeientdescent_numpy_example"><span class="header-section-number">5.2.3</span> Gradient descent</h3>
 <p>In general we need to random select a starting point. Here for the purpose of comparing to what we get from previous section, we will use a manual selected starting point <span class="math inline">\((1, 1.5)\)</span>. We then follow the path and move for a few steps. Here we will use <span class="math inline">\(\eta=0.2\)</span> as the learning rate.</p>
-<div id="dfb3bd8f" class="cell" data-execution_count="10">
+<div id="46653e3d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">1.5</span>])</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.2</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -807,7 +807,7 @@ J(b,w)&amp;=\frac1N\sum_{i=1}^N(y_i-b-wx_i)^2,\\
 </div>
 </div>
 <p>Usually batch gradient descent is expected to have a more smooth trajection but move slowly, while SGD is expected to move faster to the minimal point but may never really get to it since the trajection is too jumpy. Mini-batch is meant to strike a balanced point by finding a good batch size. In the example below, we show the mini-batch gradient descent in the first 10 epochs.</p>
-<div id="42f435f1" class="cell" data-execution_count="11">
+<div id="2f812d4d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">1.5</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.2</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>batchsize <span class="op">=</span> <span class="dv">32</span></span>
@@ -858,7 +858,7 @@ J(b,w)&amp;=\frac1N\sum_{i=1}^N(y_i-b-wx_i)^2,\\
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Here is the result for the non-shuffle version. You could compare the results with what we do later.</p>
-<div id="00c651ae" class="cell" data-execution_count="12">
+<div id="743ba3a1" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">1.5</span>])</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.2</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>batchsize <span class="op">=</span> <span class="dv">32</span></span>
@@ -907,7 +907,7 @@ J(b,w)&amp;=\frac1N\sum_{i=1}^N(y_i-b-wx_i)^2,\\
 <li><code>torch.tensor</code> is the recommendated function to construct a tensor from data. It has two benefits over <code>torch.Tensor</code>: it will automatically induce the datatype from data instead of always using <code>float</code>; and it is easier to change datatype with the argument <code>dtype</code>.</li>
 <li><code>torch.as_tensor</code> is a function to construct a tensor from data. If the original data is numpy array, this tensor shares data with it. This means that if one is changed, the other is changed as well.</li>
 </ul>
-<div id="926e8e8a" class="cell" data-execution_count="13">
+<div id="5a11c52a" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -940,14 +940,14 @@ tensor: tensor([1, 2]), as_tensor: tensor([0, 2]), original: [0 2]</code></pre>
 </div>
 <div class="callout-body-container callout-body">
 <p>A tensor with only one element is still a tensor in <code>PyTorch</code>. To use it as a scalar, you need to use <code>itme()</code> method.</p>
-<div id="34fef124" class="cell" data-execution_count="14">
+<div id="0e98e885" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.tensor(<span class="dv">1</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>tensor(1)</code></pre>
 </div>
 </div>
-<div id="86af7f90" class="cell" data-execution_count="15">
+<div id="51cdbf61" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a.item()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>1</code></pre>
@@ -981,7 +981,7 @@ tensor: tensor([1, 2]), as_tensor: tensor([0, 2]), original: [0 2]</code></pre>
 </div>
 <div class="callout-body-container callout-body">
 <p><code>numpy</code> also has <code>dtype</code> setting but since it is not strict on it, we ignored it previous. Here is the case: the default setting for <code>numpy</code> is <code>double</code> type, or <code>float64</code>, while in <code>PyTorch</code> <code>float</code>, or <code>float32</code>, is commonly used. Since the precision is different, when cast from <code>double</code> to <code>float</code>, the number might be changed a little bit.</p>
-<div id="f6eddbf1" class="cell" data-execution_count="16">
+<div id="40b40fd1" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.random.random(<span class="dv">1</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.as_tensor(a)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> torch.as_tensor(a, dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
@@ -1012,7 +1012,7 @@ g: 0.28093451261520386, type of e: torch.float64
 </div>
 </div>
 <p>We now construct a <code>PyTorch</code> tensor version of the dataset we used in previous sections. The <code>device</code> part will be introduced later.</p>
-<div id="7e92364a" class="cell" data-execution_count="17">
+<div id="f7f49291" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
@@ -1061,7 +1061,7 @@ g: 0.28093451261520386, type of e: torch.float64
 </div>
 </div>
 <p>Here are some examples, although they only makes sense in a GPU environment.</p>
-<div id="d4987b44" class="cell" data-execution_count="18">
+<div id="c83e07a9" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> torch.tensor(<span class="dv">1</span>, dtype<span class="op">=</span><span class="bu">float</span>, device<span class="op">=</span>device)</span>
@@ -1069,7 +1069,7 @@ g: 0.28093451261520386, type of e: torch.float64
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f't1: </span><span class="sc">{</span>t1<span class="sc">.</span><span class="bu">type</span>()<span class="sc">}</span><span class="ss">, t2: </span><span class="sc">{</span>t2<span class="sc">.</span><span class="bu">type</span>()<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you can see <code>cuda</code> in the output of <code>type</code>, it is a GPU tensor. Otherwise it is a CPU tensor. We may use <code>to</code> to convert a CPU tensor to be a GPU tensor. If this tensor requires gradient, we should set it manually.</p>
-<div id="1e6b5276" class="cell" data-execution_count="19">
+<div id="8880bb00" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>t3 <span class="op">=</span> t2.to(device)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>t3 <span class="op">=</span> t3.requires_grad_(<span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1079,7 +1079,7 @@ g: 0.28093451261520386, type of e: torch.float64
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-gradientdescent_pytorch_example"><span class="header-section-number">5.3.3</span> Gradient</h3>
 <p><code>PyTorch</code> can use <code>autograd</code> to automatically compute the gradient of given formula. All computations are done within the context of tensors. The biggest difference between <code>PyTorch</code> tensor and <code>numpy</code> array is that <code>PyTorch</code> tensor carries gradient infomation on its own.</p>
 <p>The step is very easy: first use <code>PyTorch</code> tensor to write a formula, enable gradients on correct tensors, and then use the <code>backward()</code> method.</p>
-<div id="4b1566f9" class="cell" data-execution_count="20">
+<div id="3d29ee9b" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.tensor(<span class="dv">1</span>, dtype<span class="op">=</span><span class="bu">float</span>, device<span class="op">=</span>device, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> torch.tensor(<span class="fl">1.5</span>, dtype<span class="op">=</span><span class="bu">float</span>, device<span class="op">=</span>device, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1091,7 +1091,7 @@ g: 0.28093451261520386, type of e: torch.float64
 </div>
 </div>
 <p>We could manually compute the first few iterations and record the results. You may compare it with the <code>numpy</code> implementation in <a href="#sec-gradeientdescent_numpy_example" class="quarto-xref"><span>Section 5.2.3</span></a>. The answer is exactly the same.</p>
-<div id="51cdbe22" class="cell" data-execution_count="21">
+<div id="3c29382e" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.tensor(<span class="dv">1</span>, dtype<span class="op">=</span><span class="bu">float</span>, device<span class="op">=</span>device, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> torch.tensor(<span class="fl">1.5</span>, dtype<span class="op">=</span><span class="bu">float</span>, device<span class="op">=</span>device, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.2</span></span>
@@ -1145,7 +1145,7 @@ Note
 <p>After we get the gradient, there are still many tricks to move one step further. We already talked about the learning rate before. It is not the only case. Another example is that sometimes we don’t really want to move in the direction given by the gradient, but we want to modify it a little bit. All these tricks are combined together and are called optimizers.</p>
 <p>An optimizer is a set of rules to update parameters after the gradient is computed. We already talked about <code>SGD</code> (stochastic gradient descent). Other common ones include <code>RMSprop</code> and <code>Adam</code>. In general, <code>Adam</code> is the generic best optimizer. If you don’t know which optimizer to use, <code>Adam</code> is always the go-to choice.</p>
 <p>Here we rewrite our previous code by optimizers. We use <code>SGD</code> in this example. Again, we may compare the results to <a href="#sec-gradeientdescent_numpy_example" class="quarto-xref"><span>Section 5.2.3</span></a> and <a href="#sec-gradientdescent_pytorch_example" class="quarto-xref"><span>Section 5.3.3</span></a>.</p>
-<div id="69d9366f" class="cell" data-execution_count="22">
+<div id="ba4acd11" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim <span class="im">import</span> SGD</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1180,7 +1180,7 @@ Note
 <section id="use-class-to-describe-the-model" class="level3" data-number="5.3.5">
 <h3 data-number="5.3.5" class="anchored" data-anchor-id="use-class-to-describe-the-model"><span class="header-section-number">5.3.5</span> Use class to describe the model</h3>
 <p>We now want to upgrade the code we wrote in previous sections in terms of classes, since it is a good way to wrap up our own code.</p>
-<div id="707efd5e" class="cell" data-execution_count="23">
+<div id="38cba4b6" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LR(nn.Module):</span>
@@ -1205,7 +1205,7 @@ Note
 </div>
 </div>
 <p>We could use <code>model.state_dict()</code> to look at the parameters of the model. Another way to see the parameters is to use <code>model.parameters()</code> method. The latter will return an iterator that help you go through all parameters.</p>
-<div id="69cd3721" class="cell" data-execution_count="24">
+<div id="f148198a" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> model.parameters():</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(item)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1216,7 +1216,7 @@ tensor(1.5000, dtype=torch.float64, requires_grad=True)</code></pre>
 </div>
 </div>
 <p>Now we reproduce the training code for <code>LR</code> class.</p>
-<div id="431ef159" class="cell" data-execution_count="25">
+<div id="7cb44c62" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim <span class="im">import</span> SGD</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss_fn(yhat, y):</span>
@@ -1257,7 +1257,7 @@ tensor(1.5000, dtype=torch.float64, requires_grad=True)</code></pre>
 <section id="using-standard-modules" class="level3" data-number="5.3.6">
 <h3 data-number="5.3.6" class="anchored" data-anchor-id="using-standard-modules"><span class="header-section-number">5.3.6</span> Using standard modules</h3>
 <p>We hand write our models and set parameters in our previous versions. <code>PyTorch</code> provides many standard modules that we can use directly. For example, the linear regression model can be found in <code>nn.modules</code> as <code>Linear</code>, while our loss function is the mean square differene function which is <code>MSELoss</code> from <code>nn</code>.</p>
-<div id="142a3b96" class="cell" data-execution_count="26">
+<div id="217b47fd" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.nn.modules <span class="im">import</span> Linear</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.nn <span class="im">import</span> MSELoss</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1353,7 +1353,7 @@ Caution
 <p>Note that we directly change <code>X</code> and <code>y</code> to be 2D tensors when we create the dataset.</p>
 </div>
 </div>
-<div id="589d7e44" class="cell" data-execution_count="27">
+<div id="55a916ed" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyData(Dataset):</span>
@@ -1374,12 +1374,12 @@ Caution
 </div>
 </div>
 <p>Then we use <code>Dataloader</code> to feed the data into our model.</p>
-<div id="def6628f" class="cell" data-execution_count="28">
+<div id="21a2ce9a" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> DataLoader(dataset<span class="op">=</span>train_data, batch_size<span class="op">=</span><span class="dv">32</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It is used in the following way.</p>
-<div id="a1e7bc53" class="cell" data-execution_count="29">
+<div id="9e4582e0" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.2</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>epoch_num <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1425,7 +1425,7 @@ Caution
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Here is the result for non-shuffle version.</p>
-<div id="dd9e9899" class="cell" data-execution_count="30">
+<div id="c401de72" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.2</span></span>
@@ -1469,7 +1469,7 @@ Caution
 <section id="rewrite-using-random_split" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="rewrite-using-random_split"><span class="header-section-number">5.4.2</span> Rewrite using <code>random_split</code></h3>
 <p>It is possible to purely use <code>PyTorch</code> instead of going through <code>sklearn</code>. After we get the Dataset, we could use <code>random_split</code> to create training set and testing set.</p>
-<div id="0538cc87" class="cell" data-execution_count="31">
+<div id="ec2c3d0b" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> random_split</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1488,7 +1488,7 @@ Caution
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="average-meter"><span class="header-section-number">5.5.1</span> Average Meter</h3>
 <p>In the training loop, usually we would like to keep track of the changes of losses and accuracies. However since training is through mini-batches, if we directly record the loss and accuracy, it is a batch-level result, while what we want is an epoch-level result. Therefore we need to find a convienent way to aggragate the batch-level results into an epoch-level result.</p>
 <p>We define a <code>Meter</code> class. All it does is to collect batch-level data and make them into an epoch-level data.</p>
-<div id="a505b8ce" class="cell" data-execution_count="32">
+<div id="874bce26" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Meter:</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, total<span class="op">=</span><span class="fl">0.0</span>, count<span class="op">=</span><span class="dv">0</span>, value<span class="op">=</span><span class="fl">0.0</span>):</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.total <span class="op">=</span> total</span>
@@ -1506,88 +1506,66 @@ Caution
 <section id="measure-the-time" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="measure-the-time"><span class="header-section-number">5.5.2</span> Measure the time</h3>
 <p>If the dataset or the model is complicated, it may take sometime to train the model. So it is usually useful to record the time spent during the process.</p>
-<div id="f00b223b" class="cell" data-execution_count="33">
+<div id="4041c897" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time.perf_counter()</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># do something in the middel</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.perf_counter()</span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'time spent: </span><span class="sc">{</span>t1<span class="op">-</span>t0<span class="sc">:.4f}</span><span class="ss"> s'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>time spent: 0.0000 s</code></pre>
-</div>
 </div>
 </section>
 <section id="put-things-together" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="put-things-together"><span class="header-section-number">5.5.3</span> Put things together</h3>
-<div id="5db6c872" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>n_epochs <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> {<span class="st">'loss'</span>: [], <span class="st">'acc'</span>: [], <span class="st">'loss_test'</span>: [], <span class="st">'acc_test'</span>: []}</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    monitor_loss <span class="op">=</span> Meter()</span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    monitor_loss_test <span class="op">=</span> Meter()</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    monitor_acc <span class="op">=</span> Meter()</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    monitor_acc_test <span class="op">=</span> Meter()</span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    monitor_time <span class="op">=</span> Meter()</span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (X_batch, y_batch) <span class="kw">in</span> <span class="bu">enumerate</span>(dl_train):</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>        optim.zero_grad()</span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> model(X_batch)</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss_fn(p, y_batch)</span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>        optim.step()</span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>        t1 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>            pred <span class="op">=</span> p.argmax(dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>            acc <span class="op">=</span> (pred <span class="op">==</span> y_batch).to(torch.<span class="bu">float</span>).mean().item()</span>
-<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>            monitor_acc.update(acc, n<span class="op">=</span>X_batch.shape[<span class="dv">0</span>])</span>
-<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>            monitor_loss.update(loss.item(), n<span class="op">=</span>X_batch.shape[<span class="dv">0</span>])</span>
-<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>            monitor_time.update(t1<span class="op">-</span>t0, n<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
-<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'epoch: </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">, batch: </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(dl_train)<span class="sc">}</span><span class="ss"> '</span></span>
-<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'time: </span><span class="sc">{</span>monitor_time<span class="sc">.</span>value<span class="sc">: .4f}</span><span class="ss"> (</span><span class="sc">{</span>monitor_time<span class="sc">.</span>total<span class="sc">: .4f}</span><span class="ss">) '</span></span>
-<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'loss: </span><span class="sc">{</span>monitor_loss<span class="sc">.</span>value<span class="sc">: .4f}</span><span class="ss"> (</span><span class="sc">{</span>monitor_loss<span class="sc">.</span>avg<span class="sc">: .4f}</span><span class="ss">) '</span></span>
-<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'acc: </span><span class="sc">{</span>monitor_acc<span class="sc">.</span>value<span class="sc">: .2f}</span><span class="ss"> (</span><span class="sc">{</span>monitor_acc<span class="sc">.</span>avg<span class="sc">: .2f}</span><span class="ss">)'</span></span>
-<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a>    history[<span class="st">'loss'</span>].append(monitor_loss.avg)</span>
-<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a>    history[<span class="st">'acc'</span>].append(monitor_acc.avg)</span>
-<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb47-42"><a href="#cb47-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X_batch_test, y_batch_test <span class="kw">in</span> dl_test:</span>
-<span id="cb47-43"><a href="#cb47-43" aria-hidden="true" tabindex="-1"></a>            p <span class="op">=</span> model(X_batch_test)</span>
-<span id="cb47-44"><a href="#cb47-44" aria-hidden="true" tabindex="-1"></a>            loss_test <span class="op">=</span> loss_fn(p, y_batch_test)</span>
-<span id="cb47-45"><a href="#cb47-45" aria-hidden="true" tabindex="-1"></a>            monitor_loss_test.update(loss_test.item(), n<span class="op">=</span>X_batch_test.shape[<span class="dv">0</span>])</span>
-<span id="cb47-46"><a href="#cb47-46" aria-hidden="true" tabindex="-1"></a>            pred_test <span class="op">=</span> p.argmax(dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb47-47"><a href="#cb47-47" aria-hidden="true" tabindex="-1"></a>            acc_test <span class="op">=</span> ( pred_test <span class="op">==</span> y_batch_test).to(torch.<span class="bu">float</span>).mean().item()</span>
-<span id="cb47-48"><a href="#cb47-48" aria-hidden="true" tabindex="-1"></a>            monitor_acc_test.update(acc_test, n<span class="op">=</span>X_batch_test.shape[<span class="dv">0</span>])</span>
-<span id="cb47-49"><a href="#cb47-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-50"><a href="#cb47-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># note: use *_test meters here</span></span>
-<span id="cb47-51"><a href="#cb47-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
-<span id="cb47-52"><a href="#cb47-52" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'test epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> '</span></span>
-<span id="cb47-53"><a href="#cb47-53" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'test loss: </span><span class="sc">{</span>monitor_loss_test<span class="sc">.</span>avg<span class="sc">: .4f}</span><span class="ss"> '</span></span>
-<span id="cb47-54"><a href="#cb47-54" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'test acc: </span><span class="sc">{</span>monitor_acc_test<span class="sc">.</span>avg<span class="sc">: .2f}</span><span class="ss">'</span></span>
-<span id="cb47-55"><a href="#cb47-55" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb47-56"><a href="#cb47-56" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'loss_test'</span>].append(monitor_loss_test.avg)</span>
-<span id="cb47-57"><a href="#cb47-57" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'acc_test'</span>].append(monitor_acc_test.avg)</span>
-<span id="cb47-58"><a href="#cb47-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-59"><a href="#cb47-59" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb47-60"><a href="#cb47-60" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches((<span class="dv">10</span>,<span class="dv">3</span>))</span>
-<span id="cb47-61"><a href="#cb47-61" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'training_loss'</span>)</span>
-<span id="cb47-62"><a href="#cb47-62" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(history[<span class="st">'loss_test'</span>], label<span class="op">=</span><span class="st">'testing_loss'</span>)</span>
-<span id="cb47-63"><a href="#cb47-63" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].legend()</span>
-<span id="cb47-64"><a href="#cb47-64" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(history[<span class="st">'acc'</span>], label<span class="op">=</span><span class="st">'training_acc'</span>)</span>
-<span id="cb47-65"><a href="#cb47-65" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(history[<span class="st">'acc_test'</span>], label<span class="op">=</span><span class="st">'testing_acc'</span>)</span>
-<span id="cb47-66"><a href="#cb47-66" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].legend()</span>
-<span id="cb47-67"><a href="#cb47-67" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_title(<span class="st">'Loss'</span>)</span>
-<span id="cb47-68"><a href="#cb47-68" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_title(<span class="st">'Accuracy'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8c1a1875" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>n_epochs <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> {<span class="st">'loss'</span>: [], <span class="st">'loss_test'</span>: []}</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    monitor_loss <span class="op">=</span> Meter()</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    monitor_loss_test <span class="op">=</span> Meter()</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    monitor_time <span class="op">=</span> Meter()</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (X_batch, y_batch) <span class="kw">in</span> <span class="bu">enumerate</span>(dl_train):</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>        optim.zero_grad()</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> model(X_batch)</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss_fn(p, y_batch)</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>        optim.step()</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>        t1 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():            </span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>            monitor_loss.update(loss.item(), n<span class="op">=</span>X_batch.shape[<span class="dv">0</span>])</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>            monitor_time.update(t1<span class="op">-</span>t0, n<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'epoch: </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">, batch: </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(dl_train)<span class="sc">}</span><span class="ss"> '</span></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'time: </span><span class="sc">{</span>monitor_time<span class="sc">.</span>value<span class="sc">: .4f}</span><span class="ss"> (</span><span class="sc">{</span>monitor_time<span class="sc">.</span>total<span class="sc">: .4f}</span><span class="ss">) '</span></span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'loss: </span><span class="sc">{</span>monitor_loss<span class="sc">.</span>value<span class="sc">: .4f}</span><span class="ss"> (</span><span class="sc">{</span>monitor_loss<span class="sc">.</span>avg<span class="sc">: .4f}</span><span class="ss">) '</span></span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    history[<span class="st">'loss'</span>].append(monitor_loss.avg)</span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X_batch_test, y_batch_test <span class="kw">in</span> dl_test:</span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>            p <span class="op">=</span> model(X_batch_test)</span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>            loss_test <span class="op">=</span> loss_fn(p, y_batch_test)</span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>            monitor_loss_test.update(loss_test.item(), n<span class="op">=</span>X_batch_test.shape[<span class="dv">0</span>])</span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'test epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> '</span></span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'test loss: </span><span class="sc">{</span>monitor_loss_test<span class="sc">.</span>avg<span class="sc">: .4f}</span><span class="ss"> '</span></span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'loss_test'</span>].append(monitor_loss_test.avg)</span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot()</span>
+<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches((<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>ax.plot(history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'training_loss'</span>)</span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>ax.plot(history[<span class="st">'loss_test'</span>], label<span class="op">=</span><span class="st">'testing_loss'</span>)</span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>ax.legend()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
