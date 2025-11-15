@@ -1,0 +1,112 @@
+## Organize outputs
+
+### Average Meter
+
+In the training loop, usually we would like to keep track of the changes of losses and accuracies. However since training is through mini-batches, if we directly record the loss and accuracy, it is a batch-level result, while what we want is an epoch-level result. Therefore we need to find a convienent way to aggragate the batch-level results into an epoch-level result. 
+
+We define a `Meter` class. All it does is to collect batch-level data and make them into an epoch-level data.
+
+
+```{python}
+class Meter:
+    def __init__(self, total=0.0, count=0, value=0.0):
+        self.total = total
+        self.count = count
+        self.value = value
+        self.avg = self.total / self.count if self.count > 0 else 0.0
+
+    def update(self, value, n=1):
+        self.value = value
+        self.total += value * n
+        self.count += n
+        self.avg = self.total / self.count if self.count > 0 else 0.0
+```
+
+
+
+### Measure the time
+
+If the dataset or the model is complicated, it may take sometime to train the model. So it is usually useful to record the time spent during the process.
+
+
+```{python}
+#| eval: false
+import time
+t0 = time.perf_counter()
+# do something in the middel
+t1 = time.perf_counter()
+print(f'time spent: {t1-t0:.4f} s')
+```
+
+### Put things together
+
+
+```{python}
+#| eval: false
+import time
+import matplotlib.pyplot as plt
+
+n_epochs = 10
+history = {'loss': [], 'acc': [], 'loss_test': [], 'acc_test': []}
+
+for epoch in range(n_epochs):
+    monitor_loss = Meter()
+    monitor_loss_test = Meter()
+    monitor_acc = Meter()
+    monitor_acc_test = Meter()
+    monitor_time = Meter()
+
+    for i, (X_batch, y_batch) in enumerate(dl_train):
+        t0 = time.perf_counter()
+        optim.zero_grad()
+        p = model(X_batch)
+        loss = loss_fn(p, y_batch)
+        loss.backward()
+        optim.step()
+        t1 = time.perf_counter()
+
+        with torch.no_grad():
+            pred = p.argmax(dim=1)
+            acc = (pred == y_batch).to(torch.float).mean().item()
+            monitor_acc.update(acc, n=X_batch.shape[0])
+            monitor_loss.update(loss.item(), n=X_batch.shape[0])
+            monitor_time.update(t1-t0, n=1)
+
+        print(
+            f'epoch: {epoch}, batch: {i+1}/{len(dl_train)} '
+            f'time: {monitor_time.value: .4f} ({monitor_time.total: .4f}) '
+            f'loss: {monitor_loss.value: .4f} ({monitor_loss.avg: .4f}) '
+            f'acc: {monitor_acc.value: .2f} ({monitor_acc.avg: .2f})'
+        )
+
+    history['loss'].append(monitor_loss.avg)
+    history['acc'].append(monitor_acc.avg)
+
+    with torch.no_grad():
+        for X_batch_test, y_batch_test in dl_test:
+            p = model(X_batch_test)
+            loss_test = loss_fn(p, y_batch_test)
+            monitor_loss_test.update(loss_test.item(), n=X_batch_test.shape[0])
+            pred_test = p.argmax(dim=1)
+            acc_test = ( pred_test == y_batch_test).to(torch.float).mean().item()
+            monitor_acc_test.update(acc_test, n=X_batch_test.shape[0])
+
+        print(
+            f'test epoch {epoch} '
+            f'test loss: {monitor_loss_test.avg: .4f} '
+            f'test acc: {monitor_acc_test.avg: .2f}'
+        )
+        history['loss_test'].append(monitor_loss_test.avg)
+        history['acc_test'].append(monitor_acc_test.avg)
+
+fig, axs = plt.subplots(1, 2)
+fig.set_size_inches((10,3))
+axs[0].plot(history['loss'], label='training_loss')
+axs[0].plot(history['loss_test'], label='testing_loss')
+axs[0].legend()
+axs[1].plot(history['acc'], label='training_acc')
+axs[1].plot(history['acc_test'], label='testing_acc')
+axs[1].legend()
+axs[0].set_title('Loss')
+axs[1].set_title('Accuracy')
+```

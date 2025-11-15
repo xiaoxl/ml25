@@ -19,9 +19,9 @@ Most materials are based on @Godoy2022.
 
 
 
-{{< include output.qmd >}}
+<!-- {{< include output.qmd >}} -->
 
-
+{{< include out2.qmd >}}
 
 {{< include project.qmd >}}
 

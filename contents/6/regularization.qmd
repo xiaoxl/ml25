@@ -96,19 +96,15 @@ After understanding the input and output, we could plot the learning curve. We s
 ```{python}
 import pandas as pd
 import numpy as np
-
-url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/horse-colic/horse-colic.data'
-df = pd.read_csv(url, delim_whitespace=True, header=None)
-df = df.replace("?", np.NaN)
-
-df.fillna(0, inplace=True)
-df.drop(columns=[2, 24, 25, 26, 27], inplace=True)
-df[23].replace({1: 1, 2: 0}, inplace=True)
-X = df.iloc[:, :-1].to_numpy().astype(float)
-y = df[23].to_numpy().astype(int)
-
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
+
+filepath = "assests/datasets/horse_colic_clean.csv"
+df = pd.read_csv(filepath)
+X = df.iloc[:, :22].to_numpy().astype(float)
+y = (df.iloc[:, 22]<2).to_numpy().astype(int)
+
+SEED = 42
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=SEED)
 ```
 
 
