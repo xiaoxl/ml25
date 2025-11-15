@@ -59,21 +59,7 @@ train_loader = DataLoader(train_set, batch_size=32, shuffle=True)
 val_loader = DataLoader(val_set, batch_size=32)
 ```
 
-
-
-
-```{python}
-#| echo: false
-#| output: false
-
-from assests.code.models import ModelTemplate
-```
-
-
-
-
 In the following code, we first set up the original model.
-
 
 ```{python}
 import torch.nn as nn
@@ -104,9 +90,9 @@ from torch.optim import SGD
 from torch.nn import BCEWithLogitsLoss
 
 model = LoR()
-optim = SGD(model.parameters(), lr=0.1)
+optim = SGD(model.parameters(), lr=0.2)
 loss_fn = BCEWithLogitsLoss()
-n_epochs = 100
+n_epochs = 30
 
 class Meter:
     def __init__(self, total=0.0, count=0, value=0.0):
