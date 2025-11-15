@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4b1fd9f9e5c1a4899ff6fb6cc0c594d3.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-79c490184205d4986f67f9244db1fac0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4b1fd9f9e5c1a4899ff6fb6cc0c594d3.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bbfe0a5b9fb228be1b45e71d50e4f997.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0e3b29b5fa97dc5090eff3fd9e71dcd2.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bbfe0a5b9fb228be1b45e71d50e4f997.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-c0d2154c8f415210cf187502ecb0c845.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -317,8 +317,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Machine Learning 2025 Fall</span>
     </a>
@@ -347,10 +345,6 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      </a>
-      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -550,7 +544,7 @@ Gini = 1-\sum_{l\in uniqueLabelList}\left(\frac{n_l}{n}\right)^2.
 <summary>
 The sample manual codes are optional.
 </summary>
-<div id="410c5374" class="cell" data-execution_count="1">
+<div id="f22a420f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gini(S):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(S)</span>
@@ -620,7 +614,7 @@ J(k, t_k)=\frac{m_l}mGini(S_l)+\frac{m_r}{m}Gini(S_r).
 <summary>
 The manual sample code is optional.
 </summary>
-<div id="1253d227" class="cell" data-execution_count="2">
+<div id="a4b7a331" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split(G):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> G.shape[<span class="dv">0</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    gmini <span class="op">=</span> gini(G)</span>
@@ -651,7 +645,7 @@ The manual sample code is optional.
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For the purpose of counting labels, we also write a code to do so.</p>
-<div id="29876676" class="cell" data-execution_count="3">
+<div id="a94a1138" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> countlabels(S):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> S[:, <span class="op">-</span><span class="dv">1</span>].reshape(S.shape[<span class="dv">0</span>])</span>
@@ -668,7 +662,7 @@ The manual sample code is optional.
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="initial-setup"><span class="header-section-number">3.3.1</span> Initial setup</h3>
 <p>Since the dataset will be splitted, we will put <code>X</code> and <code>y</code> together as a single variable <code>S</code>. In this case when we split the dataset by selecting rows, the features and the labels are still paired correctly.</p>
 <p>We also print the labels and the feature names for our convenience.</p>
-<div id="c77ee3b3" class="cell" data-execution_count="4">
+<div id="78facf31" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -689,7 +683,7 @@ The manual sample code is optional.
 <section id="use-package-sklearn" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="use-package-sklearn"><span class="header-section-number">3.3.2</span> Use package <code>sklearn</code></h3>
 <p>Now we would like to use the decision tree package provided by <code>sklearn</code>. The process is straightforward. The parameter <code>random_state=40</code> will be discussed {ref}<code>later&lt;note-random_state&gt;</code>, and it is not necessary in most cases.</p>
-<div id="9be34d87" class="cell" data-execution_count="5">
+<div id="8b2b8c96" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">40</span>, min_samples_split<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1295,7 +1289,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <p><code>sklearn</code> provide a way to automatically generate the tree view of the decision tree. The code is as follows.</p>
-<div id="9640b2da" class="cell" data-execution_count="6">
+<div id="6ba99250" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1333,7 +1327,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 Visualize decision boundary is optional.
 </summary>
 <p>Similar to k-NN, we may use <code>sklearn.inspection.DecisionBoundaryDisplay</code> to visualize the decision boundary of this decision tree.</p>
-<div id="ffc1ac68" class="cell" data-execution_count="7">
+<div id="c7ae260b" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> DecisionBoundaryDisplay</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>DecisionBoundaryDisplay.from_estimator(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    clf,</span>
@@ -1373,7 +1367,7 @@ Visualize decision boundary is optional.
 <p>If we don’t set them (which means that we use the default setting), the dataset will be split untill all subsets are pure.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.3 (ALMOST all end nodes are pure)</strong></span> In this example, we let the tree grow as further as possible. It only stops when (almost) all end nodes are pure, even if the end nodes only contain ONE element (like #6 and #11).</p>
-<div id="a125ac36" class="cell" data-execution_count="8">
+<div id="5c70d0ca" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">40</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clf.fit(X, y)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), dpi<span class="op">=</span><span class="dv">200</span>)</span>
@@ -1406,7 +1400,7 @@ Visualize decision boundary is optional.
 </div>
 </div>
 <p>In this example there is one exception. #13 node is not pure. The reason is as follows.</p>
-<div id="5a4f858a" class="cell" data-execution_count="9">
+<div id="425913a0" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>X[(X[:, <span class="dv">0</span>]<span class="op">&gt;</span><span class="fl">0.8</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&gt;</span><span class="fl">1.75</span>) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>]<span class="op">&lt;=</span><span class="fl">4.85</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([[4.8, 1.8],
@@ -1418,7 +1412,7 @@ Visualize decision boundary is optional.
 </div>
 <p>Therefore we could treat these hyperparameters as an indicator about how far the dataset is split. The further the dataset is split, the further the learning goes, the more details are learned. Since we don’t want the model to be overfitting, we don’t want to split the dataset that far. In this case, we could use the learning curve to help us make the decision.</p>
 <p>In this example, let us choose <code>min_samples_leaf</code> as the indicator. When <code>min_samples_leaf</code> is big, the learning just starts. When <code>min_samples_leaf=1</code>, we reach the far most side of learning. We will see how the training and testing accuracy changes along the learning process.</p>
-<div id="e14a48a9" class="cell" data-execution_count="10">
+<div id="d0f2d9d7" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1452,7 +1446,7 @@ Visualize decision boundary is optional.
 The manual sample code is optional.
 </summary>
 <p>We apply <code>split</code> to the dataset <code>S</code>.</p>
-<div id="54fa5238" class="cell" data-execution_count="11">
+<div id="3d5cd0cc" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> assests.codes.dt <span class="im">import</span> gini, split, countlabels</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> split(S)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> r[<span class="st">'split'</span>] <span class="kw">is</span> <span class="va">True</span>:</span>
@@ -1470,7 +1464,7 @@ The right subset's Gini impurity is 0.50,  and its label counts is {1.0: np.int6
 </div>
 <p>The results shows that <code>S</code> is splitted into two subsets based on the <code>0</code>-th feature and the split value is <code>1.9</code>.</p>
 <p>The left subset is already pure since its Gini impurity is <code>0</code>. All elements in the left subset is label <code>0</code> (which is <code>setosa</code>). The right one is mixed since its Gini impurity is <code>0.5</code>. Therefore we need to apply <code>split</code> again to the right subset.</p>
-<div id="1f76a642" class="cell" data-execution_count="12">
+<div id="5bd5c61e" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> split(Gr)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> r[<span class="st">'split'</span>] <span class="kw">is</span> <span class="va">True</span>:</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    Grl, Grr <span class="op">=</span> r[<span class="st">'sets'</span>]</span>
@@ -1503,7 +1497,7 @@ The right subset's Gini impurity is 0.04,  and its label counts is {2.0: np.int6
 <h4 data-number="3.3.4.1" class="anchored" data-anchor-id="analyze-the-differences-between-the-two-methods"><span class="header-section-number">3.3.4.1</span> Analyze the differences between the two methods</h4>
 <p>The tree generated by <code>sklearn</code> and the tree we got manually is a little bit different. Let us explore the differences here.</p>
 <p>To make it easier to split the set, we could convert the <code>numpy.ndarray</code> to <code>pandas.DataFrame</code>.</p>
-<div id="dbcaecb9" class="cell" data-execution_count="13">
+<div id="d178ab8a" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(X)</span>
@@ -1553,14 +1547,14 @@ The right subset's Gini impurity is 0.04,  and its label counts is {2.0: np.int6
 </div>
 </div>
 <p>Now based on our tree, we would like to get all data points that the first feature (which is marked as <code>0</code>) is smaller or equal to <code>1.9</code>. We save it as <code>df1</code>. Similarly based on the tree gotten from <code>sklearn</code>, we would like to get all data points taht the second feature (which is marked as <code>1</code>) is smaller or equal to <code>0.8</code> and save it to <code>df2</code>.</p>
-<div id="2c467907" class="cell" data-execution_count="14">
+<div id="37e7a885" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df[df[<span class="dv">0</span>]<span class="op">&lt;=</span><span class="fl">1.9</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df[df[<span class="dv">1</span>]<span class="op">&lt;=</span><span class="fl">0.8</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then we would like to compare these two dataframes. What we want is to see whether they are the same regardless the order. One way to do this is to sort the two dataframes and then compare them directly.</p>
 <p>To sort the dataframe we use the method <code>DataFrame.sort_values</code>. The details can be found <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html">here</a>. Note that after <code>sort_values</code> we apply <code>reset_index</code> to reset the index just in case the index is massed by the sort operation.</p>
 <p>Then we use <code>DataFrame.equals</code> to check whether they are the same.</p>
-<div id="3159a197" class="cell" data-execution_count="15">
+<div id="8bf4ca12" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df1sorted <span class="op">=</span> df1.sort_values(by<span class="op">=</span>df1.columns.tolist()).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df2sorted <span class="op">=</span> df2.sort_values(by<span class="op">=</span>df2.columns.tolist()).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df1sorted.equals(df2sorted))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1605,7 +1599,7 @@ The right subset's Gini impurity is 0.04,  and its label counts is {2.0: np.int6
 </div>
 </div>
 <p>Another difference is the split value of the second branch. In our case it is <code>1.7</code> and in <code>sklearn</code> case it is <code>1.75</code>. So after we get the right subset from the first split (which is called <code>dfr</code>), we would split it into two sets based on whether the second feature is above or below <code>1.7</code>.</p>
-<div id="86d2cb58" class="cell" data-execution_count="16">
+<div id="4c873aa1" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dfr <span class="op">=</span> df[df[<span class="dv">0</span>]<span class="op">&gt;</span><span class="fl">1.9</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df2a <span class="op">=</span> dfr[dfr[<span class="dv">1</span>]<span class="op">&gt;</span><span class="fl">1.7</span>]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>df2b <span class="op">=</span> dfr[dfr[<span class="dv">1</span>]<span class="op">&lt;=</span><span class="fl">1.7</span>]</span>
@@ -1626,13 +1620,13 @@ The right subset's Gini impurity is 0.04,  and its label counts is {2.0: np.int6
 <p>Other than tuning hyperparameters, we also want to prune our tree in order to reduce overfitting further. The pruning algorithm introduced together with CART is called <strong>Minimal-Cost-Complexity Pruning</strong> (MCCP).</p>
 <p>The idea is to use the cost-complexity measure to replace Gini impurity to grow the tree. The cost-complexity measure is gotten by adding the total number of end nodes with the coefficent <code>ccp_alpha</code> to the Gini impurity. The parameter <code>ccp_alpha&gt;=0</code> is known as the <strong>complexity parameter</strong>, and it can help the tree to self-balance the number of end nodes and the Gini impurity.</p>
 <p>In <code>sklearn</code>, we use <code>cost_complexity_pruning_path</code> to help us find the effective alphas and the corresponding impurities.</p>
-<div id="3c299755" class="cell" data-execution_count="17">
+<div id="1640b31a" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ccp_path <span class="op">=</span> clf.cost_complexity_pruning_path(X_train, y_train)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ccp_alphas, impurities <span class="op">=</span> ccp_path.ccp_alphas, ccp_path.impurities</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The list <code>ccp_alphas</code> contains all important <code>ccp_alpha</code>s. We could train a model for each of them. We could use the argument <code>ccp_alpha</code> to control the value when initialize the model. After we train all these tree models for each effective <code>ccp_alpha</code>, we evaluate the model and record the results.</p>
-<div id="d706500a" class="cell" data-execution_count="18">
+<div id="999b4103" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>clfs <span class="op">=</span> []</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ccp_alpha <span class="kw">in</span> ccp_alphas:</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">42</span>, ccp_alpha<span class="op">=</span>ccp_alpha)</span>
@@ -1645,7 +1639,7 @@ The right subset's Gini impurity is 0.04,  and its label counts is {2.0: np.int6
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>test_acc <span class="op">=</span> [clf.score(X_test, y_test) <span class="cf">for</span> clf <span class="kw">in</span> clfs]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We would like to visualize these info.</p>
-<div id="668c8776" class="cell" data-execution_count="19">
+<div id="584d2f17" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(ccp_alphas, node_counts, marker<span class="op">=</span><span class="st">"o"</span>, drawstyle<span class="op">=</span><span class="st">"steps-post"</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"alpha"</span>)</span>
@@ -1671,7 +1665,7 @@ The right subset's Gini impurity is 0.04,  and its label counts is {2.0: np.int6
 <summary>
 We could combine all the code above into a function.
 </summary>
-<div id="74475003" class="cell" data-execution_count="20">
+<div id="22d3e534" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.base <span class="im">import</span> clone</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eval_ccp_alphas(clf, X, y):</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    ccp_path <span class="op">=</span> clf.cost_complexity_pruning_path(X, y)</span>
@@ -1703,7 +1697,7 @@ We could combine all the code above into a function.
 <span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ccp_alphas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="59c9126e" class="cell" data-execution_count="21">
+<div id="7e0fbf78" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>eval_ccp_alphas(DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">42</span>), X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>array([0.        , 0.00485564, 0.01049869, 0.01534424, 0.03364964,
@@ -1736,7 +1730,7 @@ We could combine all the code above into a function.
 </ul></li>
 </ol>
 <p>The following code is for ploting. You may also get the precise data points by reading the code. You don’t need to write codes to solve the problem.</p>
-<div id="9fc403b4" class="cell" data-execution_count="22">
+<div id="72cc13be" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'x0'</span>: [<span class="fl">0.22</span>, <span class="fl">0.37</span>, <span class="fl">0.42</span>, <span class="fl">0.45</span>, <span class="fl">0.18</span>, <span class="fl">0.20</span>, <span class="fl">0.21</span>, <span class="fl">0.23</span>, <span class="fl">0.35</span>, <span class="fl">0.58</span>,</span>
