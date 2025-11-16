@@ -5,7 +5,7 @@
 **/fonts/
 **/*files/
 **/*cache/
-
+/fonts/
 /venv/
 /ml25/
 

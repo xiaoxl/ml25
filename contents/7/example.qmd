@@ -66,13 +66,28 @@ class MyModel(nn.Module):
         x = self.linear2(x)
         # x = self.act2(x)
         return x
+
+model = MyModel(22)
 ```
 
-Now we start to train the model and evaluate. Note that the majority part of the code is about evaluating the result. Since we are doing binary classification, our result can be computed by checking whether our model output (before the final sigmoid function) is positive or negative. This is where `(y_pred_test>0)` comes from.
-
-For simplicity, when recording the training and validating results, I only record those from the last batch. This can be improved by designing a better result recorder. 
+We could use the following code to look at the structure of the model.
 
 ```{python}
+total = 0
+for n, p in model.named_parameters():
+    print(n, p.shape, p.numel())
+    total += p.numel()
+print("total params:", total)
+```
+
+
+
+Now we start to train the model and evaluate. Note that the majority part of the code is about evaluating the result. Since we are doing binary classification, our result can be computed by checking whether our model output (before the final sigmoid function) is positive or negative. This is where `(p>0)` comes from.
+
+
+```{python}
+#| output-fold: true
+#| output-summary: "Click to view results"
 import time
 import matplotlib.pyplot as plt
 from torch.optim import SGD
@@ -116,7 +131,7 @@ for epoch in range(n_epochs):
         t1 = time.perf_counter()
 
         with torch.no_grad():
-            pred = (p>0.5).to(torch.long)
+            pred = (p>0).to(torch.long)
             acc = (pred == y_batch).to(torch.float).mean().item()
             monitor_acc.update(acc, n=X_batch.shape[0])
             monitor_loss.update(loss.item(), n=X_batch.shape[0])
@@ -138,7 +153,7 @@ for epoch in range(n_epochs):
             p = model(X_batch_test)
             loss_test = loss_fn(p, y_batch_test)
             monitor_loss_test.update(loss_test.item(), n=X_batch_test.shape[0])
-            pred_test = (p>0.5).to(torch.int)
+            pred_test = (p>0).to(torch.int)
             acc_test = ( pred_test == y_batch_test).to(torch.float).mean().item()
             monitor_acc_test.update(acc_test, n=X_batch_test.shape[0])
 
@@ -158,23 +173,8 @@ axs[0].legend()
 axs[1].plot(history['acc'], label='training_acc')
 axs[1].plot(history['acc_test'], label='testing_acc')
 axs[1].legend()
-axs[0].set_title('Loss')
-axs[1].set_title('Accuracy')
-```
-
-And the learning curve are shown in the following plots.
-
-
-```{python}
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots(1, 2)
-ax[0].plot(loss_train, label='train_loss')
-ax[0].plot(loss_val, label='val_loss')
-ax[0].legend()
-
-ax[1].plot(acc_train, label='train_acc')
-ax[1].plot(acc_val, label='val_acc')
-ax[1].legend()
+axs[0].set_title('Loss');
+axs[1].set_title('Accuracy');
 ```
 
 

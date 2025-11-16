@@ -16,6 +16,12 @@ crossref:
 execute:
   freeze: auto
 
+filters:
+  - collapse-output
+extensions:
+  collapse-output:
+    method: lua  # or "javascript" (default: "lua")
+
 knitr:
   opts_chunk:
     comment: "#>"

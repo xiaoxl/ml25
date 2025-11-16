@@ -47,13 +47,11 @@ import time
 import matplotlib.pyplot as plt
 
 n_epochs = 10
-history = {'loss': [], 'acc': [], 'loss_test': [], 'acc_test': []}
+history = {'loss': [], 'loss_test': []}
 
 for epoch in range(n_epochs):
     monitor_loss = Meter()
     monitor_loss_test = Meter()
-    monitor_acc = Meter()
-    monitor_acc_test = Meter()
     monitor_time = Meter()
 
     for i, (X_batch, y_batch) in enumerate(dl_train):
@@ -65,10 +63,7 @@ for epoch in range(n_epochs):
         optim.step()
         t1 = time.perf_counter()
 
-        with torch.no_grad():
-            pred = p.argmax(dim=1)
-            acc = (pred == y_batch).to(torch.float).mean().item()
-            monitor_acc.update(acc, n=X_batch.shape[0])
+        with torch.no_grad():            
             monitor_loss.update(loss.item(), n=X_batch.shape[0])
             monitor_time.update(t1-t0, n=1)
 
@@ -76,37 +71,25 @@ for epoch in range(n_epochs):
             f'epoch: {epoch}, batch: {i+1}/{len(dl_train)} '
             f'time: {monitor_time.value: .4f} ({monitor_time.total: .4f}) '
             f'loss: {monitor_loss.value: .4f} ({monitor_loss.avg: .4f}) '
-            f'acc: {monitor_acc.value: .2f} ({monitor_acc.avg: .2f})'
         )
 
     history['loss'].append(monitor_loss.avg)
-    history['acc'].append(monitor_acc.avg)
 
     with torch.no_grad():
         for X_batch_test, y_batch_test in dl_test:
             p = model(X_batch_test)
             loss_test = loss_fn(p, y_batch_test)
             monitor_loss_test.update(loss_test.item(), n=X_batch_test.shape[0])
-            pred_test = p.argmax(dim=1)
-            acc_test = ( pred_test == y_batch_test).to(torch.float).mean().item()
-            monitor_acc_test.update(acc_test, n=X_batch_test.shape[0])
 
         print(
             f'test epoch {epoch} '
             f'test loss: {monitor_loss_test.avg: .4f} '
-            f'test acc: {monitor_acc_test.avg: .2f}'
         )
         history['loss_test'].append(monitor_loss_test.avg)
-        history['acc_test'].append(monitor_acc_test.avg)
 
-fig, axs = plt.subplots(1, 2)
+fig, ax = plt.subplot()
 fig.set_size_inches((10,3))
-axs[0].plot(history['loss'], label='training_loss')
-axs[0].plot(history['loss_test'], label='testing_loss')
-axs[0].legend()
-axs[1].plot(history['acc'], label='training_acc')
-axs[1].plot(history['acc_test'], label='testing_acc')
-axs[1].legend()
-axs[0].set_title('Loss')
-axs[1].set_title('Accuracy')
+ax.plot(history['loss'], label='training_loss')
+ax.plot(history['loss_test'], label='testing_loss')
+ax.legend();
 ```

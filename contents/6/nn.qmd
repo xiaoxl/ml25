@@ -84,6 +84,8 @@ Then we run our regular training loop.
 
 
 ```{python}
+#| output-fold: true
+#| output-summary: "Click to view results"
 import time
 import matplotlib.pyplot as plt
 from torch.optim import SGD
@@ -127,7 +129,7 @@ for epoch in range(n_epochs):
         t1 = time.perf_counter()
 
         with torch.no_grad():
-            pred = (p>0.5).to(torch.long)
+            pred = (p>0).to(torch.long)
             acc = (pred == y_batch).to(torch.float).mean().item()
             monitor_acc.update(acc, n=X_batch.shape[0])
             monitor_loss.update(loss.item(), n=X_batch.shape[0])
@@ -149,7 +151,7 @@ for epoch in range(n_epochs):
             p = model(X_batch_test)
             loss_test = loss_fn(p, y_batch_test)
             monitor_loss_test.update(loss_test.item(), n=X_batch_test.shape[0])
-            pred_test = (p>0.5).to(torch.int)
+            pred_test = (p>0).to(torch.int)
             acc_test = ( pred_test == y_batch_test).to(torch.float).mean().item()
             monitor_acc_test.update(acc_test, n=X_batch_test.shape[0])
 
@@ -169,8 +171,8 @@ axs[0].legend()
 axs[1].plot(history['acc'], label='training_acc')
 axs[1].plot(history['acc_test'], label='testing_acc')
 axs[1].legend()
-axs[0].set_title('Loss')
-axs[1].set_title('Accuracy')
+axs[0].set_title('Loss');
+axs[1].set_title('Accuracy');
 ```
 
 
