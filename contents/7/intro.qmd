@@ -10,6 +10,8 @@ There are many different architects of netural networks. In our course we will o
 
 {{< include example.qmd >}}
 
+{{< include example2.qmd >}}
+
 
 {{< include project.qmd >}}
 

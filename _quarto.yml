@@ -27,7 +27,7 @@ knitr:
     comment: "#>"
     collapse: true
 
-jupyter: ml25
+jupyter: core
 
 format:
   bookup-html:

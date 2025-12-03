@@ -3,11 +3,12 @@
 ## jupyter kernel
 
 ```
-python -m ipykernel install --user --name ml25 --display-name "(venv)"
+python -m ipykernel install --user --name ml25 --display-name "ml25"
 ```
 
-## bookup
+## extensions
 
 ```
 quarto use template juba/bookup-html
+quarto add mcanouil/quarto-collapse-output
 ```

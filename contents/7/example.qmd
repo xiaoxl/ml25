@@ -1,4 +1,4 @@
-## Example
+## Example 1: Horse colic
 
 Let us take some of our old dataset as an example. This is an continuation of the horse colic dataset from Logistic regression. Note that most of the codes are directly taken from logistic regression section, since MLP is just a generalization of logistic regression.
 

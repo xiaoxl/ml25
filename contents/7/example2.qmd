@@ -1,0 +1,261 @@
+## Example 2: `MNIST`
+
+The second example is `MNIST`. The code is almost the same as other project. We only make some modifications in certain places.
+
+### Load the dataset
+We load the original data into our dataset class, and only convert it into the format we need when output it. This trick will spread the converting time into each time we fetch a data, instead of doing them all at once when creating the dataset.
+
+
+```{python}
+from datasets import load_dataset
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
+
+to_tensor = transforms.ToTensor()
+
+class MyDataset(Dataset):
+    def __init__(self, ds):
+        self.X = ds["image"]
+        self.y = ds["label"]
+
+    def __len__(self):
+        return len(self.X)
+
+    def __getitem__(self, idx):
+        X = to_tensor(self.X[idx]).to(torch.float32).reshape(784)
+        y = self.y[idx]
+        return (X, y)
+
+mnist_ds = load_dataset("ylecun/mnist")
+
+train_ds = MyDataset(mnist_ds["train"].take(600))
+test_ds = MyDataset(mnist_ds["test"].take(100))
+
+train_loader = DataLoader(train_ds, batch_size=32)
+test_loader = DataLoader(test_ds, batch_size=32)
+```
+
+1. In order to make the example easier I only use 600 images for training and 100 images for testing. 
+2. `to_tensor` is a method provided by `torchvision`. It will automatically normalize the pixel matrix. In other words, we don't do additional normalization.
+3. The return format for `__getitem__` is a tuple, that `X` is a 1D-tensor and `y` is an integer. Therefore when connected to a dataloader, the output batch will be a tuple of a 2D-tensor and a 1D-tensor. The batched label tensor is 1D is due to the requirement from `CrossEntropyLoss`.
+
+
+### Setup the model
+
+
+```{python}
+import torch
+import torch.nn as nn
+from torch.optim import SGD
+from torch.nn import CrossEntropyLoss
+
+
+class MyModel(nn.Module):
+    def __init__(self, num_inputs):
+        super().__init__()
+        self.linear1 = nn.Linear(num_inputs, 128)
+        self.act1 = nn.ReLU()
+        self.linear2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.act1(x)
+        x = self.linear2(x)
+        return x
+
+
+model = MyModel(784)
+optim = SGD(model.parameters(), lr=0.1)
+loss_fn = CrossEntropyLoss()
+```
+
+`CrossEntropyLoss` works like `BCEWithLogitsLoss`, that it requires no final `Softmax` activition function. 
+
+In order to get the predict value, we could just use `.argmax(dim=1)` to get the maximal location across each row.
+
+### Training loop
+In the training loop, most codes are the same as the previous example. Note that this time we record the time for each batch, and use a dictionary to record the loss values and accuracies.
+
+
+```{python}
+# | output-fold: true
+# | output-summary: "Click to view results"
+import time
+import matplotlib.pyplot as plt
+
+
+class Meter:
+    def __init__(self, total=0.0, count=0, value=0.0):
+        self.total = total
+        self.count = count
+        self.value = value
+        self.avg = self.total / self.count if self.count > 0 else 0.0
+
+    def update(self, value, n=1):
+        self.value = value
+        self.total += value * n
+        self.count += n
+        self.avg = self.total / self.count if self.count > 0 else 0.0
+
+
+n_epochs = 50
+
+history = {"loss": [], "acc": [], "loss_test": [], "acc_test": []}
+
+for epoch in range(n_epochs):
+    monitor_loss = Meter()
+    monitor_loss_test = Meter()
+    monitor_acc = Meter()
+    monitor_acc_test = Meter()
+    monitor_time = Meter()
+
+    for i, (X_batch, y_batch) in enumerate(train_loader):
+        model.train()
+        t0 = time.perf_counter()
+        optim.zero_grad()
+        p = model(X_batch)
+        loss = loss_fn(p, y_batch)
+        loss.backward()
+        optim.step()
+        t1 = time.perf_counter()
+
+        with torch.no_grad():
+            pred = (p.argmax(dim=1)).to(torch.long)
+            acc = (pred == y_batch).to(torch.float).mean().item()
+            monitor_acc.update(acc, n=X_batch.shape[0])
+            monitor_loss.update(loss.item(), n=X_batch.shape[0])
+            monitor_time.update(t1 - t0, n=1)
+
+        print(
+            f"epoch: {epoch}, batch: {i + 1}/{len(train_loader)} "
+            f"time: {monitor_time.value: .4f} ({monitor_time.total: .4f}) "
+            f"loss: {monitor_loss.value: .4f} ({monitor_loss.avg: .4f}) "
+            f"acc: {monitor_acc.value: .2f} ({monitor_acc.avg: .2f})"
+        )
+
+    history["loss"].append(monitor_loss.avg)
+    history["acc"].append(monitor_acc.avg)
+
+    with torch.no_grad():
+        model.eval()
+        for X_batch_test, y_batch_test in test_loader:
+            p = model(X_batch_test)
+            loss_test = loss_fn(p, y_batch_test)
+            monitor_loss_test.update(loss_test.item(), n=X_batch_test.shape[0])
+            pred_test = (p.argmax(dim=1)).to(torch.int)
+            acc_test = (pred_test == y_batch_test).to(torch.float).mean().item()
+            monitor_acc_test.update(acc_test, n=X_batch_test.shape[0])
+
+        print(f"test epoch {epoch} test loss: {monitor_loss_test.avg: .4f} test acc: {monitor_acc_test.avg: .2f}")
+        history["loss_test"].append(monitor_loss_test.avg)
+        history["acc_test"].append(monitor_acc_test.avg)
+
+fig, axs = plt.subplots(1, 2)
+fig.set_size_inches((10, 3))
+axs[0].plot(history["loss"], label="training_loss")
+axs[0].plot(history["loss_test"], label="testing_loss")
+axs[0].legend()
+axs[1].plot(history["acc"], label="training_acc")
+axs[1].plot(history["acc_test"], label="testing_acc")
+axs[1].legend()
+axs[0].set_title("Loss")
+axs[1].set_title("Accuracy");
+```
+
+
+### Overfitting
+
+Two common tricks for a MLP to fight against overfitting is dropout and regularization. Dropout layers are added in the model, and regularization $\lambda$ is added in optimizer as `weight_decay`.
+
+
+```{python}
+class MyModel(nn.Module):
+    def __init__(self, num_inputs):
+        super().__init__()
+        self.linear1 = nn.Linear(num_inputs, 128)
+        self.act1 = nn.ReLU()
+        self.dropout1 = nn.Dropout(0.5)
+        self.linear2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.act1(x)
+        x = self.dropout1(x)
+        x = self.linear2(x)
+        return x
+
+
+model = MyModel(784)
+optim = SGD(model.parameters(), lr=0.1, weight_decay=5e-4)
+```
+
+We rerun the training loop. This time we can see that the test accuracy is higher than the original one.
+
+```{python}
+# | code-fold: true
+# | output-fold: true
+# | output-summary: "Click to view results"
+
+n_epochs = 50
+
+history = {"loss": [], "acc": [], "loss_test": [], "acc_test": []}
+
+for epoch in range(n_epochs):
+    monitor_loss = Meter()
+    monitor_loss_test = Meter()
+    monitor_acc = Meter()
+    monitor_acc_test = Meter()
+    monitor_time = Meter()
+
+    for i, (X_batch, y_batch) in enumerate(train_loader):
+        model.train()
+        t0 = time.perf_counter()
+        optim.zero_grad()
+        p = model(X_batch)
+        loss = loss_fn(p, y_batch)
+        loss.backward()
+        optim.step()
+        t1 = time.perf_counter()
+
+        with torch.no_grad():
+            pred = (p.argmax(dim=1)).to(torch.long)
+            acc = (pred == y_batch).to(torch.float).mean().item()
+            monitor_acc.update(acc, n=X_batch.shape[0])
+            monitor_loss.update(loss.item(), n=X_batch.shape[0])
+            monitor_time.update(t1 - t0, n=1)
+
+        print(
+            f"epoch: {epoch}, batch: {i + 1}/{len(train_loader)} "
+            f"time: {monitor_time.value: .4f} ({monitor_time.total: .4f}) "
+            f"loss: {monitor_loss.value: .4f} ({monitor_loss.avg: .4f}) "
+            f"acc: {monitor_acc.value: .2f} ({monitor_acc.avg: .2f})"
+        )
+
+    history["loss"].append(monitor_loss.avg)
+    history["acc"].append(monitor_acc.avg)
+
+    with torch.no_grad():
+        model.eval()
+        for X_batch_test, y_batch_test in test_loader:
+            p = model(X_batch_test)
+            loss_test = loss_fn(p, y_batch_test)
+            monitor_loss_test.update(loss_test.item(), n=X_batch_test.shape[0])
+            pred_test = (p.argmax(dim=1)).to(torch.int)
+            acc_test = (pred_test == y_batch_test).to(torch.float).mean().item()
+            monitor_acc_test.update(acc_test, n=X_batch_test.shape[0])
+
+        print(f"test epoch {epoch} test loss: {monitor_loss_test.avg: .4f} test acc: {monitor_acc_test.avg: .2f}")
+        history["loss_test"].append(monitor_loss_test.avg)
+        history["acc_test"].append(monitor_acc_test.avg)
+
+fig, axs = plt.subplots(1, 2)
+fig.set_size_inches((10, 3))
+axs[0].plot(history["loss"], label="training_loss")
+axs[0].plot(history["loss_test"], label="testing_loss")
+axs[0].legend()
+axs[1].plot(history["acc"], label="training_acc")
+axs[1].plot(history["acc_test"], label="testing_acc")
+axs[1].legend()
+axs[0].set_title("Loss")
+axs[1].set_title("Accuracy");
+```
